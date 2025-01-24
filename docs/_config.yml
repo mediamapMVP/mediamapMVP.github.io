@@ -1,0 +1,29 @@
+# --------------
+# -- Settings --
+# --------------
+
+title: Title
+description: >-
+  Description
+baseurl: ""
+url: "https://mediamapmvp.github.io"
+
+# Should compress with TinyPNG
+images:
+  favicon: "/images/favicon.ico"
+  # seo: "/images/seo.png"
+
+# Build settings
+theme: minima
+
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
