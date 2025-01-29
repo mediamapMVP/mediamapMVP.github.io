@@ -17,15 +17,15 @@ async function init() {
     	}
     });
       
-  let greenIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png'});
+    let greenIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png'});
     
-  let redIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png'});
+    let redIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png'});
       
 	let blueIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png'});
 
-  let $filterMovies = document.querySelector('#filterMovies');
-  let $filterTV = document.querySelector('#filterTV');
-  let $filterBooks = document.querySelector('#filterBooks');
+  let $movies = document.querySelector('#movies');
+  let $tv = document.querySelector('#tv');
+  let $books = document.querySelector('#books');
 
   let movies = await getMovies();
   let tv = await getTV();
@@ -40,54 +40,54 @@ async function init() {
   		
 	movies.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], {icon: redIcon}).addTo(map);
-		s.marker.bindPopup(`<b>${s.name}</b><br>${s.description}`);
+		s.marker.bindPopup(`<h3>${s.name}</h3><p>${s.description}</p>`);
 		
 	});
 
 	tv.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], {icon: blueIcon}).addTo(map);
-		s.marker.bindPopup(`<b>${s.name}</b><br>${s.description}`);
+		s.marker.bindPopup(`<h3>${s.name}</h3><p>${s.description}</p>`);
 		
 	});
 
 	books.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], {icon: greenIcon}).addTo(map);
-		s.marker.bindPopup(`<b>${s.name}</b><br>${s.description}`);
+		s.marker.bindPopup(`<h3>${s.name}</h3><p>${s.description}</p>`);
 		
 	});
 			
 	const filterMovies = () => {
-		let filterMovies = $filterMovies.checked;
+		let movies = $movies.checked;
 		
 		movies.forEach(s => {
-      if(filterMovies) map.addLayer(s.marker);
-			else if(map.hasLayer(s.marker)) map.removeLayer(s.marker);;
+			if(movies) map.removeLayer(s.marker);
+			else if(!map.hasLayer(s.marker)) map.addLayer(s.marker);
 		});
 	};
 
-	$filterMovies.addEventListener('change', filterMovies);
+	$movies.addEventListener('change', filterMovies);
 
 	const filterTV = () => {
-		let filterTV = $filterTV.checked;
+		let tv = $tv.checked;
 		
 		tv.forEach(s => {
-			if(filterTV) map.addLayer(s.marker);
-			else if(map.hasLayer(s.marker)) map.removeLayer(s.marker);
+			if(tv) map.removeLayer(s.marker);
+			else if(!map.hasLayer(s.marker)) map.addLayer(s.marker);
 		});
 	};
 
-	$filterTV.addEventListener('change', filterTV);
+	$tv.addEventListener('change', filterTV);
 
 	const filterBooks= () => {
-		let filterBooks = $filterBooks.checked;
+		let books = $books.checked;
 		
 		books.forEach(s => {
-			if(filterBooks) map.addLayer(s.marker);
-			else if(map.hasLayer(s.marker)) map.removeLayer(s.marker);
+			if(books) map.removeLayer(s.marker);
+			else if(!map.hasLayer(s.marker)) map.addLayer(s.marker);
 		});
 	};
 
-	$filterBooks.addEventListener('change', filterBooks);
+	$books.addEventListener('change', filterBooks);
 
 }
 
@@ -95,7 +95,7 @@ async function getMovies() {
 	return new Promise(resolve => {
 		
 		let movies = [
-			{ name: "Movie Title", location: { lat:40.7104, lng: -74.0121 }, description: "Description"}
+			{ name: "Movie Title", location: { lat:40.713134, lng: -73.939713 }, description: "Description"}
 			];
 		
 		resolve(movies);
