@@ -11,6 +11,7 @@ url: "https://mediamapmvp.github.io"
 # Should compress with TinyPNG
 images:
   favicon: "/images/favicon.ico"
+  hero: "/images/hero-image.png"
   # seo: "/images/seo.png"
 
 # Build settings

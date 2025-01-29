@@ -67,6 +67,7 @@ a {
 
 h1 {
   font-size: 2.5rem;
+  margin-bottom: 0 !important;
 
   @media (max-width: 400px) {
     font-size: 2.1rem;
@@ -165,21 +166,17 @@ li {
   margin-right: 1rem;
 }
 
-.pad-top {
-  padding-top: 0.5rem;
+.search-pad-top {
+  padding-top: 0.3rem;
 }
 
 .hero {
-  background-image: linear-gradient(white, white);
   padding-bottom: 10rem;
 }
 
-.hero-content {
-  padding-top: 7rem;
-
-  @media (max-width: 576px) {
-    padding-top: 5rem;
-  }
+.hero img {
+  width: 4rem;
+  margin-right: 0.5rem;
 }
 
 @mixin section($bg: white) {
