@@ -21,7 +21,9 @@ async function init() {
     
   let redIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png'});
       
-	let blueIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png'});
+  let blueIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png'});
+  
+  let blackIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png'});
 
   let $filterMovies = document.querySelector('#filterMovies');
   let $filterTV = document.querySelector('#filterTV');
@@ -35,19 +37,19 @@ async function init() {
   var map = L.map('map').setView([40.76, -73.98], 12);
   map.attributionControl.setPrefix(false);
 
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  L.tileLayer('https://api.mapbox.com/styles/v1/mediamapmvp/cm6pzvgh0006v01qodvgl1fpp/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWVkaWFtYXBtdnAiLCJhIjoiY202cHpqNHR2MTZmMDJycTB1YzkzaDk2MCJ9.0J87bgTD7XKdBP5NH07wuA', {
   }).addTo(map);
 
   		
 	movies.forEach(s => {
-    s.marker = L.marker([s.location.lat, s.location.lng], {icon: redIcon}).addTo(map);
+    s.marker = L.marker([s.location.lat, s.location.lng], {icon: blackIcon}).addTo(map);
     if(s.filming_location) 
 		  s.marker.bindPopup(`<h6>${s.name} (${s.year})</h6><i>${s.location_title}</i><br><br>${s.filming_location}, ${s.filming_address}`);
 		else(s.marker.bindPopup(`<h6>${s.name} (${s.year})</h6><i>${s.location_title}</i><br><br>${s.filming_address}`));
 	});
 
 	tv.forEach(s => {
-    s.marker = L.marker([s.location.lat, s.location.lng], {icon: blueIcon}).addTo(map);
+    s.marker = L.marker([s.location.lat, s.location.lng], {icon: blackIcon}).addTo(map);
     if(s.fictional_name) 
 		  s.marker.bindPopup(`<h6>${s.name}</h6><i>S${s.season}# E${s.episode}#: ${s.episode_title} // ${s.location_title}</i><br><br>${s.fictional_name}, ${s.filming_location}`);
     else (s.marker.bindPopup(`<h6>${s.name}</h6><i>S${s.season}# E${s.episode}#: ${s.episode_title} // ${s.location_title}</i><br><br>${s.filming_location}`));
@@ -55,7 +57,7 @@ async function init() {
 	});
 
 	books.forEach(s => {
-		s.marker = L.marker([s.location.lat, s.location.lng], {icon: greenIcon}).addTo(map);
+		s.marker = L.marker([s.location.lat, s.location.lng], {icon: blackIcon}).addTo(map);
 		s.marker.bindPopup(`<h6>${s.name}</h6>${s.description}`);
 		
 	});
