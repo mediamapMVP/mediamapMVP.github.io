@@ -238,43 +238,56 @@ async function init() {
 		}
 	};
 
-  $filterBooks.addEventListener('click', filterBooks);
-  
-  const filterTitle = () => {
+	$filterBooks.addEventListener('click', filterBooks);
+
+	const filterTitle = () => {
 
 		let term = $filterTitle.value.toLowerCase().trim();
-		console.log(`Filter to term: ${term}`);
+		// console.log(`Filter to term: ${term}`);
 		
 		movies.forEach(s => {
 			if(
 					(term !== '' && s.name.toLowerCase().indexOf(term) === -1)
 			) map.removeLayer(s.marker);
 			else if(!map.hasLayer(s.marker)) map.addLayer(s.marker);
-    });
-    tv.forEach(s => {
-			if(
-					(term !== '' && s.name.toLowerCase().indexOf(term) === -1)
-			) map.removeLayer(s.marker);
-			else if(!map.hasLayer(s.marker)) map.addLayer(s.marker);
-    });
-    books.forEach(s => {
-			if(
-					(term !== '' && s.name.toLowerCase().indexOf(term) === -1)
-			) map.removeLayer(s.marker);
-			else if(!map.hasLayer(s.marker)) map.addLayer(s.marker);
-    });
-    $showAll.style.fontWeight = "normal";
+		});
+		tv.forEach(s => {
+				if(
+						(term !== '' && s.name.toLowerCase().indexOf(term) === -1)
+				) map.removeLayer(s.marker);
+				else if(!map.hasLayer(s.marker)) map.addLayer(s.marker);
+		});
+		books.forEach(s => {
+				if(
+						(term !== '' && s.name.toLowerCase().indexOf(term) === -1)
+				) map.removeLayer(s.marker);
+				else if(!map.hasLayer(s.marker)) map.addLayer(s.marker);
+		});
+
+		$showAll.style.fontWeight = "normal";
 		$filterMovies.style.fontWeight = "normal";
 		$filterTV.style.fontWeight = "normal";
-    $filterBooks.style.fontWeight = "normal";
-    
-    if(term === ''){
-      $showAll.style.fontWeight = "bold";
-    }
+		$filterBooks.style.fontWeight = "normal";
+		allOn = false;
+		moviesOn = false;
+		tvOn = false;
+		booksOn = false;
+		
+		if(term === '') {
+			$showAll.style.fontWeight = "bold";
+			$filterMovies.style.fontWeight = "normal";
+			$filterTV.style.fontWeight = "normal";
+			$filterBooks.style.fontWeight = "normal";
+
+			allOn = true;
+			moviesOn = false;
+			tvOn = false;
+			booksOn = false;
+		}
     
 	};
 
-  $filterTitle.addEventListener('input', filterTitle);
+	$filterTitle.addEventListener('input', filterTitle);
 
 
 }
