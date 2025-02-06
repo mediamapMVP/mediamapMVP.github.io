@@ -46,12 +46,12 @@ async function init() {
     s.marker = L.marker([s.location.lat, s.location.lng], {icon: blackIcon}).addTo(map);
 
     if(s.filming_location) {
-      let customPopupContent = `<h6><b>${s.name} (${s.year})</b></h6><i>${s.location_title}</i><br><br>${s.filming_location}, ${s.filming_address}`;
+      let customPopupContent = `<h6><b>${s.name}</b> (${s.year})</h6><i>${s.location_title}</i><br><br>${s.filming_location}, ${s.filming_address}`;
       s.marker.bindPopup(customPopupContent, customPopupOptions);
 		
     }
 		  else{
-        let customPopupContent = `<h6><b>${s.name} (${s.year})</b></h6><i>${s.location_title}</i><br><br>${s.filming_address}`;
+        let customPopupContent = `<h6><b>${s.name}</b> (${s.year})</h6><i>${s.location_title}</i><br><br>${s.filming_address}`;
         s.marker.bindPopup(customPopupContent, customPopupOptions);
       }
 	});
