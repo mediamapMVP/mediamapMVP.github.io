@@ -132,10 +132,15 @@ async function init() {
 					(term !== '' && s.name.toLowerCase().indexOf(term) === -1)
 			) map.removeLayer(s.marker);
 			else if(!map.hasLayer(s.marker)) map.addLayer(s.marker);
-		});
+    });
+    $showAll.style.fontWeight = "normal";
+		$filterMovies.style.fontWeight = "normal";
+		$filterTV.style.fontWeight = "normal";
+		$filterBooks.style.fontWeight = "normal";
 	};
 
-	$filterTitle.addEventListener('input', filterTitle);
+  $filterTitle.addEventListener('input', filterTitle);
+
 
 }
 
