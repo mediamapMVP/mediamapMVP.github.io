@@ -11,14 +11,6 @@ $dark_blue: #050050;
 $yellow: #d7d26a;
 $light_yellow: #e7db87;
 
-* {
-  font-family: "Source Serif 4", serif;
-  color: $font_color;
-  font-weight: normal;
-  font-optical-sizing: auto;
-  font-style: normal;
-  letter-spacing: .1rem;
-}
 
 a {
   color: $font_color;
@@ -183,6 +175,12 @@ li {
 
 .hero {
   padding-bottom: 8rem;
+  font-family: "Source Serif 4", serif;
+  color: $font_color;
+  font-weight: normal;
+  font-optical-sizing: auto;
+  font-style: normal;
+  letter-spacing: .1rem;
 }
 
 .hero img {
@@ -225,4 +223,9 @@ li {
 #map {     
   width: 100vw;
   height: 100vh;
+}
+
+.popupCustom .leaflet-popup-tip,
+.popupCustom .leaflet-popup-content-wrapper {
+  font-family: 'Helvetica', sans-serif;;
 }

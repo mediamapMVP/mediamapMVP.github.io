@@ -35,25 +35,48 @@ async function init() {
   L.tileLayer('https://api.mapbox.com/styles/v1/mediamapmvp/cm6pzvgh0006v01qodvgl1fpp/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWVkaWFtYXBtdnAiLCJhIjoiY202cHpqNHR2MTZmMDJycTB1YzkzaDk2MCJ9.0J87bgTD7XKdBP5NH07wuA', {
   }).addTo(map);
 
+  var customPopupOptions = {
+    'maxWidth': 400,
+    'width': 200,
+    'className' : 'popupCustom'
+}
   		
 	movies.forEach(s => {
+
     s.marker = L.marker([s.location.lat, s.location.lng], {icon: blackIcon}).addTo(map);
-    if(s.filming_location) 
-		  s.marker.bindPopup(`<h6>${s.name} (${s.year})</h6><i>${s.location_title}</i><br><br>${s.filming_location}, ${s.filming_address}`);
-		else(s.marker.bindPopup(`<h6>${s.name} (${s.year})</h6><i>${s.location_title}</i><br><br>${s.filming_address}`));
+
+    if(s.filming_location) {
+      let customPopupContent = `<h6><b>${s.name} (${s.year})</b></h6><i>${s.location_title}</i><br><br>${s.filming_location}, ${s.filming_address}`;
+      s.marker.bindPopup(customPopupContent, customPopupOptions);
+		
+    }
+		  else{
+        let customPopupContent = `<h6><b>${s.name} (${s.year})</b></h6><i>${s.location_title}</i><br><br>${s.filming_address}`;
+        s.marker.bindPopup(customPopupContent, customPopupOptions);
+      }
 	});
 
 	tv.forEach(s => {
     s.marker = L.marker([s.location.lat, s.location.lng], {icon: blackIcon}).addTo(map);
-    if(s.fictional_name) 
-		  s.marker.bindPopup(`<h6>${s.name}</h6><i>S${s.season}# E${s.episode}#: ${s.episode_title} // ${s.location_title}</i><br><br>${s.fictional_name}, ${s.filming_location}`);
-    else (s.marker.bindPopup(`<h6>${s.name}</h6><i>S${s.season}# E${s.episode}#: ${s.episode_title} // ${s.location_title}</i><br><br>${s.filming_location}`));
+
+    if(s.fictional_name) {
+      let customPopupContent = `<h6><b>${s.name}</b>, ${s.location_title}</h6><i>S${s.season}# E${s.episode}: ${s.episode_title}</i><br><br>${s.fictional_name}, ${s.filming_location}`;
+      s.marker.bindPopup(customPopupContent, customPopupOptions);
+
+    }
+		else {
+      let customPopupContent = `<h6><b>${s.name}</b>, ${s.location_title} </h6><i>S${s.season} E${s.episode}: ${s.episode_title}</i><br><br>${s.filming_location}`;
+      s.marker.bindPopup(customPopupContent, customPopupOptions);
+    };
 		
 	});
 
 	books.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], {icon: blackIcon}).addTo(map);
-		s.marker.bindPopup(`<h6>${s.name}</h6>${s.description}`);
+    
+    let customPopupContent = `<h6><b>${s.name}</b></h6>${s.description}`
+
+    s.marker.bindPopup(customPopupContent, customPopupOptions);
 		
 	});
 
