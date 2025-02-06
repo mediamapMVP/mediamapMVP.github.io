@@ -136,7 +136,12 @@ async function init() {
     $showAll.style.fontWeight = "normal";
 		$filterMovies.style.fontWeight = "normal";
 		$filterTV.style.fontWeight = "normal";
-		$filterBooks.style.fontWeight = "normal";
+    $filterBooks.style.fontWeight = "normal";
+    
+    if(term === ''){
+      $showAll.style.fontWeight = "bold";
+    }
+    
 	};
 
   $filterTitle.addEventListener('input', filterTitle);
