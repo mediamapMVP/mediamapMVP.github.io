@@ -16,14 +16,8 @@ async function init() {
 			popupAnchor:  [1, -34]
     	}
     });
-      
-  let greenIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png'});
-    
-  let redIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png'});
-      
-  let blueIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png'});
   
-  let blackIcon = new ColorIcon({iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png'});
+  let blackIcon = new ColorIcon({iconUrl: '/images/map-marker.svg'});
 
   let $filterMovies = document.querySelector('#filterMovies');
   let $filterTV = document.querySelector('#filterTV');
