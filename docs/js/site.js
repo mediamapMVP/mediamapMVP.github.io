@@ -80,6 +80,11 @@ async function init() {
 		
 	});
 
+	let allOn = true;
+	let moviesOn = false;
+	let tvOn = false;
+	let booksOn = false;
+
 
 	const showAll = () => {
 		movies.forEach(s => { map.addLayer(s.marker); });
@@ -90,45 +95,147 @@ async function init() {
 		$filterMovies.style.fontWeight = "normal";
 		$filterTV.style.fontWeight = "normal";
 		$filterBooks.style.fontWeight = "normal";
+
+		allOn = true;
+		moviesOn = false;
+		tvOn = false;
+		booksOn = false;
 	};
 
 	$showAll.addEventListener('click', showAll);
 			
 	const filterMovies = () => {
-		movies.forEach(s => { map.addLayer(s.marker); });
-		tv.forEach(s => { map.removeLayer(s.marker); });
-		books.forEach(s => { map.removeLayer(s.marker); });
+		if (moviesOn) {
+			movies.forEach(s => { map.removeLayer(s.marker); });
+			$filterMovies.style.fontWeight = "normal";
+			moviesOn = false;
+		}
+		else {
 
-		$showAll.style.fontWeight = "normal";
-		$filterMovies.style.fontWeight = "bold";
-		$filterTV.style.fontWeight = "normal";
-		$filterBooks.style.fontWeight = "normal";
+			movies.forEach(s => { map.addLayer(s.marker); });
+
+			if (allOn) {
+				tv.forEach(s => { map.removeLayer(s.marker); });
+				books.forEach(s => { map.removeLayer(s.marker); });
+
+				$showAll.style.fontWeight = "normal";
+				$filterMovies.style.fontWeight = "bold";
+
+				allOn = false;
+				moviesOn = true;
+			}
+			else {
+				if (tvOn && booksOn) {
+					tv.forEach(s => { map.addLayer(s.marker); });
+					books.forEach(s => { map.addLayer(s.marker); });
+
+					$showAll.focus()
+					$showAll.style.fontWeight = "bold";
+					$filterMovies.style.fontWeight = "normal";
+					$filterTV.style.fontWeight = "normal";
+					$filterBooks.style.fontWeight = "normal";
+
+					allOn = true;
+					moviesOn = false;
+					tvOn = false;
+					booksOn = false;
+				}
+				else {
+					moviesOn = true;
+					$filterMovies.style.fontWeight = "bold";
+				}
+			}
+		}
 	};
 
 	$filterMovies.addEventListener('click', filterMovies);
 
 	const filterTV = () => {
-		tv.forEach(s => { map.addLayer(s.marker); });
-		movies.forEach(s => { map.removeLayer(s.marker); });
-		books.forEach(s => { map.removeLayer(s.marker); });
+		if (tvOn) {
+			tv.forEach(s => { map.removeLayer(s.marker); });
+			$filterTV.style.fontWeight = "normal";
+			tvOn = false;
+		}
+		else {
+			tv.forEach(s => { map.addLayer(s.marker); });
 
-		$showAll.style.fontWeight = "normal";
-		$filterMovies.style.fontWeight = "normal";
-		$filterTV.style.fontWeight = "bold";
-		$filterBooks.style.fontWeight = "normal";
+			if (allOn) {
+				movies.forEach(s => { map.removeLayer(s.marker); });
+				books.forEach(s => { map.removeLayer(s.marker); });
+
+				$showAll.style.fontWeight = "normal";
+				$filterTV.style.fontWeight = "bold";
+
+				allOn = false;
+				tvOn = true;
+			}
+			else {
+				if (moviesOn && booksOn) {
+					movies.forEach(s => { map.addLayer(s.marker); });
+					books.forEach(s => { map.addLayer(s.marker); });
+
+					$showAll.focus()
+					$showAll.style.fontWeight = "bold";
+					$filterMovies.style.fontWeight = "normal";
+					$filterTV.style.fontWeight = "normal";
+					$filterBooks.style.fontWeight = "normal";
+
+					allOn = true;
+					moviesOn = false;
+					tvOn = false;
+					booksOn = false;
+				}
+				else {
+					tvOn = true;
+					$filterTV.style.fontWeight = "bold";
+				}
+			}
+		}
 	};
 
 	$filterTV.addEventListener('click', filterTV);
 
 	const filterBooks= () => {
-		books.forEach(s => { map.addLayer(s.marker); });
-		movies.forEach(s => { map.removeLayer(s.marker); });
-		tv.forEach(s => { map.removeLayer(s.marker); });
+		if (booksOn) {
+			books.forEach(s => { map.removeLayer(s.marker); });
+			$filterBooks.style.fontWeight = "normal";
+			booksOn = false;
+		}
+		else {
+			books.forEach(s => { map.addLayer(s.marker); });
 
-		$showAll.style.fontWeight = "normal";
-		$filterMovies.style.fontWeight = "normal";
-		$filterTV.style.fontWeight = "normal";
-		$filterBooks.style.fontWeight = "bold";
+			if (allOn) {
+				movies.forEach(s => { map.removeLayer(s.marker); });
+				tv.forEach(s => { map.removeLayer(s.marker); });
+
+				$showAll.style.fontWeight = "normal";
+				$filterBooks.style.fontWeight = "bold";
+
+				allOn = false;
+				booksOn = true;
+			}
+			else {
+				if (moviesOn && tvOn) {
+					movies.forEach(s => { map.addLayer(s.marker); });
+					tv.forEach(s => { map.addLayer(s.marker); });
+
+					$showAll.focus()
+					$showAll.style.fontWeight = "bold";
+					$filterMovies.style.fontWeight = "normal";
+					$filterTV.style.fontWeight = "normal";
+					$filterBooks.style.fontWeight = "normal";
+
+					allOn = true;
+					moviesOn = false;
+					tvOn = false;
+					booksOn = false;
+				}
+				else {
+					booksOn = true;
+					$filterBooks.style.fontWeight = "bold";
+				}
+			}
+		}
 	};
 
   $filterBooks.addEventListener('click', filterBooks);
