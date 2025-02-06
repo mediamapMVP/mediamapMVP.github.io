@@ -1,10 +1,10 @@
-<section class="hero" id="hero">
-	<nav class="navbar fixed-top navbar-light bg-light container-fluid d-flex">
+<section class="hero fixed-top" id="hero">
+	<nav class="navbar top-nav navbar-light container-fluid d-flex">
 		<div class="col-sm">
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<!-- <div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="nav navbar-nav mx-auto">
 					<li class="nav-item">
 						<p class="nav-link" onclick="navScroll('about');">About</p>
@@ -13,15 +13,29 @@
 						<p class="nav-link" onclick="navScroll('faq');">FAQ</p>
 					</li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 		<div class="col-sm text-center d-flex justify-content-center align-items-center">
-			<img src="{{ site.images.hero }}" alt="A VHS">
-			<h1 style="font-weight: bold;">Media Map</h1>
+			<h1>MEDIA MAP</h1>
 		</div>
-		<form class="col-sm d-flex justify-content-end search-pad-top">
-			<input class="form-control" type="search" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success search-btn" type="submit">Search</button>
-		</form>
+		<div class="col-sm d-flex justify-content-end search-pad-top">
+			<button class="btn" style="margin-right: 1rem;" type="submit">SUBMIT</button>
+			<button class="btn" type="submit">FOLLOW</button>
+		</div>
+	</nav>
+
+	<nav class="navbar bottom-nav navbar-light container-fluid d-flex align-items-center">
+		<div class="col-sm d-flex justify-content-start">
+			<button id="showAll" class="btn" style="margin-right: 1rem; font-weight: bold;" type="submit">ALL</button>
+			<button id="filterMovies" class="btn" style="margin-right: 1rem;" type="submit">FILM</button>
+			<button id="filterTV" class="btn" style="margin-right: 1rem;" type="submit">TV</button>
+			<button id="filterBooks" class="btn" type="submit">LITERATURE</button>
+			<!-- <input type="checkbox" id="filterMovies" style="accent-color: black;margin-left: 15px" checked> <label for="filterMovies" style="color:black;">Movies</label>
+			<input type="checkbox" id="filterTV" style="accent-color: black; margin-left: 15px" checked> <label for="filterTV" style="color:black;">TV</label>
+			<input type="checkbox" id="filterBooks" style="accent-color: black;margin-left: 15px" checked> <label for="filterBooks" style="color:black;">Books</label> -->
+		</div>
+		<div class="col-sm d-flex justify-content-end align-items-center">
+			<input id="filterTitle" class="form-control title-search" type="textbox" placeholder="Filter by Title" aria-label="Filter by title">
+		</div>
 	</nav>
 </section>

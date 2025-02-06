@@ -19,6 +19,7 @@ async function init() {
   
   let blackIcon = new ColorIcon({iconUrl: '/images/map-marker.svg'});
 
+  let $showAll = document.querySelector('#showAll');
   let $filterMovies = document.querySelector('#filterMovies');
   let $filterTV = document.querySelector('#filterTV');
   let $filterBooks = document.querySelector('#filterBooks');
@@ -55,39 +56,59 @@ async function init() {
 		s.marker.bindPopup(`<h6>${s.name}</h6>${s.description}`);
 		
 	});
+
+
+	const showAll = () => {
+		movies.forEach(s => { map.addLayer(s.marker); });
+		tv.forEach(s => { map.addLayer(s.marker); });
+		books.forEach(s => { map.addLayer(s.marker); });
+
+		$showAll.style.fontWeight = "bold";
+		$filterMovies.style.fontWeight = "normal";
+		$filterTV.style.fontWeight = "normal";
+		$filterBooks.style.fontWeight = "normal";
+	};
+
+	$showAll.addEventListener('click', showAll);
 			
 	const filterMovies = () => {
-		let filterMovies = $filterMovies.checked;
-		
-		movies.forEach(s => {
-      if(filterMovies) map.addLayer(s.marker);
-			else if(map.hasLayer(s.marker)) map.removeLayer(s.marker);;
-		});
+		movies.forEach(s => { map.addLayer(s.marker); });
+		tv.forEach(s => { map.removeLayer(s.marker); });
+		books.forEach(s => { map.removeLayer(s.marker); });
+
+		$showAll.style.fontWeight = "normal";
+		$filterMovies.style.fontWeight = "bold";
+		$filterTV.style.fontWeight = "normal";
+		$filterBooks.style.fontWeight = "normal";
 	};
 
-	$filterMovies.addEventListener('change', filterMovies);
+	$filterMovies.addEventListener('click', filterMovies);
 
 	const filterTV = () => {
-		let filterTV = $filterTV.checked;
-		
-		tv.forEach(s => {
-			if(filterTV) map.addLayer(s.marker);
-			else if(map.hasLayer(s.marker)) map.removeLayer(s.marker);
-		});
+		tv.forEach(s => { map.addLayer(s.marker); });
+		movies.forEach(s => { map.removeLayer(s.marker); });
+		books.forEach(s => { map.removeLayer(s.marker); });
+
+		$showAll.style.fontWeight = "normal";
+		$filterMovies.style.fontWeight = "normal";
+		$filterTV.style.fontWeight = "bold";
+		$filterBooks.style.fontWeight = "normal";
 	};
 
-	$filterTV.addEventListener('change', filterTV);
+	$filterTV.addEventListener('click', filterTV);
 
 	const filterBooks= () => {
-		let filterBooks = $filterBooks.checked;
-		
-		books.forEach(s => {
-			if(filterBooks) map.addLayer(s.marker);
-			else if(map.hasLayer(s.marker)) map.removeLayer(s.marker);
-		});
+		books.forEach(s => { map.addLayer(s.marker); });
+		movies.forEach(s => { map.removeLayer(s.marker); });
+		tv.forEach(s => { map.removeLayer(s.marker); });
+
+		$showAll.style.fontWeight = "normal";
+		$filterMovies.style.fontWeight = "normal";
+		$filterTV.style.fontWeight = "normal";
+		$filterBooks.style.fontWeight = "bold";
 	};
 
-  $filterBooks.addEventListener('change', filterBooks);
+  $filterBooks.addEventListener('click', filterBooks);
   
   const filterTitle = () => {
 

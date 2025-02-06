@@ -12,6 +12,7 @@ url: "https://mediamapmvp.github.io"
 images:
   favicon: "/images/favicon.ico"
   hero: "/images/hero-image.png"
+  profile: "/images/profile.svg"
   # seo: "/images/seo.png"
 
 # Build settings
