@@ -1,21 +1,12 @@
 <section class="hero fixed-top" id="hero">
-	<nav class="navbar top-nav navbar-light container-fluid d-flex">
+	<!--Desktop-->
+	<nav class="desktop navbar top-nav navbar-light container-fluid align-items-center">
 		<div class="col-sm">
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<!-- <div class="collapse navbar-collapse" id="collapsibleNavbar">
-				<ul class="nav navbar-nav mx-auto">
-					<li class="nav-item">
-						<p class="nav-link" onclick="navScroll('about');">About</p>
-					</li>
-					<li class="nav-item">
-						<p class="nav-link" onclick="navScroll('faq');">FAQ</p>
-					</li>
-				</ul>
-			</div> -->
 		</div>
-		<div class="col-sm text-center d-flex justify-content-center align-items-center">
+		<div class="col-sm text-center">
 			<h1>MEDIA MAP</h1>
 		</div>
 		<div class="col-sm d-flex justify-content-end search-pad-top">
@@ -24,18 +15,48 @@
 		</div>
 	</nav>
 
-	<nav class="navbar bottom-nav navbar-light container-fluid d-flex align-items-center">
-		<div class="col-sm d-flex justify-content-start">
+	<!--Mobile-->
+	<nav class="mobile-nav navbar top-nav navbar-light container-fluid align-items-center">
+		<div class="col-1">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+		<div class="col-8 text-center">
+			<h1>MEDIA MAP</h1>
+		</div>
+		<div class="col-1"></div>
+	</nav>
+	<nav class="mobile-nav navbar middle-top-nav navbar-light container-fluid justify-content-center align-items-center">
+		<button class="btn" style="margin-right: 1rem;" type="submit">SUBMIT</button>
+		<button class="btn" type="submit">FOLLOW</button>
+	</nav>
+
+	<!--Desktop and Mobile-->
+	<nav class="navbar bottom-nav navbar-light container-fluid align-items-center">
+		<div class="mobile-justify col d-flex justify-content-start">
 			<button id="showAll" class="btn" style="margin-right: 1rem; font-weight: bold;" type="submit">ALL</button>
 			<button id="filterMovies" class="btn" style="margin-right: 1rem;" type="submit">FILM</button>
 			<button id="filterTV" class="btn" style="margin-right: 1rem;" type="submit">TV</button>
 			<button id="filterBooks" class="btn" type="submit">LITERATURE</button>
-			<!-- <input type="checkbox" id="filterMovies" style="accent-color: black;margin-left: 15px" checked> <label for="filterMovies" style="color:black;">Movies</label>
-			<input type="checkbox" id="filterTV" style="accent-color: black; margin-left: 15px" checked> <label for="filterTV" style="color:black;">TV</label>
-			<input type="checkbox" id="filterBooks" style="accent-color: black;margin-left: 15px" checked> <label for="filterBooks" style="color:black;">Books</label> -->
 		</div>
-		<div class="col-sm d-flex justify-content-end align-items-center">
+		<div class="mobile-justify mobile-search-pad col d-flex justify-content-end align-items-center">
 			<input id="filterTitle" class="form-control title-search" type="textbox" placeholder="Filter by Title" aria-label="Filter by title">
 		</div>
 	</nav>
 </section>
+
+
+<!-- <section class="mobile hero fixed-top" id="hero">
+	
+
+	<nav class="navbar middle-bottom-nav navbar-light container-fluid justify-content-center align-items-center">
+		<button id="showAll" class="btn" style="margin-right: 1rem; font-weight: bold;" type="submit">ALL</button>
+		<button id="filterMovies" class="btn" style="margin-right: 1rem;" type="submit">FILM</button>
+		<button id="filterTV" class="btn" style="margin-right: 1rem;" type="submit">TV</button>
+		<button id="filterBooks" class="btn" type="submit">LITERATURE</button>
+	</nav>
+	<nav class="navbar bottom-nav navbar-light container-fluid justify-content-center align-items-center">
+		<input id="filterTitle" class="form-control title-search" type="textbox" placeholder="Filter by Title" aria-label="Filter by title">
+	</nav>
+</section> -->

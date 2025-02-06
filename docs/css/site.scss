@@ -37,11 +37,11 @@ a {
   }
 }
 
-.mobile, .tablet {
+.mobile, .mobile-nav {
   display: none;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 650px) {
   .desktop {
     display: none;
   }
@@ -49,15 +49,9 @@ a {
   .mobile {
     display: block;
   }
-}
 
-@media (max-width: 850px) {
-  .no-tablet {
-    display: none;
-  }
-
-  .tablet {
-    display: block;
+  .mobile-nav {
+    display: flex;
   }
 }
 
@@ -65,12 +59,14 @@ h1 {
   font-size: 2.5rem;
   margin-bottom: 0 !important;
 
-  @media (max-width: 400px) {
-    font-size: 2.1rem;
+  @media (max-width: 750px) {
+    font-size: 2rem;
   }
 }
 
 h2 {
+  font-size: 2rem;
+
   @media (max-width: 400px) {
     font-size: 1.7rem;
   }
@@ -125,14 +121,70 @@ li {
   align-items: flex-start;
 }
 
+.mobile-justify {
+  @media (max-width: 630px) {
+    justify-content: center !important;
+  }
+
+  @media (max-width: 400px) {
+    flex-wrap: wrap;
+  }
+}
+
 .top-nav {
   background-color: $yellow;
-  padding: 1.5rem !important;
+  padding: 1rem 1.5rem !important;
+
+  @media (max-width: 750px) {
+    padding: 0.7rem 1rem !important;
+  }
+
+  @media (max-width: 380px) {
+    padding: 0.7rem 0.5rem !important;
+  }
+}
+
+.middle-top-nav {
+  background-color: $yellow;
+  padding: 1rem 1.5rem !important;
+
+  @media (max-width: 750px) {
+    padding: 0 1rem 0.5rem !important;
+  }
+
+  @media (max-width: 380px) {
+    padding: 0 0.5rem 0.5rem !important;
+  }
+}
+
+.middle-bottom-nav {
+  background-color: $light_yellow;
+  padding: 0.3rem 1.5rem 0 !important;
+
+  @media (max-width: 650px) {
+    padding: 0.3rem 1rem 0 !important;
+  }
+
+  @media (max-width: 380px) {
+    padding: 0.3rem 0.5rem 0 !important;
+  }
 }
 
 .bottom-nav {
   background-color: $light_yellow;
-  padding: 0.5rem !important;
+  padding: 0 1.5rem !important;
+
+  @media (max-width: 750px) {
+    padding: 0 1rem !important;
+  }
+
+  @media (max-width: 650px) {
+    padding: 0.5rem 1rem!important;
+  }
+
+  @media (max-width: 380px) {
+    padding: 0.5rem !important;
+  }
 }
 
 .navbar-collapse {
@@ -162,11 +214,15 @@ li {
 }
 
 .title-search {
-  width: 70% !important;
-  max-width: 250px;
+  width: 16rem !important;
   height: 1.5rem;
-  margin-right: 1rem;
   border-radius: 1rem;
+}
+
+.mobile-search-pad {
+  @media (max-width: 630px) {
+    padding: 0.5rem !important;
+  }
 }
 
 .search-pad-top {
