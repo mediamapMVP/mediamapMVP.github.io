@@ -12,6 +12,14 @@ $yellow: #d7d26a;
 $light_yellow: #e7db87;
 
 
+* {
+  font-family: "Montserrat", sans-serif;
+  color: $font_color;
+  font-weight: normal;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 a {
   color: $font_color;
   text-decoration: none;
@@ -57,9 +65,14 @@ a {
 
 h1 {
   font-size: 2.5rem;
+  font-weight: bold;
   margin-bottom: 0 !important;
 
-  @media (max-width: 750px) {
+  @media (max-width: 810px) {
+    font-size: 2.2rem;
+  }
+
+  @media (max-width: 760px) {
     font-size: 2rem;
   }
 }
@@ -112,6 +125,49 @@ li {
   }    
 }
 
+.btn {
+  background-color: $yellow;
+  font-weight: bold;
+  color: black;
+}
+
+.hero-btn:hover {
+  background-color: black !important;
+  color: $yellow !important;
+}
+
+.hero-btn:focus {
+  background-color: black !important;
+  color: $yellow !important;
+}
+
+.toggle-btn {
+  background-color: $yellow;
+  width: min-content;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 650px) {
+    margin-bottom: 0;
+    margin-right: 1rem;
+  }
+}
+
+.filter-buttons {
+  flex-direction: column;
+
+  @media (max-width: 650px) {
+    flex-direction: row;
+  }
+}
+
+.bi-search {
+  background-color: $yellow;
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  -webkit-text-stroke: 1px black;
+}
+
 .btn:focus, .navbar-toggler:focus {
   box-shadow: none !important;
   font-weight: bold;
@@ -122,7 +178,7 @@ li {
 }
 
 .mobile-justify {
-  @media (max-width: 630px) {
+  @media (max-width: 650px) {
     justify-content: center !important;
   }
 
@@ -132,11 +188,14 @@ li {
 }
 
 .top-nav {
-  background-color: $yellow;
   padding: 1rem 1.5rem !important;
 
   @media (max-width: 750px) {
     padding: 0.7rem 1rem !important;
+  }
+
+  @media (max-width: 650px) {
+    background-color: $yellow;
   }
 
   @media (max-width: 380px) {
@@ -145,11 +204,14 @@ li {
 }
 
 .middle-top-nav {
-  background-color: $yellow;
   padding: 1rem 1.5rem !important;
 
   @media (max-width: 750px) {
     padding: 0 1rem 0.5rem !important;
+  }
+
+  @media (max-width: 650px) {
+    background-color: $yellow;
   }
 
   @media (max-width: 380px) {
@@ -157,21 +219,7 @@ li {
   }
 }
 
-.middle-bottom-nav {
-  background-color: $light_yellow;
-  padding: 0.3rem 1.5rem 0 !important;
-
-  @media (max-width: 650px) {
-    padding: 0.3rem 1rem 0 !important;
-  }
-
-  @media (max-width: 380px) {
-    padding: 0.3rem 0.5rem 0 !important;
-  }
-}
-
 .bottom-nav {
-  background-color: $light_yellow;
   padding: 0 1.5rem !important;
 
   @media (max-width: 750px) {
@@ -213,14 +261,27 @@ li {
   transition: all 0.2s ease;
 }
 
+.form-control {
+   border: 1px solid black;
+}
+
+.form-control::placeholder {
+ color: black !important;
+ font-size: 0.85rem !important;
+ font-weight: 300 !important;
+ opacity: 0.5 !important;
+ font-style: italic;
+}
+
 .title-search {
   width: 16rem !important;
   height: 1.5rem;
   border-radius: 1rem;
+  font-size: 0.85rem;
 }
 
 .mobile-search-pad {
-  @media (max-width: 630px) {
+  @media (max-width: 650px) {
     padding: 0.5rem !important;
   }
 }
@@ -231,12 +292,12 @@ li {
 
 .hero {
   padding-bottom: 8rem;
-  font-family: "Source Serif 4", serif;
-  color: $font_color;
-  font-weight: normal;
-  font-optical-sizing: auto;
-  font-style: normal;
-  letter-spacing: .1rem;
+  // font-family: "Source Serif 4", serif;
+  // color: $font_color;
+  // font-weight: normal;
+  // font-optical-sizing: auto;
+  // font-style: normal;
+  // letter-spacing: .1rem;
 }
 
 .hero img {
@@ -251,6 +312,7 @@ li {
 
 .navbar-toggler {
   padding: 0.5rem 0.5rem !important;
+  background-color: $yellow;
 }
 
 .navbar-light .navbar-toggler-icon {
@@ -281,9 +343,9 @@ li {
   height: 100vh;
 }
 
-.popupCustom .leaflet-popup-tip,
-.popupCustom .leaflet-popup-content-wrapper {
-  font-family: "Montserrat", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
+// .popupCustom .leaflet-popup-tip,
+// .popupCustom .leaflet-popup-content-wrapper {
+//   font-family: "Montserrat", serif;
+//   font-optical-sizing: auto;
+//   font-style: normal;
+// }
