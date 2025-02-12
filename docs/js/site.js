@@ -34,7 +34,7 @@ async function init() {
 	}).setView([40.76, -73.98], 12);
 	map.attributionControl.setPrefix(false);
 
-	L.tileLayer('https://api.mapbox.com/styles/v1/mediamapmvp/cm6sgz4dy016201ry1r0o6c1q/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWVkaWFtYXBtdnAiLCJhIjoiY202cHpqNHR2MTZmMDJycTB1YzkzaDk2MCJ9.0J87bgTD7XKdBP5NH07wuA ', {
+	L.tileLayer('https://api.mapbox.com/styles/v1/mediamapmvp/cm6sgz4dy016201ry1r0o6c1q/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWVkaWFtYXBtdnAiLCJhIjoiY202cHpqNHR2MTZmMDJycTB1YzkzaDk2MCJ9.0J87bgTD7XKdBP5NH07wuA', {
 	}).addTo(map);
 
 	var customPopupOptions = {
