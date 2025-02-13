@@ -98,6 +98,8 @@ async function init() {
 	}
 
 	const showAll = () => {
+		$filterTitle.value = "";
+		
 		movies.forEach(s => { map.addLayer(s.marker); });
 		tv.forEach(s => { map.addLayer(s.marker); });
 		books.forEach(s => { map.addLayer(s.marker); });
@@ -116,6 +118,8 @@ async function init() {
 	$showAll.addEventListener('click', showAll);
 
 	const filterMovies = () => {
+		$filterTitle.value = "";
+
 		if (moviesOn) {
 			movies.forEach(s => { map.removeLayer(s.marker); });
 			changeButtonStyle($filterMovies, false);
@@ -140,7 +144,7 @@ async function init() {
 					tv.forEach(s => { map.addLayer(s.marker); });
 					books.forEach(s => { map.addLayer(s.marker); });
 
-					$showAll.focus()
+					$showAll.focus();
 					changeButtonStyle($showAll, true);
 					changeButtonStyle($filterMovies, false);
 					changeButtonStyle($filterTV, false);
@@ -163,6 +167,8 @@ async function init() {
 	$filterMovies.addEventListener('click', filterMovies);
 
 	const filterTV = () => {
+		$filterTitle.value = "";
+
 		if (tvOn) {
 			tv.forEach(s => { map.removeLayer(s.marker); });
 			changeButtonStyle($filterTV, false);
@@ -186,7 +192,7 @@ async function init() {
 					movies.forEach(s => { map.addLayer(s.marker); });
 					books.forEach(s => { map.addLayer(s.marker); });
 
-					$showAll.focus()
+					$showAll.focus();
 					changeButtonStyle($showAll, true);
 					changeButtonStyle($filterMovies, false);
 					changeButtonStyle($filterTV, false);
@@ -208,6 +214,8 @@ async function init() {
 	$filterTV.addEventListener('click', filterTV);
 
 	const filterBooks = () => {
+		$filterTitle.value = "";
+
 		if (booksOn) {
 			books.forEach(s => { map.removeLayer(s.marker); });
 			changeButtonStyle($filterBooks, false);
@@ -231,7 +239,7 @@ async function init() {
 					movies.forEach(s => { map.addLayer(s.marker); });
 					tv.forEach(s => { map.addLayer(s.marker); });
 
-					$showAll.focus()
+					$showAll.focus();
 					changeButtonStyle($showAll, true);
 					changeButtonStyle($filterMovies, false);
 					changeButtonStyle($filterTV, false);

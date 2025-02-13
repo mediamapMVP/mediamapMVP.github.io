@@ -167,13 +167,6 @@ li {
   }
 }
 
-.bi-search {
-  background-color: $yellow;
-  padding: 0.2rem 0.5rem;
-  border-radius: 1rem;
-  -webkit-text-stroke: 1px black;
-}
-
 .btn:focus, .navbar-toggler:focus {
   box-shadow: none !important;
   font-weight: bold;
@@ -233,6 +226,8 @@ li {
   }
 
   @media (max-width: 650px) {
+    flex-direction: column;
+    align-items: center;
     padding: 0.5rem 1rem!important;
   }
 
@@ -267,23 +262,71 @@ li {
   transition: all 0.2s ease;
 }
 
-.form-control {
-   border: 1px solid black;
-}
-
-.form-control::placeholder {
- color: black !important;
- font-size: 0.85rem !important;
- font-weight: 300 !important;
- opacity: 0.5 !important;
- font-style: italic;
+.title-search:placeholder-shown {
+  width: 0;
 }
 
 .title-search {
-  width: 16rem !important;
-  height: 1.5rem;
-  border-radius: 1rem;
+  display: block;
+  width: 16rem;
+  height: 2.2rem;
+  padding: .5rem 0 .5rem 2.6rem;
   font-size: 0.85rem;
+  font-weight: normal;
+  line-height: 1.5;
+  color: black;
+  background-color: $yellow;
+  background-clip: padding-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0px solid black;
+  border-radius: 1rem;
+  -webkit-transition: width 0.6s ease-in-out;
+  transition: width 0.6s ease-in-out;
+}
+
+.title-search:focus-visible{
+  outline: -webkit-focus-ring-color auto 0px !important;
+  border: 2px solid black;
+  width: 16rem;
+}
+
+.title-search::placeholder {
+ color: black;
+ font-size: 0.85rem;
+ font-weight: 300;
+ opacity: 0.5;
+ font-style: italic;
+}
+
+.search {
+  @media (max-width: 650px) {
+    position: relative;
+    left: -1.3rem;
+  }
+}
+
+.search:hover > .title-search {
+  width: 16rem;
+}
+
+.search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 2.6rem;
+  z-index: 11;
+  background-color: $yellow;
+  width: 2.4rem;
+  height: 1.9rem;
+  padding-right: 0.2rem;
+  border-radius: 1rem;
+}
+
+.bi-search {
+  -webkit-text-stroke: 1px black;
 }
 
 .mobile-search-pad {
