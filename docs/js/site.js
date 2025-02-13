@@ -1,8 +1,3 @@
-function navScroll(section) {
-	var elem = document.getElementById(section);
-	window.scroll(0, elem.offsetTop - 40);
-}
-
 document.addEventListener('DOMContentLoaded', init, false);
 
 async function init() {
@@ -24,6 +19,10 @@ async function init() {
 	let $filterTV = document.querySelector('#filterTV');
 	let $filterBooks = document.querySelector('#filterBooks');
 	let $filterTitle = document.querySelector('#filterTitle');
+
+	if (window.innerWidth < 450) {
+		$filterBooks.innerHTML = "BOOKS";
+	}
 
 	let movies = await getMovies();
 	let tv = await getTV();
