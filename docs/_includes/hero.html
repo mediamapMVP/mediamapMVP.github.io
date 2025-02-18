@@ -1,44 +1,28 @@
 <section class="hero" id="hero">
-	<!--Desktop-->
-	<nav class="desktop navbar top-nav navbar-light container-fluid align-items-center">
-		<div class="col-sm">
-			<button class="navbar-toggler hero-item" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<nav class="navbar top-nav navbar-light container-fluid align-items-center">
+		<div class="d-flex col-sm-8 mobile-width justify-content-between align-items-center">
+			<div class="col-sm mobile-col-1">
+				<button class="btn hero-btn profile-btn hero-item" type="button">
+					<span class="profile-icon"></span>
+				</button>
+			</div>
+			<div class="col-sm mobile-col-8 text-center hero-item">
+				<h1>MEDIA MAP</h1>
+			</div>
+			<div class="mobile col-1"></div>
 		</div>
-		<div class="col-sm text-center hero-item">
-			<h1>MEDIA MAP</h1>
-		</div>
-		<div class="col-sm d-flex justify-content-end search-pad-top">
-			<button class="btn hero-btn hero-item" style="margin-right: 1rem;" type="submit">SUBMIT</button>
-			<button class="btn hero-btn hero-item" type="submit">FOLLOW</button>
+		<div class="d-flex col-sm-4 middle-top-nav justify-content-end">
+			<button class="btn hero-btn hero-item" style="margin-right: 1rem;" type="button">SUBMIT</button>
+			<button class="btn hero-btn hero-item" type="button">FOLLOW</button>
 		</div>
 	</nav>
 
-	<!--Mobile-->
-	<nav class="mobile-nav navbar top-nav navbar-light container-fluid align-items-center">
-		<div class="col-1">
-			<button class="navbar-toggler hero-item" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</div>
-		<div class="col-8 text-center hero-item">
-			<h1>MEDIA MAP</h1>
-		</div>
-		<div class="col-1"></div>
-	</nav>
-	<nav class="mobile-nav navbar middle-top-nav navbar-light container-fluid justify-content-center align-items-center">
-		<button class="btn hero-btn hero-item" style="margin-right: 1rem;" type="submit">SUBMIT</button>
-		<button class="btn hero-btn hero-item" type="submit">FOLLOW</button>
-	</nav>
-
-	<!--Desktop and Mobile-->
 	<nav class="navbar bottom-nav navbar-light container-fluid align-items-top">
 		<div class="filter-buttons mobile-justify col d-flex justify-content-start">
-			<button id="showAll" class="btn toggle-btn hero-item" style="background-color: #000000; color: #d7d26a !important;" type="submit">ALL</button>
-			<button id="filterMovies" class="btn toggle-btn hero-item" type="submit">FILM</button>
-			<button id="filterTV" class="btn toggle-btn hero-item" type="submit">TV</button>
-			<button id="filterBooks" class="btn toggle-btn hero-item" style="margin-right: 0 !important;" type="submit">LITERATURE</button>
+			<button id="showAll" class="btn toggle-btn hero-item" style="background-color: #000000; color: #d7d26a !important;" type="button">ALL</button>
+			<button id="filterMovies" class="btn toggle-btn hero-item" type="button">FILM</button>
+			<button id="filterTV" class="btn toggle-btn hero-item" type="button">TV</button>
+			<button id="filterBooks" class="btn toggle-btn hero-item" style="margin-right: 0 !important;" type="button">LITERATURE</button>
 		</div>
 		<div class="mobile-justify mobile-search-pad col d-flex justify-content-end align-items-center search">
 			<div class="search-button">
