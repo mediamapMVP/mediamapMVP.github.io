@@ -1,13 +1,13 @@
 <section class="hero" id="hero">
 	<nav class="navbar top-nav navbar-light container-fluid align-items-center">
 		<div class="d-flex col-sm-8 mobile-width justify-content-between align-items-center">
-			<div class="profile-log-in col-sm mobile-col-1 d-flex align-items-center">
-				<button id="profileBtn" class="btn hero-btn profile-btn hero-item" type="button">
+			<div class="profile-log-in col-sm mobile-col-1 align-items-center">
+				<button class="desktop btn hero-btn profile-btn hero-item" type="button">
 					<span class="profile-icon"></span>
 				</button>
-				<a id="logIn" class="log-in text-center d-flex justify-content-center align-items-center hero-item"
+				<a class="desktop log-in text-center d-flex justify-content-center align-items-center hero-item"
 					href="#">
-					LOG IN/SIGN UP
+					LOG IN / SIGN UP
 				</a>
 			</div>
 			<div class="col-sm mobile-col-8 text-center hero-item">
@@ -15,8 +15,23 @@
 			</div>
 			<div class="mobile col-1"></div>
 		</div>
-		<div class="d-flex col-sm-4 middle-top-nav justify-content-end">
-			<button class="btn hero-btn hero-item" style="margin-right: 1rem;" type="button">SUBMIT</button>
+		<div class="desktop d-flex col-sm-4 middle-top-nav justify-content-end">
+			<div class="add-place d-flex justify-content-end">
+				<button id="addBtn" class="add-btn btn hero-btn hero-item" type="button">ADD</button>
+				<form class="add-form hero-item">
+					<br>
+					<label for="title">Movie / Show / Book Title</label>
+					<input type="text" id="title" name="title" required>
+					<br>
+					<label for="description">Location / Scene Description</label>
+					<textarea id="description" name="description" rows="3" required></textarea>
+					<br>
+					<label for="comments">Anything Else?</label>
+					<textarea id="comments" name="comments" rows="3"></textarea>
+					<br>
+					<input class="btn hero-btn hero-item" type="submit" value="SUBMIT">
+				</form>
+			</div>
 			<button class="btn hero-btn hero-item" type="button">FOLLOW</button>
 		</div>
 	</nav>

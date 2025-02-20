@@ -20,6 +20,24 @@ async function init() {
 	let $filterBooks = document.querySelector('#filterBooks');
 	let $filterTitle = document.querySelector('#filterTitle');
 
+	
+	let $addBtn = document.querySelector('#addBtn');
+
+	$addBtn.addEventListener("mouseover", function() {
+		$addBtn.focus();
+	});
+
+	let $titleField= document.querySelector('#title');
+	let $descField = document.querySelector('#description');
+	let $commentsField = document.querySelector('#comments');
+
+	$filterTitle.addEventListener("mouseover", function() {
+		$addBtn.blur();
+		$titleField.blur();
+		$descField.blur();
+		$commentsField.blur();
+	});
+
 	if (window.innerWidth < 450) {
 		$filterBooks.innerHTML = "BOOKS";
 	}

@@ -53,11 +53,11 @@ a {
 
 @media (max-width: 650px) {
   .desktop {
-    display: none;
+    display: none !important;
   }
 
   .mobile {
-    display: block;
+    display: block !important;
   }
 
 }
@@ -386,6 +386,10 @@ input[type="search"]::-webkit-search-cancel-button {
   transition: filter .15s ease-in-out;
 }
 
+.profile-log-in {
+  display: flex;
+}
+
 .profile-log-in:hover > .profile-btn {
   background-color: black;
   transition: background-color .15s ease-in-out;
@@ -422,19 +426,85 @@ input[type="search"]::-webkit-search-cancel-button {
   transition: width 0.6s ease-in-out;
 }
 
+$log-in-width: 10.5rem;
+
 .profile-log-in:hover > .log-in {
-  width: 9.8rem !important;
+  width: $log-in-width !important;
 }
 
 .profile-btn:focus + .log-in {
-  width: 9.8rem !important;
+  width: $log-in-width !important;
 }
 
 .log-in:hover {
-  width: 9.8rem !important;
+  width: $log-in-width !important;
   color: $yellow;
   background-color: black;
 }
+
+.add-place {
+  margin-right: 1rem;
+}
+
+.add-place:hover > .add-btn {
+  color: $yellow;
+  background-color: black;
+  transition: background-color .15s ease-in-out;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.add-btn:focus {
+  color: $yellow;
+  background-color: black;
+  transition: background-color .15s ease-in-out;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.add-form {
+  position: absolute;
+  top: 3.65rem;
+  background-color: $yellow;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 0;
+  padding: 0 1rem;
+  border-radius: 0.25rem;
+  border-top-right-radius: 0 !important;
+  -webkit-transition: height 0.6s ease-in-out;
+  transition: height 0.6s ease-in-out;
+  overflow: hidden;
+}
+
+$add-form-height: 26rem;
+
+.add-place:hover > .add-form {
+  height: $add-form-height !important;
+}
+
+.add-btn:focus + .add-form {
+  height: $add-form-height !important;
+}
+
+.add-form:focus-within {
+  height: $add-form-height !important;
+}
+
+.add-form:has(> #title:focus) ~ .add-btn {
+  color: $yellow;
+}
+
+.add-form:hover {
+  height: $add-form-height !important;
+}
+
+textarea {
+  resize: none;
+}
+
+
 
 // @mixin section($bg: white) {
 //   background-color: $bg;
