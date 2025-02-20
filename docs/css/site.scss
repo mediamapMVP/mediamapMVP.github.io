@@ -14,17 +14,19 @@ $yellow: #d7d26a;
 
 * {
   font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
   color: $font_color;
   font-weight: normal;
   font-optical-sizing: auto;
   font-style: normal;
 }
 
-// a {
-//   color: $font_color;
-//   text-decoration: none;
-//   font-size: 1.2rem;
-//   font-weight: 500;
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+}
 
 //   &:hover {
 //     color: $dark_blue;
@@ -369,6 +371,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .profile-btn {
   padding: 0.5rem 0.5rem !important;
+  border: 0px solid transparent !important;
 }
 
 .profile-icon {
@@ -380,21 +383,57 @@ input[type="search"]::-webkit-search-cancel-button {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+  transition: filter .15s ease-in-out;
 }
 
-.profile-btn:hover > .profile-icon {
+.profile-log-in:hover > .profile-btn {
+  background-color: black;
+  transition: background-color .15s ease-in-out;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.profile-log-in:hover > .profile-btn .profile-icon {
   filter: invert(86%) sepia(21%) saturate(947%) hue-rotate(9deg) brightness(98%) contrast(84%);
-  transition: filter .15s ease-in-out;
 }
 
 .profile-btn:focus {
   background-color: black;
   transition: background-color .15s ease-in-out;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 .profile-btn:focus > .profile-icon {
   filter: invert(86%) sepia(21%) saturate(947%) hue-rotate(9deg) brightness(98%) contrast(84%);
   transition: filter .15s ease-in-out;
+}
+
+.log-in {
+  background-color: $yellow;
+  height: 3rem;
+  padding: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  width: 0;
+  overflow: hidden;
+  text-wrap: nowrap;
+  -webkit-transition: width 0.6s ease-in-out;
+  transition: width 0.6s ease-in-out;
+}
+
+.profile-log-in:hover > .log-in {
+  width: 9.8rem !important;
+}
+
+.profile-btn:focus + .log-in {
+  width: 9.8rem !important;
+}
+
+.log-in:hover {
+  width: 9.8rem !important;
+  color: $yellow;
+  background-color: black;
 }
 
 // @mixin section($bg: white) {
