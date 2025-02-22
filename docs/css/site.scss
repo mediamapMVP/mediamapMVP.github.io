@@ -333,7 +333,7 @@ input[type="search"]::-webkit-search-cancel-button {
   align-items: center;
   position: relative;
   left: 2.6rem;
-  z-index: 11;
+  z-index: 10;
   background-color: $yellow;
   width: 2.4rem;
   height: 1.9rem;
@@ -366,7 +366,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .hero-item {
   position: relative;
-  z-index: 10;
+  z-index: 5;
 }
 
 .profile-btn {
@@ -454,6 +454,10 @@ $log-in-width: 10.5rem;
   border-bottom-right-radius: 0 !important;
 }
 
+.add-btn {
+  width: 7rem;
+}
+
 .add-btn:focus {
   color: $yellow;
   background-color: black;
@@ -509,6 +513,79 @@ textarea {
   resize: none;
 }
 
+.follow:hover > .follow-btn {
+  color: $yellow;
+  background-color: black;
+  transition: background-color .15s ease-in-out;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.follow-btn {
+  width: 8.5rem;
+}
+
+.follow-btn:focus {
+  color: $yellow;
+  background-color: black;
+  transition: background-color .15s ease-in-out;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.follow-links {
+  position: absolute;
+  top: 3.65rem;
+  background-color: $yellow;
+  display: flex;
+  flex-direction: column;
+  width: 8.5rem;
+  height: 0;
+  padding: 0;
+  border-radius: 0.25rem;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  -webkit-transition: height 0.6s ease-in-out;
+  transition: height 0.6s ease-in-out;
+  overflow: hidden;
+  z-index: 11;
+}
+
+.links-padding-top {
+  padding-top: 0.5rem;
+}
+
+.follow-links a {
+  width: 7.3rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.follow-links a:hover {
+  color: $yellow;
+  background-color: black;
+}
+
+$follow-links-height: 8.5rem;
+
+.follow:hover > .follow-links {
+  height: $follow-links-height !important;
+  -webkit-transition: height 0.6s ease-in-out;
+  transition: height 0.6s ease-in-out;
+}
+
+.follow-btn:focus + .follow-links {
+  height: $follow-links-height !important;
+  -webkit-transition: height 0.6s ease-in-out;
+  transition: height 0.6s ease-in-out;
+}
+
+.follow-links:hover {
+  height: $follow-links-height !important;
+  -webkit-transition: height 0.6s ease-in-out;
+  transition: height 0.6s ease-in-out;
+}
 
 
 // @mixin section($bg: white) {
