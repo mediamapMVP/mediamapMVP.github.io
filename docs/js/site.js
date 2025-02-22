@@ -23,7 +23,14 @@ async function init() {
 	
 	let $addBtn = document.querySelector('#addBtn');
 
+	let filterTitleValue = "";
+
 	$addBtn.addEventListener("mouseover", function() {
+		if ($filterTitle.value != "") {
+			filterTitleValue = $filterTitle.value;
+			$filterTitle.value = "";
+		}
+
 		$addBtn.focus();
 	});
 
@@ -31,11 +38,23 @@ async function init() {
 	let $descField = document.querySelector('#description');
 	let $commentsField = document.querySelector('#comments');
 
-	$filterTitle.addEventListener("mouseover", function() {
+	let $filterTitleDiv = document.querySelector('#filterTitleDiv');
+
+	$filterTitleDiv.addEventListener("mouseover", function() {
 		$addBtn.blur();
 		$titleField.blur();
 		$descField.blur();
 		$commentsField.blur();
+
+		if (filterTitleValue != "") {
+			$filterTitle.value = filterTitleValue;
+			filterTitleValue = "";
+		}
+	});
+
+	let $addForm = document.querySelector('#addForm');
+	$addForm.addEventListener("mouseout", function() {
+		$addBtn.focus();
 	});
 
 	if (window.innerWidth < 450) {

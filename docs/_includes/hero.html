@@ -18,7 +18,7 @@
 		<div class="desktop d-flex col-sm-4 middle-top-nav justify-content-end">
 			<div class="add-place d-flex justify-content-end">
 				<button id="addBtn" class="add-btn btn hero-btn hero-item" type="button">ADD</button>
-				<form class="add-form hero-item">
+				<form id="addForm" class="add-form hero-item">
 					<br>
 					<label for="title">Movie / Show / Book Title</label>
 					<input type="text" id="title" name="title" required>
@@ -43,7 +43,7 @@
 			<button id="filterTV" class="btn toggle-btn hero-item" type="button">TV</button>
 			<button id="filterBooks" class="btn toggle-btn hero-item" style="margin-right: 0 !important;" type="button">LITERATURE</button>
 		</div>
-		<div class="mobile-justify mobile-search-pad col d-flex justify-content-end align-items-center search">
+		<div id="filterTitleDiv" class="mobile-justify mobile-search-pad col d-flex justify-content-end align-items-center search">
 			<div class="search-button">
 				<i class="bi bi-search"></i>
 			</div>

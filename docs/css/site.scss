@@ -17,7 +17,7 @@ $yellow: #d7d26a;
   font-size: 16px;
   line-height: 1.5;
   color: $font_color;
-  font-weight: normal;
+  font-weight: 500;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -468,13 +468,14 @@ $log-in-width: 10.5rem;
   background-color: $yellow;
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 28vw;
+  min-width: 20rem;
   height: 0;
   padding: 0 1rem;
   border-radius: 0.25rem;
   border-top-right-radius: 0 !important;
-  -webkit-transition: height 0.6s ease-in-out;
-  transition: height 0.6s ease-in-out;
+  -webkit-transition: height 0.3s ease-in-out;
+  transition: height 0.3s ease-in-out;
   overflow: hidden;
 }
 
@@ -482,22 +483,26 @@ $add-form-height: 26rem;
 
 .add-place:hover > .add-form {
   height: $add-form-height !important;
+  -webkit-transition: height 0.6s ease-in-out;
+  transition: height 0.6s ease-in-out;
 }
 
 .add-btn:focus + .add-form {
   height: $add-form-height !important;
+  -webkit-transition: height 0.6s ease-in-out;
+  transition: height 0.6s ease-in-out;
 }
 
 .add-form:focus-within {
   height: $add-form-height !important;
-}
-
-.add-form:has(> #title:focus) ~ .add-btn {
-  color: $yellow;
+  -webkit-transition: height 0.6s ease-in-out;
+  transition: height 0.6s ease-in-out;
 }
 
 .add-form:hover {
   height: $add-form-height !important;
+  -webkit-transition: height 0.6s ease-in-out;
+  transition: height 0.6s ease-in-out;
 }
 
 textarea {
