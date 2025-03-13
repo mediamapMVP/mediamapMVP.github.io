@@ -57,11 +57,14 @@
 			<button id="filterTV" class="btn toggle-btn hero-item" type="button">TV</button>
 			<button id="filterBooks" class="btn toggle-btn hero-item" style="margin-right: 0 !important;" type="button">LITERATURE</button>
 		</div>
-		<div id="filterTitleDiv" class="mobile-justify mobile-search-pad col d-flex justify-content-end align-items-center search">
-			<div class="search-button">
-				<i class="bi bi-search"></i>
+		<div class="col d-flex justify-content-center align-items-end" style="flex-direction: column;">
+			<div id="filterTitleDiv" class="mobile-justify mobile-search-pad col d-flex justify-content-end align-items-center search">
+				<div class="search-button">
+					<i class="bi bi-search"></i>
+				</div>
+				<input id="filterTitle" class="title-search hero-item" type="search" placeholder="Filter by Title" aria-label="Filter by title">
 			</div>
-			<input id="filterTitle" class="title-search hero-item" type="search" placeholder="Filter by Title" aria-label="Filter by title">
+			<div id="suggestions" class="suggestions" style="display: none;"></div>
 		</div>
 	</nav>
 </section>
