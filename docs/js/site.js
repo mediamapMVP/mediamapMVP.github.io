@@ -34,6 +34,16 @@ async function init() {
 		$addBtn.focus();
 	});
 
+	let $followBtn = document.querySelector('#followBtn');
+	$followBtn.addEventListener("mouseover", function() {
+		if ($filterTitle.value != "") {
+			filterTitleValue = $filterTitle.value;
+			$filterTitle.value = "";
+		}
+
+		$followBtn.focus();
+	});
+
 	let $titleField= document.querySelector('#title');
 	let $descField = document.querySelector('#description');
 	let $commentsField = document.querySelector('#comments');
