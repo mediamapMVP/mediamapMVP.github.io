@@ -40,8 +40,6 @@ async function init() {
 			filterTitleValue = $filterTitle.value;
 			$filterTitle.value = "";
 		}
-
-		$followBtn.focus();
 	});
 
 	let $titleField= document.querySelector('#title');
@@ -382,6 +380,7 @@ async function init() {
 		console.log(elem)
 		$filterTitle.value = elem.innerHTML;
 		$suggestionsBox.innerHTML = '<li>' + elem.innerHTML + '</li>';
+		$suggestionsBox.style = "display: none;";
 		filterTitle();
 	}
 	
@@ -426,6 +425,7 @@ async function init() {
 	$filterTitle.addEventListener('input', function(event) {
 		if (!event.target.value) {
 			$suggestionsBox.innerHTML = '';
+			$suggestionsBox.style = "display: none;";
 			$filterTitle.style = '';
 		}
 	});

@@ -544,30 +544,32 @@ $add-form-height: 21.5rem;
 
 .add-place:hover > .add-form {
   height: $add-form-height !important;
-  -webkit-transition: height 0.6s ease-in-out;
-  transition: height 0.6s ease-in-out;
+  -webkit-transition: height 1s ease-in-out;
+  transition: height 1s ease-in-out;
 }
 
 .add-btn:focus + .add-form {
   height: $add-form-height !important;
-  -webkit-transition: height 0.6s ease-in-out;
-  transition: height 0.6s ease-in-out;
+  -webkit-transition: height 1s ease-in-out;
+  transition: height 1s ease-in-out;
 }
 
 .add-form:focus-within {
   height: $add-form-height !important;
-  -webkit-transition: height 0.6s ease-in-out;
-  transition: height 0.6s ease-in-out;
+  -webkit-transition: height 1s ease-in-out;
+  transition: height 1s ease-in-out;
 }
 
 .add-form:hover {
   height: $add-form-height !important;
-  -webkit-transition: height 0.6s ease-in-out;
-  transition: height 0.6s ease-in-out;
+  -webkit-transition: height 1s ease-in-out;
+  transition: height 1s ease-in-out;
 }
 
 textarea {
   resize: none;
+  overflow: hidden;
+  min-height: 3.5rem;
 }
 
 .follow:hover > .follow-btn {
@@ -602,8 +604,8 @@ textarea {
   border-radius: 0.25rem;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
-  -webkit-transition: height 0.6s ease-in-out;
-  transition: height 0.6s ease-in-out;
+  -webkit-transition: height 0.25s ease-in-out;
+  transition: height 0.25s ease-in-out;
   overflow: hidden;
   z-index: 11;
 }
