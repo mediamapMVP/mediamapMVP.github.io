@@ -5,8 +5,8 @@
 title: Media Map
 description: >-
   A map of locations featured in movies, tv shows, and books!
-baseurl: ""
-url: "https://mediamapmvp.github.io"
+baseurl: "https://mediamap.nyc"
+url: ""
 
 # Should compress with TinyPNG
 images:
