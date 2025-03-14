@@ -92,12 +92,12 @@ async function init() {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
 		if (s.filming_location) {
-			let customPopupContent = `<h6><b>${s.name}</b> (${s.year})</h6><i>${s.location_title}</i><br><br>${s.filming_location}, ${s.filming_address}`;
+			let customPopupContent = `<h2>${s.name} (${s.year}), <i>${s.location_title}</i></h2><p>${s.filming_location}, ${s.filming_address}</p>`;
 			s.marker.bindPopup(customPopupContent, customPopupOptions);
 
 		}
 		else {
-			let customPopupContent = `<h6><b>${s.name}</b> (${s.year})</h6><i>${s.location_title}</i><br><br>${s.filming_address}`;
+			let customPopupContent = `<h2>${s.name} (${s.year}), <i>${s.location_title}</i></h2><p>${s.filming_address}</p>`;
 			s.marker.bindPopup(customPopupContent, customPopupOptions);
 		}
 	});
@@ -106,12 +106,12 @@ async function init() {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
 		if (s.fictional_name) {
-			let customPopupContent = `<h6><b>${s.name}</b>, ${s.location_title}</h6><i>S${s.season} E${s.episode}: ${s.episode_title}</i><br><br>${s.fictional_name}, ${s.filming_location}`;
+			let customPopupContent = `<h2>${s.name} S${s.season} E${s.episode}, <i>${s.location_title}</i></h2><p>${s.fictional_name}, ${s.filming_location}</p>`;
 			s.marker.bindPopup(customPopupContent, customPopupOptions);
 
 		}
 		else {
-			let customPopupContent = `<h6><b>${s.name}</b>, ${s.location_title} </h6><i>S${s.season} E${s.episode}: ${s.episode_title}</i><br><br>${s.filming_location}`;
+			let customPopupContent = `<h2>${s.name} S${s.season} E${s.episode}, <i>${s.location_title}</i></h2><p>${s.filming_location}</p>`;
 			s.marker.bindPopup(customPopupContent, customPopupOptions);
 		};
 
@@ -120,7 +120,7 @@ async function init() {
 	books.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
-		let customPopupContent = `<h6><b>${s.name}</b></h6>${s.description}`
+		let customPopupContent = `<h2>${s.name}</h2>${s.description}`
 
 		s.marker.bindPopup(customPopupContent, customPopupOptions);
 
