@@ -423,7 +423,7 @@ async function init() {
 		$filterTitle.style = '';
 	});
 	
-	$filterTitle.addEventListener('search', function(event) {
+	$filterTitle.addEventListener('input', function(event) {
 		if (!event.target.value) {
 			$suggestionsBox.innerHTML = '';
 			$filterTitle.style = '';

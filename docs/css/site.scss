@@ -14,7 +14,7 @@ $light_blue: #bcd2ee;
 
 * {
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.5;
   color: $font_color;
   font-weight: 500;
@@ -191,7 +191,7 @@ h2 {
 }
 
 .top-nav {
-  padding: 1rem 1.5rem !important;
+  padding: 1.75rem 1.5rem !important;
   flex-direction: row;
 
   @media (max-width: 750px) {
@@ -516,14 +516,16 @@ $log-in-width: 10.5rem;
 
 .add-form {
   position: absolute;
-  top: 3.65rem;
+  top: 4.4rem;
   background-color: $yellow;
   display: flex;
   flex-direction: column;
   width: 28vw;
   min-width: 20rem;
+  max-width: 24rem;
   height: 0;
   padding: 0 1rem;
+  line-height: 1.2rem;
   border-radius: 0.25rem;
   border-top-right-radius: 0 !important;
   -webkit-transition: height 0.3s ease-in-out;
@@ -535,9 +537,10 @@ $log-in-width: 10.5rem;
   border: 1px solid black;
   border-radius: 0.25rem;
   background-color: $light_blue;
+  line-height: 1.5rem;
 }
 
-$add-form-height: 26rem;
+$add-form-height: 21.5rem;
 
 .add-place:hover > .add-form {
   height: $add-form-height !important;
@@ -589,7 +592,7 @@ textarea {
 
 .follow-links {
   position: absolute;
-  top: 3.65rem;
+  top: 4.4rem;
   background-color: $yellow;
   display: flex;
   flex-direction: column;
