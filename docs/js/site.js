@@ -120,7 +120,7 @@ async function init() {
 	books.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
-		let customPopupContent = `<h2>${s.name}</h2>${s.description}`
+		let customPopupContent = `<h2>${s.name}</h2><p>${s.description}</p>`
 
 		s.marker.bindPopup(customPopupContent, customPopupOptions);
 
