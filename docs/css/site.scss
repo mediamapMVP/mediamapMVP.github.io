@@ -67,7 +67,7 @@ h1, h2, h3 {
 
 h1 {
   font-size: 2.5rem;
-  font-weight: bold;
+  font-weight: 800;
   margin-bottom: 0 !important;
 
   @media (max-width: 810px) {
@@ -259,21 +259,6 @@ nav {
   }
 }
 
-// .nav-item p {
-//   color: black !important;
-//   margin-bottom: 0;
-
-//   @media (max-width: 930px) {
-//     padding-left: 1.5rem !important;
-//     padding-right: 1.5rem !important;
-//   } 
-  
-//   @media (max-width: 576px) {
-//     padding-left: 1rem !important;
-//     padding-right: 1rem !important;
-//   }
-// }
-
 .title-search:placeholder-shown {
   width: 0;
 }
@@ -282,7 +267,7 @@ nav {
   display: block;
   width: 18rem;
   height: 2.4rem;
-  padding: .5rem 0 .5rem 2.6rem;
+  padding: 0.35rem 0.1rem 0.35rem 2.6rem;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -349,7 +334,7 @@ input[type="search"]::-webkit-search-cancel-button {
   justify-content: center;
   align-items: center;
   position: relative;
-  left: 2.6rem;
+  left: 2.7rem;
   z-index: 10;
   background-color: $yellow;
   width: 2.4rem;
@@ -538,15 +523,22 @@ $log-in-width: 10.5rem;
   overflow: hidden;
 }
 
-.add-form input[type="text"], textarea{
+.add-form input[type="text"], textarea {
   font-weight: normal;
+  padding: 0.35rem;
   border: 1px solid black;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   background-color: $light_blue;
   line-height: 1.5;
 }
 
-$add-form-height: 21.5rem;
+.add-form input[type="text"]:focus-visible, textarea:focus-visible {
+  outline: -webkit-focus-ring-color auto 0px !important;
+  border: 2px solid black;
+}
+
+$add-form-height: 23rem;
 
 .add-place:hover > .add-form {
   height: $add-form-height !important;
@@ -574,8 +566,7 @@ $add-form-height: 21.5rem;
 
 textarea {
   resize: none;
-  overflow: hidden;
-  min-height: 3.5rem;
+  min-height: 3.8rem;
 }
 
 .follow:hover > .follow-btn {

@@ -61,7 +61,7 @@ async function init() {
 	});
 
 	let $addForm = document.querySelector('#addForm');
-	$addForm.addEventListener("mouseout", function() {
+	$addForm.addEventListener("mouseleave", function() {
 		$addBtn.focus();
 	});
 
@@ -106,12 +106,12 @@ async function init() {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
 		if (s.fictional_name) {
-			let customPopupContent = `<h2>${s.name} S${s.season} E${s.episode}, <i>${s.location_title}</i></h2><p>${s.fictional_name}, ${s.filming_location}</p>`;
+			let customPopupContent = `<h2>${s.name} (S${s.season} E${s.episode}), <i>${s.location_title}</i></h2><p>${s.fictional_name}, ${s.filming_location}</p>`;
 			s.marker.bindPopup(customPopupContent, customPopupOptions);
 
 		}
 		else {
-			let customPopupContent = `<h2>${s.name} S${s.season} E${s.episode}, <i>${s.location_title}</i></h2><p>${s.filming_location}</p>`;
+			let customPopupContent = `<h2>${s.name} (S${s.season} E${s.episode}), <i>${s.location_title}</i></h2><p>${s.filming_location}</p>`;
 			s.marker.bindPopup(customPopupContent, customPopupOptions);
 		};
 
