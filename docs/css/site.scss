@@ -301,7 +301,7 @@ nav {
  color: black;
  font-size: 1rem;
  font-weight: 300;
- opacity: 0.5;
+ opacity: 0.7;
  font-style: italic;
 }
 
@@ -525,7 +525,7 @@ $log-in-width: 10.5rem;
 
 .add-form input[type="text"], textarea {
   font-weight: normal;
-  padding: 0.35rem;
+  padding: 0.35rem 0.35rem 0.35rem 0.6rem;
   border: 1px solid black;
   border-radius: 0.25rem;
   box-sizing: border-box;
@@ -533,12 +533,28 @@ $log-in-width: 10.5rem;
   line-height: 1.5;
 }
 
+.add-form input[type="text"]::placeholder {
+  color: black;
+  font-size: 1rem;
+  font-weight: 300;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.add-form textarea::placeholder {
+  color: black;
+  font-size: 1rem;
+  font-weight: 300;
+  opacity: 0.7;
+  font-style: italic;
+}
+
 .add-form input[type="text"]:focus-visible, textarea:focus-visible {
   outline: -webkit-focus-ring-color auto 0px !important;
   border: 2px solid black;
 }
 
-$add-form-height: 23rem;
+$add-form-height: 21.5rem;
 
 .add-place:hover > .add-form {
   height: $add-form-height !important;
@@ -566,7 +582,7 @@ $add-form-height: 23rem;
 
 textarea {
   resize: none;
-  min-height: 3.8rem;
+  min-height: 5.3rem;
 }
 
 .follow:hover > .follow-btn {

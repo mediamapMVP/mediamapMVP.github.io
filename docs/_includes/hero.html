@@ -20,14 +20,14 @@
 				<button id="addBtn" class="add-btn btn hero-btn hero-item" type="button">ADD</button>
 				<form id="addForm" class="add-form hero-item">
 					<br>
-					<label for="title">Movie / Show / Book Title</label>
-					<input type="text" id="title" name="title" required>
+					<label for="title" style="display: none;">Movie / Show / Book title</label>
+					<input type="text" id="title" name="title" placeholder="Movie / Show / Book title" aria-label="Movie / Show / Book title" required>
 					<br>
-					<label for="description">Location / Scene Description</label>
-					<textarea id="description" name="description" rows="2" required></textarea>
+					<label for="description" style="display: none;">Location / Scene description</label>
+					<textarea id="description" name="description" placeholder="Location / Scene description" aria-label="Location / Scene description" rows="3" required></textarea>
 					<br>
-					<label for="comments">Anything Else?</label>
-					<textarea id="comments" name="comments" rows="2"></textarea>
+					<label for="comments" style="display: none;">Anything else?</label>
+					<textarea id="comments" name="comments" placeholder="Anything else?" aria-label="Anything else?" rows="3"></textarea>
 					<br>
 					<input class="btn hero-btn hero-item" type="submit" value="SUBMIT">
 				</form>
@@ -62,7 +62,8 @@
 				<div class="search-button">
 					<i class="bi bi-search"></i>
 				</div>
-				<input id="filterTitle" class="title-search hero-item" type="search" placeholder="Filter by Title" aria-label="Filter by title">
+				<label for="filterTitle" style="display: none;">Filter by title</label>
+				<input id="filterTitle" class="title-search hero-item" type="search" placeholder="Filter by title" aria-label="Filter by title">
 			</div>
 			<div id="suggestions" class="suggestions" style="display: none;"></div>
 		</div>
