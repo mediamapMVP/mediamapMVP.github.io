@@ -1,0 +1,91 @@
+ID #	Title Card Image	Location Image	Book	Year	Author	Fictional Location	Filming Location 	Address	GPS LAT	GPS LONG		Neighborhood	Borough	Building Type	Description	Notes									Database
+CITR-LIT1			Catcher In The Rye																						{name:"Catcher In The Rye", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+CITR-LIT2			Catcher In The Rye																						{name:"Catcher In The Rye", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+CITR-LIT3			Catcher In The Rye																						{name:"Catcher In The Rye", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+CITR-LIT4			Catcher In The Rye																						{name:"Catcher In The Rye", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+CITR-LIT5			Catcher In The Rye																						{name:"Catcher In The Rye", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+CITR-LIT6			Catcher In The Rye																						{name:"Catcher In The Rye", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+CITR-LIT7			Catcher In The Rye																						{name:"Catcher In The Rye", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+CITR-LIT8			Catcher In The Rye																						{name:"Catcher In The Rye", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+CITR-LIT9			Catcher In The Rye																						{name:"Catcher In The Rye", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+CITR-LIT10			Catcher In The Rye																						{name:"Catcher In The Rye", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+JK-LIT1			Just Kids																						{name:"Just Kids", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+JK-LIT2			Just Kids																						{name:"Just Kids", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+JK-LIT3			Just Kids																						{name:"Just Kids", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+JK-LIT4			Just Kids																						{name:"Just Kids", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+JK-LIT5			Just Kids																						{name:"Just Kids", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+JK-LIT6			Just Kids																						{name:"Just Kids", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+JK-LIT7			Just Kids																						{name:"Just Kids", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+JK-LIT8			Just Kids																						{name:"Just Kids", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+JK-LIT9			Just Kids																						{name:"Just Kids", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+JK-LIT10			Just Kids																						{name:"Just Kids", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+TBJ-LIT1			The Bell Jar																						
+TBJ-LIT2			The Bell Jar																						{name:"The Bell Jar", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+TBJ-LIT3			The Bell Jar																						{name:"The Bell Jar", year:"", location_title:"", filming_location :"", filming_address: "", location: {lat:,lng:}},
+TBJ-LIT4			The Bell Jar																						
+TBJ-LIT5			The Bell Jar																						
+TBJ-LIT6			The Bell Jar																						
+TBJ-LIT7			The Bell Jar																						
+TBJ-LIT8			The Bell Jar																						
+TBJ-LIT9			The Bell Jar																						
+TGG-LIT1			The Great Gatsby																						
+TGG-LIT2			The Great Gatsby																						
+TGG-LIT3			The Great Gatsby																						
+TGG-LIT4			The Great Gatsby																						
+TGG-LIT5			The Great Gatsby																						
+TGG-LIT6			The Great Gatsby																						
+TGG-LIT7			The Great Gatsby																						
+TGG-LIT8			The Great Gatsby																						
+TGG-LIT9			The Great Gatsby																						
+TGG-LIT10			The Great Gatsby																						
+ATGIB-LIT1			A Tree Grows In Brooklyn																						
+ATGIB-LIT2			A Tree Grows In Brooklyn																						
+ATGIB-LIT3			A Tree Grows In Brooklyn																						
+ATGIB-LIT4			A Tree Grows In Brooklyn																						
+ATGIB-LIT5			A Tree Grows In Brooklyn																						
+ATGIB-LIT6			A Tree Grows In Brooklyn																						
+ATGIB-LIT7			A Tree Grows In Brooklyn																						
+ATGIB-LIT8			A Tree Grows In Brooklyn																						
+ATGIB-LIT9			A Tree Grows In Brooklyn																						
+ATGIB-LIT10			A Tree Grows In Brooklyn																						
+ATGIB-LIT11			A Tree Grows In Brooklyn																						
+BAT-LIT1			Breakfast At Tiffany's																						
+BAT-LIT1			Breakfast At Tiffany's																						
+BAT-LIT2			Breakfast At Tiffany's																						
+BAT-LIT3			Breakfast At Tiffany's																						
+BAT-LIT4			Breakfast At Tiffany's																						
+BAT-LIT5			Breakfast At Tiffany's																						
+BAT-LIT6			Breakfast At Tiffany's																						
+BAT-LIT7			Breakfast At Tiffany's																						
+BAT-LIT8			Breakfast At Tiffany's																						
+ELIC-LIT1			Extremely Loud & Incredibly Close 																						
+ELIC-LIT2			Extremely Loud & Incredibly Close 																						
+ELIC-LIT3			Extremely Loud & Incredibly Close 																						
+ELIC-LIT4			Extremely Loud & Incredibly Close 																						
+ELIC-LIT5			Extremely Loud & Incredibly Close 																						
+ELIC-LIT6			Extremely Loud & Incredibly Close 																						
+ELIC-LIT7			Extremely Loud & Incredibly Close 																						
+AMPSYCH-LIT1			American Psycho																						
+AMPSYCH-LIT2			American Psycho																						
+AMPSYCH-LIT3			American Psycho																						
+AMPSYCH-LIT4			American Psycho																						
+AMPSYCH-LIT5			American Psycho																						
+AMPSYCH-LIT6			American Psycho																						
+AMPSYCH-LIT7			American Psycho																						
+GDFTHR-LIT1			The Godfather																						
+GDFTHR-LIT2			The Godfather																						
+GDFTHR-LIT3			The Godfather																						
+GDFTHR-LIT4			The Godfather																						
+GDFTHR-LIT5			The Godfather																						
+GDFTHR-LIT6			The Godfather																						
+GDFTHR-LIT7			The Godfather																						
+GDFTHR-LIT8			The Godfather																						
+GDFTHR-LIT9			The Godfather																						
+TAOI-LIT1			The Age Of Innocence																						
+TAOI-LIT2			The Age Of Innocence																						
+TAOI-LIT3			The Age Of Innocence																						
+TAOI-LIT4			The Age Of Innocence																						
+TAOI-LIT5			The Age Of Innocence																						
+TAOI-LIT6			The Age Of Innocence																						
+TAOI-LIT7			The Age Of Innocence																						
+TAOI-LIT8			The Age Of Innocence																						

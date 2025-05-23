@@ -1,0 +1,113 @@
+ID #	Title Card Image	Location Image	Film	Year	Fictional Location	Filming Location 	Address	GPS LAT	GPS LONG		Neighborhood	Borough	Building Type	Description	Notes									Database
+WHMS-F1			When Harry Met Sally	1989	The Loeb Boathouse		Central Park	40.77591462	-73.96874245		Central Park	Manhattan	Public Park											{name:"When Harry Met Sally", year:"1989", location_title:"The Loeb Boathouse", filming_location :"", filming_address: "Central Park", location: {lat:40.7759146174992,lng:-73.9687424456909}},
+WHMS-F2			When Harry Met Sally	1989	Shakespeare & Co Bookstore		2736 Broadway	40.80088478	-73.96772045		Upper West Side	Manhattan	Retail		not the original location, original was at Broadway and 81st Street									{name:"When Harry Met Sally", year:"1989", location_title:"Shakespeare & Co Bookstore", filming_location :"", filming_address: "2736 Broadway", location: {lat:40.8008847840792,lng:-73.9677204456737}},
+WHMS-F3			When Harry Met Sally	1989	Temple of Dendur	The Metropolitan Museum of Art	1000 5th Ave	40.77992659	-73.96338255		Upper East Side	Manhattan	Public Venue											{name:"When Harry Met Sally", year:"1989", location_title:"Temple of Dendur", filming_location :"The Metropolitan Museum of Art", filming_address: "1000 5th Ave", location: {lat:40.7799265917991,lng:-73.9633825456881}},
+WHMS-F4			When Harry Met Sally	1989	Coney Island Batting Cages	Luna Park	1000 Surf Ave	40.57445028	-73.98026545		Coney Island	Brooklyn	Public Venue		the batting cages no longer exist									{name:"When Harry Met Sally", year:"1989", location_title:"Coney Island Batting Cages", filming_location :"Luna Park", filming_address: "1000 Surf Ave", location: {lat:40.574450282601,lng:-73.9802654458295}},
+WHMS-F5			When Harry Met Sally	1989	Katz's Delicatessen		205 E Houston St	40.72286304	-73.98739596		Lower East Side	Manhattan	Dining	"I’ll have what she’s having..."	You can sit at the same table, marked with a sign that reads, “Where Harry Met Sally…Hope You Have What She Had.”									{name:"When Harry Met Sally", year:"1989", location_title:"Katz's Delicatessen", filming_location :"", filming_address: "205 E Houston St", location: {lat:40.7228630351169,lng:-73.9873959610711}},
+WHMS-F6			When Harry Met Sally	1989	Café Luxembourg		200 W. 70th St	40.77809299	-73.98303662		Upper West Side	Manhattan	Dining		disastrous double date									{name:"When Harry Met Sally", year:"1989", location_title:"Café Luxembourg", filming_location :"", filming_address: "200 W. 70th St", location: {lat:40.7780929915091,lng:-73.9830366150022}},
+WHMS-F7			When Harry Met Sally	1989	The Puck Building		95 Lafayette St	40.71793447	-74.00112452		Nolita	Manhattan	Commercial		The Puck Building serves as the setting for two very important scenes, Jess and Marie’s wedding and the final New Year’s Eve scene.									{name:"When Harry Met Sally", year:"1989", location_title:"The Puck Building", filming_location :"", filming_address: "95 Lafayette St", location: {lat:40.7179344654344,lng:-74.0011245150434}},
+WHMS-F8			When Harry Met Sally	1989	JFK Airport			40.64359871	-73.77937345			Queens	Airport											{name:"When Harry Met Sally", year:"1989", location_title:"JFK Airport", filming_location :"", filming_address: "", location: {lat:40.6435987081949,lng:-73.779373445782}},
+WHMS-F9			When Harry Met Sally	1989	Washington Square Park		Washington Square	40.73170805	-73.99772899		Union Square	Manhattan	Public Park											{name:"When Harry Met Sally", year:"1989", location_title:"Washington Square Park", filming_location :"", filming_address: "Washington Square", location: {lat:40.7317080497967,lng:-73.9977289917525}},
+BAT-F1			Breakfast At Tiffany's 	1961	Holly Golightly's Apartment		169 East 71st St	40.77031287	-73.96200918		Upper East Side	Manhattan	Private Residence											{name:"Breakfast At Tiffany's ", year:"1961", location_title:"Holly Golightly's Apartment", filming_location :"", filming_address: "169 East 71st St", location: {lat:40.7703128730184,lng:-73.9620091763822}},
+BAT-F2			Breakfast At Tiffany's 	1961	Tiffany & Co.		727 5th Ave	40.76327773	-73.9737857		Midtown	Manhattan	Retail											{name:"Breakfast At Tiffany's ", year:"1961", location_title:"Tiffany & Co.", filming_location :"", filming_address: "727 5th Ave", location: {lat:40.7632777287863,lng:-73.9737856996687}},
+BAT-F3			Breakfast At Tiffany's 	1961	Conservatory Water		Central Park	40.76997098	-73.95917055		Central Park	Manhattan	Public Park											{name:"Breakfast At Tiffany's ", year:"1961", location_title:"Conservatory Water", filming_location :"", filming_address: "Central Park", location: {lat:40.7699709766982,lng:-73.9591705536333}},
+SPDR1-F1			Spiderman	2002	Peter Parker's Home		8839 69th Road	40.71035139	-73.85506779		Forest Hills	Queens	Private Residence		where was this ACTUALLY filmed? couldn't have been here									{name:"Spiderman", year:"2002", location_title:"Peter Parker's Home", filming_location :"", filming_address: "8839 69th Road", location: {lat:40.7103513875776,lng:-73.8550677895564}},
+SPDR1-F2			Spiderman	2002	Mary Jane's Home		8837 69th Road	40.710297	-73.85508925		Forest Hills	Queens	Private Residence											{name:"Spiderman", year:"2002", location_title:"Mary Jane's Home", filming_location :"", filming_address: "8837 69th Road", location: {lat:40.7102970005606,lng:-73.8550892472282}},
+SPDR1-F3			Spiderman	2002	Moondance Diner		80 Sixth Ave	40.71912371	-74.00517958		Tribeca	Manhattan	Dining		A genuine Thirties diner, which was featured in Igby Goes Down, is no longer in New York. In 2007 it was relocated to the town of La Barge, Wyoming. 									{name:"Spiderman", year:"2002", location_title:"Moondance Diner", filming_location :"", filming_address: "80 Sixth Ave", location: {lat:40.7191237113779,lng:-74.0051795764172}},
+SPDR1-F4			Spiderman	2002	Norman Osborn’s Apartment		Tudor City	40.74920785	-73.97134603		Midtown	Manhattan	Commercial		The interior, once again, is in Los Angeles. This time it’s the Greystone Mansion, 905 Loma Vista Drive									{name:"Spiderman", year:"2002", location_title:"Norman Osborn’s Apartment", filming_location :"", filming_address: "Tudor City", location: {lat:40.7492078526597,lng:-73.9713460303657}},
+SPDR1-F5			Spiderman	2002	Rockefeller Roof Gardens		50 Rockefeller Plaza	40.76001245	-73.97842293		Midtown	Manhattan	Public Park											{name:"Spiderman", year:"2002", location_title:"Rockefeller Roof Gardens", filming_location :"", filming_address: "50 Rockefeller Plaza", location: {lat:40.7600124509936,lng:-73.9784229303582}},
+SPDR1-F6			Spiderman	2002	The Daily Bugle Offices	Flatiron Building	175 Fifth Ave	40.74197192	-73.98945898		Gramercy Park	Manhattan	Commercial											{name:"Spiderman", year:"2002", location_title:"The Daily Bugle Offices", filming_location :"Flatiron Building", filming_address: "175 Fifth Ave", location: {lat:40.7419719163523,lng:-73.9894589764016}},
+SPDR1-F7			Spiderman	2002	Columbia University	Low Memorial Library	535 W. 116th St	40.80856545	-73.96223642		Morningside Heights	Manhattan	Public Venue											{name:"Spiderman", year:"2002", location_title:"Columbia University", filming_location :"Low Memorial Library", filming_address: "535 W. 116th St", location: {lat:40.8085654470388,lng:-73.9622364223866}},
+SPDR1-F8			Spiderman	2002	Queensboro Bridge			40.75768068	-73.95491738			Queens	Transportation											{name:"Spiderman", year:"2002", location_title:"Queensboro Bridge", filming_location :"", filming_address: "", location: {lat:40.7576806780678,lng:-73.9549173763908}},
+SPDR1-F9			Spiderman	2002	New York Public Library		476 5th Ave	40.75315531	-73.98180008		Midtown	Manhattan	Public Venue											
+SPDR1-F10			Spiderman	2002	Time's Square		45th St and 7th Ave	40.75810473	-73.98555333		Midtown	Manhattan	Public Park											{name:"Spiderman", year:"2002", location_title:"Time's Square", filming_location :"", filming_address: "45th St and 7th Ave", location: {lat:40.7581047288972,lng:-73.985553328855}},
+GSTB1-F1			Ghostbusters 	1984	Spook Central		55 Central Park West	40.77298502	-73.97901195		Upper West Side	Manhattan	Private Residence											{name:"Ghostbusters ", year:"1984", location_title:"Spook Central", filming_location :"", filming_address: "55 Central Park West", location: {lat:40.7729850245235,lng:-73.9790119459593}},
+GSTB1-F2			Ghostbusters 	1984	New York Public Library		476 5th Ave	40.75338778	-73.98191644		Midtown	Manhattan	Public Venue											
+GSTB1-F3			Ghostbusters 	1984	Columbia University	Low Memorial Library	535 W. 116th St	40.80856545	-73.96223642		Morningside Heights	Manhattan	Public Venue											
+GSTB1-F4			Ghostbusters 	1984	Manhattan City Bank		489 Fifth Ave	40.75317676	-73.98118844		Midtown	Manhattan	Commercial											
+GSTB1-F5			Ghostbusters 	1984	Ghostbusters HQ	Hook and Ladder 8	14 North Moore St	40.71988086	-74.00661685		Tribeca	Manhattan	Commercial		lost a firefighter in 9/11 in real life, the firehouse now boasts a Ghostbusters badge on the sidewalk in front.									
+GSTB1-F6			Ghostbusters 	1984	Tavern On The Green		Central Park	40.77241751	-73.97761341		Central Park	Manhattan	Dining	“There’s a bear in my apartment! I’m going to bring this up at the next tenant meeting. There’s not supposed to be any pets in the building.” 										
+MIB1-F1			Men In Black	1997	Men In Black Headquarters	Holland Tunnel Ventilator Shaft	504 Battery Drive	40.7055432	-74.01529876		FiDi	Manhattan	Commercial	“Be there... or be square.”										
+MIB1-F2			Men In Black	1997	Guggenheim Museum		1071 Fifth Ave	40.78340375	-73.95872405		Upper East Side	Manhattan	Commercial											
+MIB1-F3			Men In Black	1997	Jack Jeebs Pawn Shop	Scotch and Soda	90 Orchard St	40.71858898	-73.98992843		Lower East Side	Manhattan	Commericial											
+MIB1-F4			Men In Black	1997	Rosenberg Fine Jewelry		54 MacDougal St	40.72777689	-74.0024036		SoHo	Manhattan	Commericial		the original building was sadly knocked down to become a condo									
+MIB1-F5			Men In Black	1997	R&L Restaurant		69 Gansevoort St	40.74050451	-74.00774634		Meatpacking District	Manhattan	Dining		The 1938 diner was transformed in the mid-Eighties into Florent, one of those crazy late-night low-life / high-life cafes beloved of New Yorkers. Florent closed in 2008 and the premises now houses a branch of Madewell fashion outlets, though fortunately the historic aluminium ‘R&L Restaurant’ sign has been retained.									
+MIB1-F6			Men In Black	1997	New Jersey Turnpike	Freedom Way	Liberty State Park	40.70650743	-74.04894476			New Jersey	Public Park											
+MIB1-F7			Men In Black	1997	The Morgue	Veterans Corps 69th Regiment Armory	68 Lexington Ave	40.74164029	-73.98432638		Gramercy	Manhattan	Commericial											
+MIB1-F8			Men In Black	1997	Unisphere	Flushing Meadows Corona Park		40.74660337	-73.84514337			Queens	Public Park											
+AMPSYC-F1			American Psycho																					
+AMPSYC-F2			American Psycho																					
+AMPSYC-F3			American Psycho																					
+AMPSYC-F4			American Psycho																					
+AMPSYC-F5			American Psycho																					
+AMPSYC-F6			American Psycho																					
+WWS-F1			Wolf of Wall Street																					
+WWS-F2			Wolf of Wall Street																					
+WWS-F3			Wolf of Wall Street																					
+WWS-F4			Wolf of Wall Street																					
+WWS-F5			Wolf of Wall Street																					
+WWS-F6			Wolf of Wall Street																					
+WWS-F7			Wolf of Wall Street																					
+DWP-F1			Devil Wears Prada																					
+DWP-F2			Devil Wears Prada																					
+DWP-F3			Devil Wears Prada																					
+DWP-F4			Devil Wears Prada																					
+DWP-F5			Devil Wears Prada																					
+DWP-F6			Devil Wears Prada																					
+DWP-F7			Devil Wears Prada																					
+ENCHTD-F1			Enchanted																					
+ENCHTD-F2			Enchanted																					
+ENCHTD-F3			Enchanted																					
+ENCHTD-F4			Enchanted																					
+ENCHTD-F5			Enchanted																					
+ENCHTD-F6			Enchanted																					
+ENCHTD-F7			Enchanted																					
+AVGR1-F1			Avengers																					
+AVGR1-F2			Avengers																					
+AVGR1-F3			Avengers																					
+AVGR1-F4			Avengers																					
+AVGR1-F5			Avengers																					
+AVGR1-F6			Avengers																					
+AVGR1-F7			Avengers																					
+BIG-F1			BIG																					
+BIG-F2			BIG																					
+BIG-F3			BIG																					
+BIG-F4			BIG																					
+BIG-F5			BIG																					
+BIG-F6			BIG																					
+BIG-F7			BIG																					
+BIG-F8			BIG																					
+BIG-F9			BIG																					
+BIG-F10			BIG																					
+BIG-F11			BIG																					
+TXDRVR-F1			Taxi Driver																					
+TXDRVR-F2			Taxi Driver																					
+TXDRVR-F3			Taxi Driver																					
+TXDRVR-F4			Taxi Driver																					
+TXDRVR-F5			Taxi Driver																					
+TXDRVR-F6			Taxi Driver																					
+TXDRVR-F7			Taxi Driver																					
+GDFLS-F1			Goodfellas																					
+GDFLS-F2			Goodfellas																					
+GDFLS-F3			Goodfellas																					
+GDFLS-F4			Goodfellas																					
+GDFLS-F5			Goodfellas																					
+GDFLS-F6			Goodfellas																					
+GDFLS-F7			Goodfellas																					
+GDFTHR-F1			The Godfather																					
+GDFTHR-F2			The Godfather																					
+GDFTHR-F3			The Godfather																					
+GDFTHR-F4			The Godfather																					
+GDFTHR-F5			The Godfather																					
+GDFTHR-F6			The Godfather																					
+GDFTHR-F7			The Godfather																					
+GDFTHR-F8			The Godfather																					
+GDFTHR-F9			The Godfather																					
+SNFVR-F1			Saturday Night Fever																					
+SNFVR-F2			Saturday Night Fever																					
+SNFVR-F3			Saturday Night Fever																					
+SNFVR-F4			Saturday Night Fever																					
+SNFVR-F5			Saturday Night Fever																					
+SNFVR-F6			Saturday Night Fever																					
+SNFVR-F7			Saturday Night Fever																					
+SNFVR-F8			Saturday Night Fever																					

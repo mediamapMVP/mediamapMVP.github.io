@@ -17,6 +17,12 @@ images:
 # Build settings
 theme: minima
 
+defaults:
+  - scope:
+      path: "images/media"
+    values:
+      image: true
+
 exclude:
   - .jekyll-cache/
   - Gemfile
