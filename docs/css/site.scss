@@ -67,8 +67,12 @@ h2 {
 
 p {
   font-size: 0.9rem;
+  margin-bottom: 0 !important;
 }
 
+.leaflet-popup-content-wrapper {
+  padding: 1.5px;
+}
 
 .mobile {
   display: none;
