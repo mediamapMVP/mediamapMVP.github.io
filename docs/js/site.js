@@ -584,4 +584,19 @@ async function init() {
 		}
 	});
 
+	// Login Modal Functionality
+	const loginModal = document.getElementById('loginModal');
+	const loginForm = document.querySelector('#loginModal form');
+
+	loginForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const email = document.getElementById('email').value;
+		
+		// Here you would typically handle the email signup logic
+		console.log('Form submitted:', { email });
+		
+		// Clear form and close modal
+		loginForm.reset();
+		bootstrap.Modal.getInstance(loginModal).hide();
+	});
 }
