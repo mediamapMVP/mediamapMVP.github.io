@@ -36,7 +36,10 @@ a {
   color: black;
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 500;
+
+  &:hover {
+    color: $yellow;
+  }
 }
 
 h1 {
@@ -62,7 +65,7 @@ h2 {
   font-size: 1.1rem;
   font-weight: bold;
   line-height: 1.5;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 p {
@@ -135,7 +138,8 @@ p {
 .btn {
   font-size: 1rem;
   background-color: $yellow;
-  font-weight: bold;
+  border: 1px solid black;
+  font-weight: 600;
   color: black;
 
   &:focus {
@@ -178,6 +182,7 @@ p {
   }
 }
 
+/**
 .profile-icon {
   display: inline-block;
   width: 2rem;
@@ -251,6 +256,45 @@ $log-in-width: 10.5rem;
   width: $log-in-width !important;
 }
 
+
+**/
+
+.profile-icon {
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-right: 4px;
+  background-image: url("{{ site.images.profile }}");
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  transition: filter .15s ease-in-out;
+}
+
+.profile-log-in {
+  display: flex;
+}
+
+.profile-log-in:hover > .profile-link {
+  color: $yellow !important;
+  transition: background-color .15s ease-in-out;
+}
+
+.profile-log-in:hover > .profile-link .profile-btn .profile-icon {
+  filter: brightness(0) saturate(100%) invert(92%) sepia(19%) saturate(812%) hue-rotate(4deg) brightness(97%) contrast(92%);
+  transition: background-color .15s ease-in-out;
+}
+
+.profile-btn:focus {
+  background-color: black;
+  color: $yellow !important;
+}
+
+.profile-btn:focus > .profile-icon {
+  filter: brightness(0) saturate(100%) invert(92%) sepia(19%) saturate(812%) hue-rotate(4deg) brightness(97%) contrast(92%);
+  transition: filter .15s ease-in-out;
+}
 
 .middle-top-nav {
   @media (max-width: $mobile_width) {
