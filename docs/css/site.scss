@@ -36,7 +36,11 @@ a {
   color: black;
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
+
+  &:hover {
+    color: $yellow;
+  }
 }
 
 h1 {
@@ -62,7 +66,7 @@ h2 {
   font-size: 1.1rem;
   font-weight: bold;
   line-height: 1.5;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 p {
@@ -134,13 +138,16 @@ p {
 
 .btn {
   font-size: 1rem;
+  padding: 0.2rem 0.6rem;
+  min-height: 2.05rem;
   background-color: $yellow;
-  font-weight: bold;
+  border: 1px solid black;
+  font-weight: 600;
   color: black;
 
   &:focus {
     box-shadow: none !important;
-    font-weight: bold;    
+    font-weight: 600;    
   }
 }
 
@@ -169,7 +176,7 @@ p {
 
   @media (max-width: $mobile_width) {
     background-color: $yellow;
-    z-index: 1;
+    z-index: 2;
     flex-direction: column;
   }
 
@@ -180,8 +187,8 @@ p {
 
 .profile-icon {
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
+  width: 1.4rem;
+  height: 1.4rem;
   background-image: url("{{ site.images.profile }}");
   vertical-align: middle;
   background-repeat: no-repeat;
@@ -196,29 +203,26 @@ p {
 
 .profile-log-in:hover > .profile-btn {
   background-color: black;
+  color: $yellow !important;
   transition: background-color .15s ease-in-out;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
 
 .profile-log-in:hover > .profile-btn .profile-icon {
-  filter: invert(86%) sepia(21%) saturate(947%) hue-rotate(9deg) brightness(98%) contrast(84%);
+  filter: brightness(0) saturate(100%) invert(92%) sepia(19%) saturate(812%) hue-rotate(4deg) brightness(97%) contrast(92%);
+  transition: background-color .15s ease-in-out;
 }
 
-.profile-btn {
-  padding: 0.5rem 0.5rem !important;
-  border: 0px solid transparent !important;
-
-  &:focus {
-    background-color: black;
-    transition: background-color .15s ease-in-out;
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-  }
+.profile-btn:focus {
+  background-color: black;
+  color: $yellow !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 .profile-btn:focus > .profile-icon {
-  filter: invert(86%) sepia(21%) saturate(947%) hue-rotate(9deg) brightness(98%) contrast(84%);
+  filter: brightness(0) saturate(100%) invert(92%) sepia(19%) saturate(812%) hue-rotate(4deg) brightness(97%) contrast(92%);
   transition: filter .15s ease-in-out;
 }
 
@@ -226,17 +230,20 @@ $log-in-width: 10.5rem;
 
 .log-in {
   background-color: $yellow;
-  height: 3rem;
+  height: 2.05rem;
   padding: 0;
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
   width: 0;
+  font-size: 1rem;
+  font-weight: 600;
   overflow: hidden;
   text-wrap: nowrap;
   -webkit-transition: width 0.6s ease-in-out;
   transition: width 0.6s ease-in-out;
 
   &:hover {
+    border: 1px solid black;
     width: $log-in-width !important;
     color: $yellow;
     background-color: black;
@@ -244,13 +251,14 @@ $log-in-width: 10.5rem;
 }
 
 .profile-log-in:hover > .log-in {
+  border: 1px solid black;
   width: $log-in-width !important;
 }
 
 .profile-btn:focus + .log-in {
+  border: 1px solid black;
   width: $log-in-width !important;
 }
-
 
 .middle-top-nav {
   @media (max-width: $mobile_width) {
@@ -272,7 +280,7 @@ $log-in-width: 10.5rem;
 }
 
 .add-btn {
-  width: 7rem;
+  width: 4rem;
 
   &:focus {
     color: $yellow;
@@ -289,34 +297,49 @@ $log-in-width: 10.5rem;
 
 .add-form {
   position: absolute;
-  top: 4.8rem;
+  top: 4.65rem;
   background-color: $yellow;
   display: flex;
   flex-direction: column;
   width: 28vw;
   min-width: 20rem;
   max-width: 24rem;
-  height: 0;
+  max-height: 0;
   padding: 0 1rem;
   line-height: 1.2;
   border-radius: 0.25rem;
   border-top-right-radius: 0 !important;
-  -webkit-transition: height 0.3s ease-in-out;
-  transition: height 0.3s ease-in-out;
+  -webkit-transition: max-height 0.3s ease-in-out;
+  transition: max-height 0.3s ease-in-out;
   overflow: hidden;
 }
 
-.add-form input[type="text"], textarea {
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  font-size: 1rem;
   font-weight: normal;
   padding: 0.35rem 0.35rem 0.35rem 0.6rem;
+  margin-top: 1rem;
   border: 1px solid black;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   box-sizing: border-box;
   background-color: $light_blue;
   line-height: 1.5;
 }
 
-.add-form input[type="text"]::placeholder {
+textarea {
+  display: block;
+  resize: none;
+  min-height: 2.3rem;
+  max-height: 6rem;
+}
+
+input[type="submit"] {
+  width: 6.5rem;
+  border-radius: 1rem !important;
+}
+
+input[type="email"]::placeholder {
   color: black;
   font-size: 1rem;
   font-weight: 300;
@@ -324,7 +347,7 @@ $log-in-width: 10.5rem;
   font-style: italic;
 }
 
-.add-form textarea::placeholder {
+input[type="text"]::placeholder {
   color: black;
   font-size: 1rem;
   font-weight: 300;
@@ -332,40 +355,47 @@ $log-in-width: 10.5rem;
   font-style: italic;
 }
 
-.add-form input[type="text"]:focus-visible, textarea:focus-visible {
+textarea::placeholder {
+  color: black;
+  font-size: 1rem;
+  font-weight: 300;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+input[type="text"]:focus-visible, textarea:focus-visible {
   outline: -webkit-focus-ring-color auto 0px !important;
   border: 2px solid black;
 }
 
-$add-form-height: 21.5rem;
+$add-form-height: 20rem; // Value in JS
 
 .add-place:hover > .add-form {
-  height: $add-form-height !important;
-  -webkit-transition: height 1s ease-in-out;
-  transition: height 1s ease-in-out;
+  border: 1px solid black;
+  max-height: $add-form-height;
+  -webkit-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
 }
 
 .add-btn:focus + .add-form {
-  height: $add-form-height !important;
-  -webkit-transition: height 1s ease-in-out;
-  transition: height 1s ease-in-out;
+  border: 1px solid black;
+  max-height: $add-form-height;
+  -webkit-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
 }
 
 .add-form:focus-within {
-  height: $add-form-height !important;
-  -webkit-transition: height 1s ease-in-out;
-  transition: height 1s ease-in-out;
+  border: 1px solid black;
+  max-height: $add-form-height;
+  -webkit-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
 }
 
 .add-form:hover {
-  height: $add-form-height !important;
-  -webkit-transition: height 1s ease-in-out;
-  transition: height 1s ease-in-out;
-}
-
-textarea {
-  resize: none;
-  min-height: 5.3rem;
+  border: 1px solid black;
+  max-height: $add-form-height;
+  -webkit-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
 }
 
 .follow:hover > .follow-btn {
@@ -377,7 +407,7 @@ textarea {
 }
 
 .follow-btn {
-  width: 8.5rem;
+  width: 8.3rem;
 
   &:focus {
     color: $yellow;
@@ -390,11 +420,11 @@ textarea {
 
 .follow-links {
   position: absolute;
-  top: 4.8rem;
+  top: 4.65rem;
   background-color: $yellow;
   display: flex;
   flex-direction: column;
-  width: 8.5rem;
+  width: 8.3rem;
   height: 0;
   padding: 0;
   border-radius: 0.25rem;
@@ -411,9 +441,11 @@ textarea {
 }
 
 .follow-links a {
-  width: 7.3rem;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
+  width: 7.4rem;
+  padding: 0.2rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.3rem;
+  border-radius: 1rem;
   text-align: center;
 }
 
@@ -422,21 +454,24 @@ textarea {
   background-color: black;
 }
 
-$follow-links-height: 8.5rem;
+$follow-links-height: 7.7rem;
 
 .follow:hover > .follow-links {
+  border: 1px solid black;
   height: $follow-links-height !important;
   -webkit-transition: height 0.6s ease-in-out;
   transition: height 0.6s ease-in-out;
 }
 
 .follow-btn:focus + .follow-links {
+  border: 1px solid black;
   height: $follow-links-height !important;
   -webkit-transition: height 0.6s ease-in-out;
   transition: height 0.6s ease-in-out;
 }
 
 .follow-links:hover {
+  border: 1px solid black;
   height: $follow-links-height !important;
   -webkit-transition: height 0.6s ease-in-out;
   transition: height 0.6s ease-in-out;
@@ -494,7 +529,7 @@ $follow-links-height: 8.5rem;
 .title-search {
   display: block;
   width: 18rem;
-  height: 2.4rem;
+  height: 2rem;
   padding: 0.35rem 0.1rem 0.35rem 2.6rem;
   font-size: 1rem;
   font-weight: normal;
@@ -505,10 +540,10 @@ $follow-links-height: 8.5rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 0px solid black;
+  border: 1px solid black;
   border-radius: 0.25rem;
-  -webkit-transition: width 0.6s ease-in-out;
-  transition: width 0.6s ease-out;
+  -webkit-transition: width 0.9s ease-in-out;
+  transition: width 0.9s ease-in-out;
 
   @media (max-width: 380px) {
     width: 15rem;
@@ -565,14 +600,14 @@ input[type="search"]::-webkit-search-cancel-button {
   left: 2.7rem;
   z-index: 10;
   background-color: $yellow;
-  width: 2.4rem;
-  height: 1.9rem;
+  width: 2.3rem;
+  height: 1.5rem;
   padding-right: 0.2rem;
   border-radius: 0.25rem;
 }
 
 .bi-search {
-  -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 0.6px black;
 }
 
 .mobile-search-pad {
@@ -613,3 +648,69 @@ input[type="search"]::-webkit-search-cancel-button {
   color: black;
   padding: 0.5rem 0.5rem 0.5rem 2.8rem;
 }
+
+// Modal styles
+.modal-dialog {
+  max-width: 30rem;
+}
+
+.modal-content {
+  background-color: $yellow;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  padding: 2rem;
+  position: relative;
+  height: 19rem;
+}
+
+.btn-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  opacity: 1;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+
+  &:focus {
+    box-shadow: none;
+    opacity: 1;
+  }
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.modal-body {
+  padding: 0;
+
+  .modal-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  p {
+    font-weight: 600;
+  }
+
+}
+
+.popup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.7), rgba(0,0,0,0));
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.popup-modal-z {
+  z-index: 21;
+}
+
