@@ -2,24 +2,14 @@
 	<nav class="top-nav navbar container-fluid align-items-center">
 		<div class=" mobile-width d-flex col-sm-8 justify-content-between align-items-center">
 
-			<!-- <div class="profile-log-in col-sm mobile-col-1 align-items-center">
-				<button class="desktop overlay-item btn overlay-btn profile-btn" type="button">
+			<div class="profile-log-in col-sm mobile-col-1 align-items-center" data-bs-toggle="modal"
+				data-bs-target="#loginModal">
+				<button class="desktop profile-btn overlay-item btn overlay-btn" type="button">
 					<span class="profile-icon"></span>
 				</button>
-				<a class="desktop log-in overlay-item d-flex justify-content-center align-items-center text-center"
-					href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-					LOG IN / SIGN UP
-				</a>
-			</div> -->
-
-			<div class="profile-log-in mobile-col-1 align-items-center">
-				<a class="profile-link overlay-item d-flex justify-content-center align-items-center"
-				href="#">
-					<button class="profile-btn btn overlay-btn overlay-item align-items-center" type="button">
-						<span class="profile-icon"></span>
-						LOGIN
-					</button>
-				</a>
+				<div class="desktop log-in overlay-item d-flex justify-content-center align-items-center">
+					LOGIN / SIGN UP
+				</div>
 			</div>
 
 			<div class="overlay-item col-sm mobile-col-8 text-center">
@@ -32,25 +22,25 @@
 		<div class="desktop middle-top-nav d-flex col-sm-4 justify-content-end">
 			<div class="add-place d-flex justify-content-end">
 				<button id="addBtn" class="add-btn btn overlay-btn overlay-item" type="button">ADD</button>
-				<form id="addForm" class="add-form overlay-item">
-					<br>
-					<label for="title" style="display: none;">Movie / Show / Book title</label>
-					<input id="title" type="text" name="title" placeholder="Movie / Show / Book title" aria-label="Movie / Show / Book title" required>
-					<br>
-					<label for="description" style="display: none;">Location / Scene description</label>
-					<textarea id="description" name="description" placeholder="Location / Scene description"
-						aria-label="Location / Scene description" rows="3" required></textarea>
-					<br>
-					<label for="comments" style="display: none;">Anything else?</label>
-					<textarea id="comments" name="comments" placeholder="Anything else?" aria-label="Anything else?" rows="3"></textarea>
-					<br>
-					<input class="btn overlay-btn overlay-item" type="submit" value="SUBMIT">
+				<form id="addForm" class="add-form overlay-item justify-content-between">
+					<div class="justify-content-around">
+						<label for="title" style="display: none;">Movie / Show / Book Title</label>
+						<input id="title" type="text" name="title" placeholder="Movie / Show / Book Title"
+							aria-label="Movie / Show / Book Title" required>
+						<label for="description" style="display: none;">Location / Scene Description/ Comments</label>
+						<textarea id="description" name="description" placeholder="Location / Scene description"
+							aria-label="Location / Scene description" rows="1" required></textarea>
+						<label for="addEmail" style="display: none;">Email Address</label>
+						<input type="email" name="addEmail" id="addEmail" placeholder="Email Address"
+							aria-label="Email Address" required>
+					</div>
+					<input class="btn overlay-btn overlay-item" style="margin-bottom: 1.5rem;" type="submit" value="SUBMIT">
 				</form>
 			</div>
 
 			<div class="follow d-flex">
 				<button id="followBtn" class="follow-btn btn overlay-btn overlay-item" type="button">FOLLOW</button>
-				<div class="follow-links overlay-item align-items-center">
+				<div class="follow-links overlay-item justify-content-start align-items-center">
 					<span class="links-padding-top"></span>
 					<a href="#">
 						INSTAGRAM
@@ -68,21 +58,25 @@
 
 	<nav class="bottom-nav navbar container-fluid align-items-top">
 		<div class="filter-buttons mobile-justify d-flex col justify-content-start">
-			<button id="showAll" class="btn toggle-btn overlay-item" style="background-color: #000000; color: #d7d26a !important;" type="button">ALL</button>
+			<button id="showAll" class="btn toggle-btn overlay-item"
+				style="background-color: #000000; color: #E7E08B !important;" type="button">ALL</button>
 			<button id="filterMovies" class="btn toggle-btn overlay-item" type="button">FILM</button>
 			<button id="filterTV" class="btn toggle-btn overlay-item" type="button">TV</button>
-			<button id="filterBooks" class="btn toggle-btn overlay-item" style="margin-right: 0 !important;" type="button">LITERATURE</button>
+			<button id="filterBooks" class="btn toggle-btn overlay-item" style="margin-right: 0 !important;"
+				type="button">LITERATURE</button>
 		</div>
 
 		<div class="d-flex col justify-content-center align-items-end" style="flex-direction: column;">
-			<div id="filterTitleDiv" class="search mobile-justify mobile-search-pad d-flex col justify-content-end align-items-center">
+			<div id="filterTitleDiv"
+				class="search mobile-justify mobile-search-pad d-flex col justify-content-end align-items-center">
 				<div class="search-button">
 					<i class="bi bi-search"></i>
 				</div>
 				<label for="filterTitle" style="display: none;">Filter by title</label>
-				<input id="filterTitle" class="title-search overlay-item" type="search" placeholder="Filter by title" aria-label="Filter by title">
+				<input id="filterTitle" class="title-search overlay-item" type="search" placeholder="Filter by title"
+					aria-label="Filter by title">
 			</div>
-			
+
 			<div id="suggestions" class="suggestions" style="display: none;"></div>
 		</div>
 	</nav>
@@ -90,19 +84,21 @@
 
 <!-- Login/Signup Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      <div class="modal-body text-center">
-        <h1 class="modal-title mb-3">MORE MEDIA MAP<br>COMING SOON!</h1>
-        <p class="mb-4">Be the first to know about new map additions,<br>personalized content, and more.</p>
-        <form>
-          <div class="mb-3">
-            <input type="email" class="form-control" id="email" placeholder="Email Address" required>
-          </div>
-          <button type="submit" class="btn w-100">SIGN UP</button>
-        </form>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			<div class="modal-body text-center">
+				<h1 class="modal-title mb-3">MORE MEDIA MAP<br>COMING SOON!</h1>
+				<p class="mb-2">Be the first to know about new map additions,<br>personalized content, and more.</p>
+				<form>
+					<div class="mb-3">
+						<label for="loginEmail" style="display: none;">Email Address</label>
+						<input type="email" name="loginEmail" id="loginEmail" placeholder="Email Address"
+							aria-label="Email Address" required>
+					</div>
+					<button type="submit" class="btn overlay-btn w-100">SIGN UP</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>

@@ -136,7 +136,7 @@ async function init() {
 	}).addTo(map);
 
 	let customPopupOptions = {
-    'minWidth': '500',
+    	'minWidth': '500',
 		'maxWidth': '500',
 		'className': 'popupCustom'
 	};
@@ -148,69 +148,72 @@ async function init() {
   imageFiles.push("{{ image.path }}");
   // {% endfor %}
 
+
 	movies.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
-    let customPopupContent = '<div class="row align-items-center">';
+    let customPopupContent = '<div class="row align-items-stretch" style="min-height: 90px;">';
 
     let imgName = s.id.split("-F")[0] + "-F.png";
     let imgUrl = `/images/media/FILM/${s.name}/${imgName}`;
 
     if (imageFiles.includes(imgUrl)) {
-      customPopupContent += `<div class="col-5"><img src="${imgUrl}" alt="${s.name}" width=100%></div>`;
+      customPopupContent += `<div class="col-5"><img src="${imgUrl}" title="${s.name}" alt="${s.name}" width=100%></div>`;
     }
 
 		if (s.filming_location) {
-			customPopupContent += `<div class="col"><h2>${s.name} (${s.year}), <i>${s.fictional_location}</i></h2><p>${s.filming_location}, ${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} (${s.year}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.filming_location}, ${s.location_address}</p></div>`;
 		}
 		else {
-			customPopupContent += `<div class="col"><h2>${s.name} (${s.year}), <i>${s.fictional_location}</i></h2><p>${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} (${s.year}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.location_address}</p></div>`;
 		}
 
     customPopupContent += "</div>";
     s.marker.bindPopup(customPopupContent, customPopupOptions);
 	});
 
+
 	tv.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
-    let customPopupContent = '<div class="row align-items-center">';
+    let customPopupContent = '<div class="row align-items-stretch" style="min-height: 90px;">';
 
     let imgName = s.id.split("-TV")[0] + "-TV.png";
     let imgUrl = `/images/media/TV/${s.name}/${imgName}`;
 
     if (imageFiles.includes(imgUrl)) {
-      customPopupContent += `<div class="col-5"><img src="${imgUrl}" alt="${s.name}" width=100%></div>`;
+      customPopupContent += `<div class="col-5"><img src="${imgUrl}" title="${s.name}" alt="${s.name}" width=100%></div>`;
     }
 
 		if (s.filming_location) {
-			customPopupContent += `<div class="col"><h2>${s.name} (S${s.season} E${s.episode}), <i>${s.fictional_location}</i></h2><p>${s.filming_location}, ${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} (S${s.season} E${s.episode}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.filming_location}, ${s.location_address}</p></div>`;
 
 		}
 		else {
-			customPopupContent += `<div class="col"><h2>${s.name} (S${s.season} E${s.episode}), <i>${s.fictional_location}</i></h2><p>${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} (S${s.season} E${s.episode}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.location_address}</p></div>`;
 		};
     customPopupContent += "</div>";
     s.marker.bindPopup(customPopupContent, customPopupOptions);
 	});
 
+
 	books.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
-    let customPopupContent = '<div class="row align-items-center">';
+    let customPopupContent = '<div class="row align-items-stretch" style="min-height: 90px;">';
 
     let imgName = s.id.split("-LIT")[0] + "-LIT.png";
     let imgUrl = `/images/media/LIT/${s.name}/${imgName}`;
 
     if (imageFiles.includes(imgUrl)) {
-      customPopupContent += `<div class="col-5"><img src="${imgUrl}" alt="${s.name}" width=100%></div>`;
+      customPopupContent += `<div class="col-5"><img src="${imgUrl}" title="${s.name}" alt="${s.name}" width=100%></div>`;
     }
 
 		if (s.filming_location) {
-			customPopupContent += `<div class="col"><h2>${s.name} by ${s.author} (${s.year}), <i>${s.fictional_location}</i></h2><p>${s.filming_location}, ${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} by ${s.author} (${s.year}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.filming_location}, ${s.location_address}</p></div>`;
 		}
 		else {
-			customPopupContent += `<div class="col"><h2>${s.name} by ${s.author} (${s.year}), <i>${s.fictional_location}</i></h2><p>${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} by ${s.author} (${s.year}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.location_address}</p></div>`;
 		};
     
     customPopupContent += "</div>";
@@ -222,6 +225,22 @@ async function init() {
 	if (window.innerWidth < 450) {
 		$filterBooks.innerHTML = "BOOKS";
 	}
+
+	// Login Modal Functionality
+	const loginModal = document.getElementById('loginModal');
+	const loginForm = document.querySelector('#loginModal form');
+
+	loginForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const email = document.getElementById('email').value;
+		
+		// Here you would typically handle the email signup logic
+		console.log('Form submitted:', { email });
+		
+		// Clear form and close modal
+		loginForm.reset();
+		bootstrap.Modal.getInstance(loginModal).hide();
+	});
 
 
 	// Create event listeners for filtering/element states
@@ -235,7 +254,6 @@ async function init() {
 
 	let $addBtn = document.querySelector('#addBtn');
 	let $followBtn = document.querySelector('#followBtn');
-
 
 	// Create listeners for saving search data and focusing/bluring when using add btn
 	let filterTitleValue = "";
@@ -256,7 +274,7 @@ async function init() {
 
 	let $titleField = document.querySelector('#title');
 	let $descField = document.querySelector('#description');
-	let $commentsField = document.querySelector('#comments');
+	let $emailField = document.querySelector('#addEmail');
 
 	let $filterTitleDiv = document.querySelector('#filterTitleDiv');
 
@@ -264,7 +282,7 @@ async function init() {
 		$addBtn.blur();
 		$titleField.blur();
 		$descField.blur();
-		$commentsField.blur();
+		$emailField.blur();
 
 		if (filterTitleValue != "") {
 			$filterTitle.value = filterTitleValue;
@@ -277,6 +295,18 @@ async function init() {
 		$addBtn.focus();
 	});
 
+	// Values in CSS
+	// let formBaseHeight = 16.5 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+	// let descBaseHeight = 2.4  * parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+	// Listener for add form sizing
+	// $descField.addEventListener('input', function() {
+	// if (this.scrollHeight < 6 * parseFloat(getComputedStyle(document.documentElement).fontSize)) {
+	// 	this.style.height = 'auto';
+	// 	this.style.height = `${this.scrollHeight}px`;
+	// 	// $addForm.setAttribute('style', `height: ${formBaseHeight + this.scrollHeight - descBaseHeight}px`);
+	// }
+	// });
 
 	// Add functionality to map filter buttons
 	let allOn = true;
@@ -287,10 +317,10 @@ async function init() {
 	const changeButtonStyle = (elem, turnOn) => {
 		if (turnOn) {
 			elem.style.backgroundColor = "#000000";
-			elem.style.color = "#d7d26a";
+			elem.style.color = "#E7E08B";
 		}
 		else {
-			elem.style.backgroundColor = "#d7d26a";
+			elem.style.backgroundColor = "#E7E08B";
 			elem.style.color = "#000000";
 		}
 	}
@@ -509,6 +539,7 @@ async function init() {
 	$filterTitle.addEventListener('input', filterTitle);
 
 
+	// TODO
 	// Add suggestions to search
 	let mediaNames = [
 		"When Harry Met Sally",
@@ -584,19 +615,4 @@ async function init() {
 		}
 	});
 
-	// Login Modal Functionality
-	const loginModal = document.getElementById('loginModal');
-	const loginForm = document.querySelector('#loginModal form');
-
-	loginForm.addEventListener('submit', (e) => {
-		e.preventDefault();
-		const email = document.getElementById('email').value;
-		
-		// Here you would typically handle the email signup logic
-		console.log('Form submitted:', { email });
-		
-		// Clear form and close modal
-		loginForm.reset();
-		bootstrap.Modal.getInstance(loginModal).hide();
-	});
 }
