@@ -229,13 +229,28 @@ async function init() {
 	// Login Modal Functionality
 	const loginModal = document.getElementById('loginModal');
 	const loginForm = document.querySelector('#loginModal form');
+		
+	// Change aria visibility
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				loginModal.setAttribute('aria-hidden', 'false');
+			} else {
+				loginModal.setAttribute('aria-hidden', 'true');
+			}
+		});
+	}, {
+		threshold: 0.1
+	});
+
+	observer.observe(loginModal);
 
 	loginForm.addEventListener('submit', (e) => {
 		e.preventDefault();
-		const email = document.getElementById('email').value;
+		//const email = document.getElementById('email').value;
 		
 		// Here you would typically handle the email signup logic
-		console.log('Form submitted:', { email });
+		// console.log('Form submitted:', { email });
 		
 		// Clear form and close modal
 		loginForm.reset();
@@ -295,18 +310,13 @@ async function init() {
 		$addBtn.focus();
 	});
 
-	// Values in CSS
-	// let formBaseHeight = 16.5 * parseFloat(getComputedStyle(document.documentElement).fontSize);
-	// let descBaseHeight = 2.4  * parseFloat(getComputedStyle(document.documentElement).fontSize);
-
 	// Listener for add form sizing
-	// $descField.addEventListener('input', function() {
-	// if (this.scrollHeight < 6 * parseFloat(getComputedStyle(document.documentElement).fontSize)) {
-	// 	this.style.height = 'auto';
-	// 	this.style.height = `${this.scrollHeight}px`;
-	// 	// $addForm.setAttribute('style', `height: ${formBaseHeight + this.scrollHeight - descBaseHeight}px`);
-	// }
-	// });
+	$descField.addEventListener('input', function() {
+	if (this.scrollHeight < 6 * parseFloat(getComputedStyle(document.documentElement).fontSize)) {
+		this.style.height = 'auto';
+		this.style.height = `${this.scrollHeight}px`;
+	}
+	});
 
 	// Add functionality to map filter buttons
 	let allOn = true;
