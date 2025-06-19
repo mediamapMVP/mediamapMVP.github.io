@@ -697,3 +697,27 @@ input[type="search"]::-webkit-search-cancel-button {
 
 }
 
+.popup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1040;
+  pointer-events: none;
+  background: linear-gradient(
+  to top,
+  rgba(0,0,0,0.95) 0%,     
+  rgba(0,0,0,0.7) 20%,      
+  rgba(0,0,0,0.0) 40%,      
+  rgba(0,0,0,0) 70%,        
+  rgba(0,0,0,0) 100%        
+);
+  transition: opacity 0.3s;
+  opacity: 1;
+}
+
+.popup-modal-z {
+  z-index: 1050;
+}
+
