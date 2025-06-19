@@ -1,6 +1,3 @@
----
----
-
 document.addEventListener('DOMContentLoaded', init, false);
 
 async function init() {
@@ -226,11 +223,26 @@ async function init() {
 		$filterBooks.innerHTML = "BOOKS";
 	}
 
-	// Login Modal Functionality
-	const loginModal = document.getElementById('loginModal');
-	const loginForm = document.querySelector('#loginModal form');
+	// Popup Modal Functionality
+	const popupModal = document.getElementById('popupModal');
+	const popupForm = document.querySelector('#popupModal form');
+	const popupBackdrop = document.getElementById('popupBackdrop');
 
-	loginForm.addEventListener('submit', (e) => {
+	// Show popup modal after 10 seconds
+	setTimeout(() => {
+		const modal = bootstrap.Modal.getOrCreateInstance(popupModal);
+		modal.show();
+	}, 10000);
+
+	// Show/hide gradient backdrop with modal
+	popupModal.addEventListener('show.bs.modal', () => {
+		popupBackdrop.style.display = 'block';
+	});
+	popupModal.addEventListener('hidden.bs.modal', () => {
+		popupBackdrop.style.display = 'none';
+	});
+
+	popupForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 		const email = document.getElementById('email').value;
 		
@@ -238,8 +250,8 @@ async function init() {
 		console.log('Form submitted:', { email });
 		
 		// Clear form and close modal
-		loginForm.reset();
-		bootstrap.Modal.getInstance(loginModal).hide();
+		popupForm.reset();
+		bootstrap.Modal.getInstance(popupModal).hide();
 	});
 
 

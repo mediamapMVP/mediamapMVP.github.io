@@ -3,7 +3,7 @@
 		<div class=" mobile-width d-flex col-sm-8 justify-content-between align-items-center">
 
 			<div class="profile-log-in col-sm mobile-col-1 align-items-center" data-bs-toggle="modal"
-				data-bs-target="#loginModal">
+				data-bs-target="#popupModal">
 				<button class="desktop profile-btn overlay-item btn overlay-btn" type="button">
 					<span class="profile-icon"></span>
 				</button>
@@ -82,8 +82,9 @@
 	</nav>
 </section>
 
-<!-- Login/Signup Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<!-- Popup/Signup Modal -->
+<div id="popupBackdrop" class="popup-backdrop" style="display: none;"></div>
+<div class="modal fade popup-modal-z" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -96,7 +97,7 @@
 						<input type="email" name="loginEmail" id="loginEmail" placeholder="Email Address"
 							aria-label="Email Address" required>
 					</div>
-					<button type="submit" class="btn overlay-btn w-100">SIGN UP</button>
+					<button type="submit" class="btn overlay-btn toggle-btn w-100">SIGN UP</button>
 				</form>
 			</div>
 		</div>
