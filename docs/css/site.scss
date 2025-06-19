@@ -243,6 +243,7 @@ $log-in-width: 10.5rem;
   transition: width 0.6s ease-in-out;
 
   &:hover {
+    border: 1px solid black;
     width: $log-in-width !important;
     color: $yellow;
     background-color: black;
@@ -250,10 +251,12 @@ $log-in-width: 10.5rem;
 }
 
 .profile-log-in:hover > .log-in {
+  border: 1px solid black;
   width: $log-in-width !important;
 }
 
 .profile-btn:focus + .log-in {
+  border: 1px solid black;
   width: $log-in-width !important;
 }
 
@@ -301,13 +304,13 @@ $log-in-width: 10.5rem;
   width: 28vw;
   min-width: 20rem;
   max-width: 24rem;
-  height: 0;
+  max-height: 0;
   padding: 0 1rem;
   line-height: 1.2;
   border-radius: 0.25rem;
   border-top-right-radius: 0 !important;
-  -webkit-transition: height 0.3s ease-in-out;
-  transition: height 0.3s ease-in-out;
+  -webkit-transition: max-height 0.3s ease-in-out;
+  transition: max-height 0.3s ease-in-out;
   overflow: hidden;
 }
 
@@ -327,9 +330,13 @@ input[type="text"], input[type="email"], textarea {
 textarea {
   display: block;
   resize: none;
-  //min-height: 2.3rem; //Value in JS
+  min-height: 2.3rem;
   max-height: 6rem;
-  overflow-y: scroll;
+}
+
+input[type="submit"] {
+  width: 6rem;
+  border-radius: 1rem !important;
 }
 
 input[type="email"]::placeholder {
@@ -361,30 +368,34 @@ input[type="text"]:focus-visible, textarea:focus-visible {
   border: 2px solid black;
 }
 
-$add-form-height: 18rem; // Value in JS
+$add-form-height: 20rem; // Value in JS
 
 .add-place:hover > .add-form {
-  height: $add-form-height;
-  -webkit-transition: height 1s ease-in-out;
-  transition: height 1s ease-in-out;
+  border: 1px solid black;
+  max-height: $add-form-height;
+  -webkit-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
 }
 
 .add-btn:focus + .add-form {
-  height: $add-form-height;
-  -webkit-transition: height 1s ease-in-out;
-  transition: height 1s ease-in-out;
+  border: 1px solid black;
+  max-height: $add-form-height;
+  -webkit-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
 }
 
 .add-form:focus-within {
-  height: $add-form-height;
-  -webkit-transition: height 1s ease-in-out;
-  transition: height 1s ease-in-out;
+  border: 1px solid black;
+  max-height: $add-form-height;
+  -webkit-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
 }
 
 .add-form:hover {
-  height: $add-form-height;
-  -webkit-transition: height 1s ease-in-out;
-  transition: height 1s ease-in-out;
+  border: 1px solid black;
+  max-height: $add-form-height;
+  -webkit-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
 }
 
 .follow:hover > .follow-btn {
@@ -396,7 +407,7 @@ $add-form-height: 18rem; // Value in JS
 }
 
 .follow-btn {
-  width: 8.2rem;
+  width: 8.3rem;
 
   &:focus {
     color: $yellow;
@@ -413,7 +424,7 @@ $add-form-height: 18rem; // Value in JS
   background-color: $yellow;
   display: flex;
   flex-direction: column;
-  width: 8.2rem;
+  width: 8.3rem;
   height: 0;
   padding: 0;
   border-radius: 0.25rem;
@@ -430,11 +441,11 @@ $add-form-height: 18rem; // Value in JS
 }
 
 .follow-links a {
-  width: 7.3rem;
+  width: 7.4rem;
   padding: 0.2rem;
   margin-top: 0.1rem;
   margin-bottom: 0.3rem;
-  border-radius: 0.25rem;
+  border-radius: 1rem;
   text-align: center;
 }
 
@@ -446,18 +457,21 @@ $add-form-height: 18rem; // Value in JS
 $follow-links-height: 7.7rem;
 
 .follow:hover > .follow-links {
+  border: 1px solid black;
   height: $follow-links-height !important;
   -webkit-transition: height 0.6s ease-in-out;
   transition: height 0.6s ease-in-out;
 }
 
 .follow-btn:focus + .follow-links {
+  border: 1px solid black;
   height: $follow-links-height !important;
   -webkit-transition: height 0.6s ease-in-out;
   transition: height 0.6s ease-in-out;
 }
 
 .follow-links:hover {
+  border: 1px solid black;
   height: $follow-links-height !important;
   -webkit-transition: height 0.6s ease-in-out;
   transition: height 0.6s ease-in-out;
