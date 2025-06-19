@@ -553,13 +553,11 @@ async function init() {
 
 	// TODO
 	// Add suggestions to search
-	let mediaNames = [
-		"When Harry Met Sally",
-		"Breakfast at Tiffany's",
-		"Spider-Man",
-		"Sex and The City",
-		"Book Title"
-	]
+	let mediaNamesSet = new Set();
+	movies.forEach(m => mediaNamesSet.add(m.name));
+	tv.forEach(t => mediaNamesSet.add(t.name));
+	books.forEach(b => mediaNamesSet.add(b.name));
+	let mediaNames = Array.from(mediaNamesSet);
 
 	function showSuggestions(list) {
 		let listData;
