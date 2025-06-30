@@ -22,8 +22,8 @@
 		<div class="desktop middle-top-nav d-flex col-sm-4 justify-content-end">
 			<div class="add-place d-flex justify-content-end">
 				<button id="addBtn" class="add-btn btn overlay-btn overlay-item" type="button">ADD</button>
-				<form id="addForm" class="add-form overlay-item justify-content-between">
-					<div class="justify-content-around">
+				<form id="addForm" class="add-form overlay-item justify-content-between align-items-center">
+					<div class="justify-content-around py-2" style="width: 100%">
 						<label for="title" style="display: none;">Movie / Show / Book Title</label>
 						<input id="title" type="text" name="title" placeholder="Movie / Show / Book Title"
 							aria-label="Movie / Show / Book Title" required>
@@ -34,7 +34,7 @@
 						<input type="email" name="addEmail" id="addEmail" placeholder="Email Address"
 							aria-label="Email Address" required>
 					</div>
-					<input class="btn overlay-btn overlay-item" style="margin-bottom: 1.5rem;" type="submit" value="SUBMIT">
+					<input class="btn overlay-btn overlay-item mt-2 mb-3" type="submit" value="SUBMIT">
 				</form>
 			</div>
 
@@ -73,9 +73,11 @@
 	</nav>
 </section>
 
+
 <!-- Popup/Signup Modal -->
 <div id="popupBackdrop" class="popup-backdrop" style="display: none;"></div>
-<div class="modal fade popup-modal-z" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
+<div class="modal fade popup-modal-z" id="popupModal" data-bs-backdrop="false" tabindex="-1" aria-labelledby="popupModalLabel">
+
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -83,12 +85,13 @@
 				<h1 class="modal-title mb-3">MORE MEDIA MAP<br>COMING SOON!</h1>
 				<p class="mb-2">Be the first to know about new map additions,<br>personalized content, and more.</p>
 				<form>
-					<div class="mb-3">
+					<div class="mb-3 align-items-center">
 						<label for="loginEmail" style="display: none;">Email Address</label>
 						<input type="email" name="loginEmail" id="loginEmail" placeholder="Email Address"
 							aria-label="Email Address" required>
 					</div>
-					<button type="submit" class="btn overlay-btn toggle-btn w-100">SIGN UP</button>
+
+					<input class="btn overlay-btn overlay-item mt-2 mb-3" type="submit" value="SIGN UP">
 				</form>
 			</div>
 		</div>
