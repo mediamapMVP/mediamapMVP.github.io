@@ -635,4 +635,47 @@ async function init() {
 		}
 	});
 
+	const imageBar = document.getElementById('film-image-bar');
+	const imageBarGradient = document.getElementById('film-image-bar-gradient');
+
+	function showOnlyPinsForName(name) {
+		// Hide all markers
+		movies.forEach(s => map.removeLayer(s.marker));
+		tv.forEach(s => map.removeLayer(s.marker));
+		books.forEach(s => map.removeLayer(s.marker));
+		// Show only those with matching name
+		movies.forEach(s => { if (s.name === name) map.addLayer(s.marker); });
+		tv.forEach(s => { if (s.name === name) map.addLayer(s.marker); });
+		books.forEach(s => { if (s.name === name) map.addLayer(s.marker); });
+	}
+
+	function showAllPins() {
+		movies.forEach(s => map.addLayer(s.marker));
+		tv.forEach(s => map.addLayer(s.marker));
+		books.forEach(s => map.addLayer(s.marker));
+	}
+
+	if (imageBar) {
+		imageBar.querySelectorAll('img').forEach(img => {
+			img.style.cursor = 'pointer';
+			img.addEventListener('click', (e) => {
+				showOnlyPinsForName(img.alt.replace(/ \(TV\)| \(LIT\)/, ''));
+				// Unhighlight ALL button
+				if (typeof changeButtonStyle === 'function' && $showAll) {
+					changeButtonStyle($showAll, false);
+				} else if ($showAll) {
+					$showAll.style.backgroundColor = '#E7E08B';
+					$showAll.style.color = '#000000';
+				}
+			});
+		});
+	}
+	if (imageBarGradient) {
+		imageBarGradient.addEventListener('click', showAllPins);
+	}
+	document.body.addEventListener('click', function(e) {
+		if (imageBar && !imageBar.contains(e.target) && imageBarGradient && !imageBarGradient.contains(e.target)) {
+			showAllPins();
+		}
+	}, true);
 }
