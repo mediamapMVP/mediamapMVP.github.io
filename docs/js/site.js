@@ -241,6 +241,21 @@ async function init() {
 	popupModal.addEventListener('hidden.bs.modal', () => {
 		popupBackdrop.style.display = 'none';
 	});
+		
+	// Change aria visibility
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				popupModal.setAttribute('aria-hidden', 'false');
+			} else {
+				popupModal.setAttribute('aria-hidden', 'true');
+			}
+		});
+	}, {
+		threshold: 0.1
+	});
+
+	observer.observe(popupModal);
 
 	popupForm.addEventListener('submit', (e) => {
 		e.preventDefault();
@@ -305,18 +320,13 @@ async function init() {
 		$addBtn.focus();
 	});
 
-	// Values in CSS
-	// let formBaseHeight = 16.5 * parseFloat(getComputedStyle(document.documentElement).fontSize);
-	// let descBaseHeight = 2.4  * parseFloat(getComputedStyle(document.documentElement).fontSize);
-
 	// Listener for add form sizing
-	// $descField.addEventListener('input', function() {
-	// if (this.scrollHeight < 6 * parseFloat(getComputedStyle(document.documentElement).fontSize)) {
-	// 	this.style.height = 'auto';
-	// 	this.style.height = `${this.scrollHeight}px`;
-	// 	// $addForm.setAttribute('style', `height: ${formBaseHeight + this.scrollHeight - descBaseHeight}px`);
-	// }
-	// });
+	$descField.addEventListener('input', function() {
+	if (this.scrollHeight < 6 * parseFloat(getComputedStyle(document.documentElement).fontSize)) {
+		this.style.height = 'auto';
+		this.style.height = `${this.scrollHeight}px`;
+	}
+	});
 
 	// Add functionality to map filter buttons
 	let allOn = true;
