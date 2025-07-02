@@ -15,8 +15,8 @@ images:
   # seo: "/images/seo.png"
 
 featured:
-  - name: "Sex and the City"
-    link: "/images/media/TV/Sex and the City/SATC-TV.png"
+  - name: "Sex and The City"
+    link: "/images/media/TV/Sex and The City/SATC-TV.png"
 
   - name: "Gossip Girl"
     link: "/images/media/TV/Gossip Girl/GSPGRL-TV.png"
@@ -27,8 +27,8 @@ featured:
   - name: "Friends"
     link: "/images/media/TV/Friends/FRNDS-TV.png"
 
-  - name: "Catcher in the Rye"
-    link: "/images/media/LIT/Catcher in the Rye/CITR-LIT.png"
+  - name: "Catcher in The Rye"
+    link: "/images/media/LIT/Catcher in The Rye/CITR-LIT.png"
 
   - name: "Just Kids"
     link: "/images/media/LIT/Just Kids/JK-LIT.png"
