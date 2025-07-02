@@ -15,6 +15,18 @@ images:
   # seo: "/images/seo.png"
 
 featured:
+  - name: "Sex and the City"
+    link: "/images/media/TV/Sex and the City/SATC-TV.png"
+
+  - name: "Gossip Girl"
+    link: "/images/media/TV/Gossip Girl/GSPGRL-TV.png"
+
+  - name: "Sopranos"
+    link: "/images/media/TV/Sopranos/SPRNOS-TV.png"
+
+  - name: "Friends"
+    link: "/images/media/TV/Friends/FRNDS-TV.png"
+
   - name: "Catcher in the Rye"
     link: "/images/media/LIT/Catcher in the Rye/CITR-LIT.png"
 
@@ -32,18 +44,6 @@ featured:
 
   - name: "When Harry Met Sally"
     link: "/images/media/FILM/When Harry Met Sally/WHMS-FILM.png"
-
-  - name: "Friends"
-    link: "/images/media/TV/Friends/FRNDS-TV.png"
-
-  - name: "Gossip Girl"
-    link: "/images/media/TV/Gossip Girl/GSPGRL-TV.png"
-
-  - name: "Sex and the City"
-    link: "/images/media/TV/Sex and the City/SATC-TV.png"
-
-  - name: "Sopranos"
-    link: "/images/media/TV/Sopranos/SPRNOS-TV.png"
 
 
 # Build settings
