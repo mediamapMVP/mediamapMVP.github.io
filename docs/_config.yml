@@ -12,6 +12,7 @@ url: "https://mediamap.nyc"
 images:
   favicon: "/images/favicon.ico"
   profile: "/images/profile.svg"
+  sample: "/images/placeholder.png"
   # seo: "/images/seo.png"
 
 featured:
