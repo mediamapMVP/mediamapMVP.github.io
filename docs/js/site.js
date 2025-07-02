@@ -244,11 +244,9 @@ async function init() {
 
 	popupForm.addEventListener('submit', (e) => {
 		e.preventDefault();
-		const email = document.getElementById('email').value;
-		
+		const email = document.getElementById('loginEmail').value;
 		// Here you would typically handle the email signup logic
 		console.log('Form submitted:', { email });
-		
 		// Clear form and close modal
 		popupForm.reset();
 		bootstrap.Modal.getInstance(popupModal).hide();
@@ -668,4 +666,37 @@ async function init() {
 			showAllPins();
 		}
 	}, true);
+
+	// After map is created and before markers are added
+	const filmImageBar = document.getElementById('film-image-bar');
+	const filmImageBarGradient = document.getElementById('film-image-bar-gradient');
+	const filterBarContainer = document.getElementById('filter-bar-container');
+
+	function hideBottomBar() {
+		if (filmImageBar) filmImageBar.style.display = 'none';
+		if (filmImageBarGradient) filmImageBarGradient.style.display = 'none';
+		if (filterBarContainer) filterBarContainer.style.display = 'none';
+	}
+	function showBottomBar() {
+		if (filmImageBar) filmImageBar.style.display = '';
+		if (filmImageBarGradient) filmImageBarGradient.style.display = '';
+		if (filterBarContainer) filterBarContainer.style.display = '';
+	}
+
+	map.on('zoomstart', hideBottomBar);
+
+	// Show bar when a marker is clicked
+	function addShowBarToMarker(marker) {
+		marker.on('click', showBottomBar);
+	}
+	movies.forEach(s => addShowBarToMarker(s.marker));
+	tv.forEach(s => addShowBarToMarker(s.marker));
+	books.forEach(s => addShowBarToMarker(s.marker));
+
+	// Show bar when an image is clicked
+	if (filmImageBar) {
+		filmImageBar.querySelectorAll('img').forEach(img => {
+			img.addEventListener('click', showBottomBar);
+		});
+	}
 }
