@@ -1,3 +1,6 @@
+---
+---
+
 document.addEventListener('DOMContentLoaded', init, false);
 
 async function init() {
@@ -335,28 +338,29 @@ async function init() {
 	let booksOn = false;
 
 	const changeButtonStyle = (elem, turnOn) => {
+		if (!elem) return;
 		if (turnOn) {
 			elem.style.backgroundColor = "#000000";
 			elem.style.color = "#E7E08B";
+			elem.classList.add('active');
 		}
 		else {
 			elem.style.backgroundColor = "#E7E08B";
 			elem.style.color = "#000000";
+			elem.classList.remove('active');
 		}
 	}
 
 	const showAll = () => {
 		$filterTitle.value = "";
-
 		movies.forEach(s => { map.addLayer(s.marker); });
 		tv.forEach(s => { map.addLayer(s.marker); });
 		books.forEach(s => { map.addLayer(s.marker); });
-
 		changeButtonStyle($showAll, true);
 		changeButtonStyle($filterMovies, false);
 		changeButtonStyle($filterTV, false);
 		changeButtonStyle($filterBooks, false);
-
+		changeButtonStyle($filterFeatured, false);
 		allOn = true;
 		moviesOn = false;
 		tvOn = false;
@@ -367,23 +371,19 @@ async function init() {
 
 	const filterMovies = () => {
 		$filterTitle.value = "";
-
 		if (moviesOn) {
 			movies.forEach(s => { map.removeLayer(s.marker); });
 			changeButtonStyle($filterMovies, false);
 			moviesOn = false;
 		}
 		else {
-
 			movies.forEach(s => { map.addLayer(s.marker); });
-
 			if (allOn) {
 				tv.forEach(s => { map.removeLayer(s.marker); });
 				books.forEach(s => { map.removeLayer(s.marker); });
-
 				changeButtonStyle($showAll, false);
 				changeButtonStyle($filterMovies, true);
-
+				changeButtonStyle($filterFeatured, false);
 				allOn = false;
 				moviesOn = true;
 			}
@@ -391,14 +391,12 @@ async function init() {
 				if (tvOn && booksOn) {
 					tv.forEach(s => { map.addLayer(s.marker); });
 					books.forEach(s => { map.addLayer(s.marker); });
-
 					$showAll.focus();
 					changeButtonStyle($showAll, true);
 					changeButtonStyle($filterMovies, false);
 					changeButtonStyle($filterTV, false);
 					changeButtonStyle($filterBooks, false);
-
-
+					changeButtonStyle($filterFeatured, false);
 					allOn = true;
 					moviesOn = false;
 					tvOn = false;
@@ -407,6 +405,7 @@ async function init() {
 				else {
 					moviesOn = true;
 					changeButtonStyle($filterMovies, true);
+					changeButtonStyle($filterFeatured, false);
 				}
 			}
 		}
@@ -416,7 +415,6 @@ async function init() {
 
 	const filterTV = () => {
 		$filterTitle.value = "";
-
 		if (tvOn) {
 			tv.forEach(s => { map.removeLayer(s.marker); });
 			changeButtonStyle($filterTV, false);
@@ -424,14 +422,12 @@ async function init() {
 		}
 		else {
 			tv.forEach(s => { map.addLayer(s.marker); });
-
 			if (allOn) {
 				movies.forEach(s => { map.removeLayer(s.marker); });
 				books.forEach(s => { map.removeLayer(s.marker); });
-
 				changeButtonStyle($showAll, false);
 				changeButtonStyle($filterTV, true);
-
+				changeButtonStyle($filterFeatured, false);
 				allOn = false;
 				tvOn = true;
 			}
@@ -439,13 +435,12 @@ async function init() {
 				if (moviesOn && booksOn) {
 					movies.forEach(s => { map.addLayer(s.marker); });
 					books.forEach(s => { map.addLayer(s.marker); });
-
 					$showAll.focus();
 					changeButtonStyle($showAll, true);
 					changeButtonStyle($filterMovies, false);
 					changeButtonStyle($filterTV, false);
 					changeButtonStyle($filterBooks, false);
-
+					changeButtonStyle($filterFeatured, false);
 					allOn = true;
 					moviesOn = false;
 					tvOn = false;
@@ -454,6 +449,7 @@ async function init() {
 				else {
 					tvOn = true;
 					changeButtonStyle($filterTV, true);
+					changeButtonStyle($filterFeatured, false);
 				}
 			}
 		}
@@ -463,7 +459,6 @@ async function init() {
 
 	const filterBooks = () => {
 		$filterTitle.value = "";
-
 		if (booksOn) {
 			books.forEach(s => { map.removeLayer(s.marker); });
 			changeButtonStyle($filterBooks, false);
@@ -471,14 +466,12 @@ async function init() {
 		}
 		else {
 			books.forEach(s => { map.addLayer(s.marker); });
-
 			if (allOn) {
 				movies.forEach(s => { map.removeLayer(s.marker); });
 				tv.forEach(s => { map.removeLayer(s.marker); });
-
 				changeButtonStyle($showAll, false);
 				changeButtonStyle($filterBooks, true);
-
+				changeButtonStyle($filterFeatured, false);
 				allOn = false;
 				booksOn = true;
 			}
@@ -486,13 +479,12 @@ async function init() {
 				if (moviesOn && tvOn) {
 					movies.forEach(s => { map.addLayer(s.marker); });
 					tv.forEach(s => { map.addLayer(s.marker); });
-
 					$showAll.focus();
 					changeButtonStyle($showAll, true);
 					changeButtonStyle($filterMovies, false);
 					changeButtonStyle($filterTV, false);
 					changeButtonStyle($filterBooks, false);
-
+					changeButtonStyle($filterFeatured, false);
 					allOn = true;
 					moviesOn = false;
 					tvOn = false;
@@ -501,6 +493,7 @@ async function init() {
 				else {
 					booksOn = true;
 					changeButtonStyle($filterBooks, true);
+					changeButtonStyle($filterFeatured, false);
 				}
 			}
 		}
@@ -537,6 +530,7 @@ async function init() {
 		changeButtonStyle($filterMovies, false);
 		changeButtonStyle($filterTV, false);
 		changeButtonStyle($filterBooks, false);
+		changeButtonStyle($filterFeatured, false);
 		allOn = false;
 		moviesOn = false;
 		tvOn = false;
@@ -547,6 +541,7 @@ async function init() {
 			changeButtonStyle($filterMovies, false);
 			changeButtonStyle($filterTV, false);
 			changeButtonStyle($filterBooks, false);
+			changeButtonStyle($filterFeatured, false);
 
 			allOn = true;
 			moviesOn = false;
@@ -637,20 +632,36 @@ async function init() {
 	const imageBarGradient = document.getElementById('film-image-bar-gradient');
 
 	function showOnlyPinsForName(name) {
-		// Hide all markers
 		movies.forEach(s => map.removeLayer(s.marker));
 		tv.forEach(s => map.removeLayer(s.marker));
 		books.forEach(s => map.removeLayer(s.marker));
-		// Show only those with matching name
 		movies.forEach(s => { if (s.name === name) map.addLayer(s.marker); });
 		tv.forEach(s => { if (s.name === name) map.addLayer(s.marker); });
 		books.forEach(s => { if (s.name === name) map.addLayer(s.marker); });
+		changeButtonStyle($showAll, false);
+		changeButtonStyle($filterMovies, false);
+		changeButtonStyle($filterTV, false);
+		changeButtonStyle($filterBooks, false);
+		changeButtonStyle($filterFeatured, false);
+		allOn = false;
+		moviesOn = false;
+		tvOn = false;
+		booksOn = false;
 	}
 
 	function showAllPins() {
 		movies.forEach(s => map.addLayer(s.marker));
 		tv.forEach(s => map.addLayer(s.marker));
 		books.forEach(s => map.addLayer(s.marker));
+		changeButtonStyle($showAll, true);
+		changeButtonStyle($filterMovies, false);
+		changeButtonStyle($filterTV, false);
+		changeButtonStyle($filterBooks, false);
+		changeButtonStyle($filterFeatured, false);
+		allOn = true;
+		moviesOn = false;
+		tvOn = false;
+		booksOn = false;
 	}
 
 	if (imageBar) {
@@ -672,6 +683,13 @@ async function init() {
 		imageBarGradient.addEventListener('click', showAllPins);
 	}
 	document.body.addEventListener('click', function(e) {
+		// If the click is on a marker or inside a leaflet popup, do nothing
+		if (
+			(e.target.closest('.leaflet-marker-icon')) ||
+			(e.target.closest('.leaflet-popup'))
+		) {
+			return;
+		}
 		if (imageBar && !imageBar.contains(e.target) && imageBarGradient && !imageBarGradient.contains(e.target)) {
 			showAllPins();
 		}
@@ -682,18 +700,34 @@ async function init() {
 	const filmImageBarGradient = document.getElementById('film-image-bar-gradient');
 	const filterBarContainer = document.getElementById('filter-bar-container');
 
+	const ORIGINAL_CENTER = [40.76, -73.98];
+	const ORIGINAL_ZOOM = 12;
+
 	function hideBottomBar() {
-		if (filmImageBar) filmImageBar.style.display = 'none';
-		if (filmImageBarGradient) filmImageBarGradient.style.display = 'none';
-		if (filterBarContainer) filterBarContainer.style.display = 'none';
+		if (filmImageBar) filmImageBar.classList.add('film-image-bar-hidden');
+		if (filmImageBarGradient) filmImageBarGradient.classList.add('film-image-bar-gradient-hidden');
+		if (filterBarContainer) filterBarContainer.classList.add('filter-bar-container-hidden');
 	}
 	function showBottomBar() {
-		if (filmImageBar) filmImageBar.style.display = '';
-		if (filmImageBarGradient) filmImageBarGradient.style.display = '';
-		if (filterBarContainer) filterBarContainer.style.display = '';
+		if (filmImageBar) filmImageBar.classList.remove('film-image-bar-hidden');
+		if (filmImageBarGradient) filmImageBarGradient.classList.remove('film-image-bar-gradient-hidden');
+		if (filterBarContainer) filterBarContainer.classList.remove('filter-bar-container-hidden');
 	}
 
 	map.on('zoomstart', hideBottomBar);
+	map.on('zoomend', function() {
+		const zoom = map.getZoom();
+		// Only show the image bar and gradient if not in Featured mode
+		if ($filterFeatured.classList.contains('active')) {
+			// Do nothing, keep Featured state
+			return;
+		}
+		if (zoom < ORIGINAL_ZOOM) {
+			if (filmImageBar) filmImageBar.classList.remove('film-image-bar-hidden');
+			if (filmImageBarGradient) filmImageBarGradient.classList.remove('film-image-bar-gradient-hidden');
+			if (filterBarContainer) filterBarContainer.classList.remove('filter-bar-container-hidden');
+		}
+	});
 
 	// Show bar when a marker is clicked
 	function addShowBarToMarker(marker) {
@@ -708,5 +742,48 @@ async function init() {
 		filmImageBar.querySelectorAll('img').forEach(img => {
 			img.addEventListener('click', showBottomBar);
 		});
+	}
+
+	// Add a reference for the new Featured button
+	let $filterFeatured = document.querySelector('#filterFeatured');
+
+	// Helper: get all pins with title cards
+	function getFeaturedPins() {
+		if (!window.featuredNames) return [];
+		let featuredPins = [];
+		movies.forEach(s => { if (window.featuredNames.includes(s.name)) featuredPins.push(s); });
+		tv.forEach(s => { if (window.featuredNames.includes(s.name)) featuredPins.push(s); });
+		books.forEach(s => { if (window.featuredNames.includes(s.name)) featuredPins.push(s); });
+		return featuredPins;
+	}
+
+	// Featured filter logic
+	const filterFeatured = () => {
+		$filterTitle.value = "";
+		// Hide all markers
+		movies.forEach(s => { map.removeLayer(s.marker); });
+		tv.forEach(s => { map.removeLayer(s.marker); });
+		books.forEach(s => { map.removeLayer(s.marker); });
+		// Show only featured pins
+		getFeaturedPins().forEach(s => { map.addLayer(s.marker); });
+		// Set button styles
+		changeButtonStyle($showAll, false);
+		changeButtonStyle($filterMovies, false);
+		changeButtonStyle($filterTV, false);
+		changeButtonStyle($filterBooks, false);
+		changeButtonStyle($filterFeatured, true);
+		allOn = false;
+		moviesOn = false;
+		tvOn = false;
+		booksOn = false;
+		// Show the image bar and gradient if hidden
+		if (filmImageBar) filmImageBar.classList.remove('film-image-bar-hidden');
+		if (filmImageBarGradient) filmImageBarGradient.classList.remove('film-image-bar-gradient-hidden');
+		if (filterBarContainer) filterBarContainer.classList.remove('filter-bar-container-hidden');
+	}
+
+	// Add event listener for the Featured button
+	if ($filterFeatured) {
+		$filterFeatured.addEventListener('click', filterFeatured);
 	}
 }

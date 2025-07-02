@@ -9,39 +9,16 @@ layout: default
 <div id="film-image-bar-gradient" class="film-image-bar-gradient"></div>
 <div id="filter-bar-container" class="filter-bar-container">
   <button id="showAll" class="btn toggle-btn overlay-item" style="background-color: #000000; color: #E7E08B !important;" type="button">ALL</button>
+  <button id="filterFeatured" class="btn toggle-btn overlay-item" type="button">FEATURED</button>
   <button id="filterMovies" class="btn toggle-btn overlay-item" type="button">FILM</button>
   <button id="filterTV" class="btn toggle-btn overlay-item" type="button">TV</button>
   <button id="filterBooks" class="btn toggle-btn overlay-item" style="margin-right: 0 !important;" type="button">LITERATURE</button>
 </div>
 <div id="film-image-bar" class="film-image-bar">
-  <img src="/images/media/TV/Sex and The City/SATC-TV.png" alt="Sex and The City (TV)" />
-  <img src="/images/media/TV/Friends/FRNDS-TV.png" alt="Friends (TV)" />
-  <img src="/images/media/LIT/Catcher In The Rye/CITR-LIT.png" alt="Catcher In The Rye" />
-  <img src="/images/media/TV/Gossip Girl/GSPGRL-TV.png" alt="Gossip Girl (TV)" />
-  <img src="/images/media/LIT/A Tree Grows In Brooklyn/ATGIB-LIT.png" alt="A Tree Grows In Brooklyn" />
-  <img src="/images/media/FILM/Spiderman/SPDR1-FILM.png" alt="Spiderman" />
-  <img src="/images/media/FILM/When Harry Met Sally/WHMS-FILM.png" alt="When Harry Met Sally" />
-  <img src="/images/media/FILM/Men In Black/MIB1-FILM.png" alt="Men In Black" />
-  <img src="/images/media/FILM/Wolf of Wall Street/WWS-FILM.jpg" alt="Wolf of Wall Street" />
-  <img src="/images/media/FILM/The Godfather/GDFTHR-FILM.png" alt="The Godfather" />
-  <img src="/images/media/FILM/Taxi Driver/TXDRVR-FILM.png" alt="Taxi Driver" />
-  <!-- <img src="/images/media/FILM/Saturday Night Fever/SNFVR-FILM.png" alt="Saturday Night Fever" />
-  <img src="/images/media/FILM/Goodfellas/GDFLS-FILM.png" alt="Goodfellas" />
-  <img src="/images/media/FILM/Ghostbusters/GSTB1-FILM.png" alt="Ghostbusters" />
-  <img src="/images/media/FILM/Enchanted/ENCHTD-FILM.png" alt="Enchanted" />
-  <img src="/images/media/LIT/The Great Gatsby/TGG-LIT.png" alt="The Great Gatsby" />
-  <img src="/images/media/LIT/The Godfather/GDFTHR-LIT.png" alt="The Godfather (LIT)" />
-  <img src="/images/media/LIT/The Bell Jar/TBJ-LIT.png" alt="The Bell Jar" />
-  <img src="/images/media/LIT/The Age Of Innocence/TAOI-LIT.png" alt="The Age Of Innocence" />
-  <img src="/images/media/LIT/Just Kids/JK-LIT.png" alt="Just Kids" />
-  <img src="/images/media/LIT/Extremely Loud & Incredibly Close/ELIC-LIT.png" alt="Extremely Loud & Incredibly Close" />
-  <img src="/images/media/LIT/Breakfast At Tiffany_s/BAT-LIT.png" alt="Breakfast At Tiffany's (LIT)" />
-  <img src="/images/media/LIT/American Psycho/AMPSYC-LIT.png" alt="American Psycho (LIT)" />
-  <img src="/images/media/TV/How I Met Your Mother/HIMYM-TV.png" alt="How I Met Your Mother" />
-  <img src="/images/media/TV/Broad City/BRDCTY-TV.png" alt="Broad City" />
-  <img src="/images/media/TV/Suits/SUITS-TV.png" alt="Suits (TV)" />
-  <img src="/images/media/TV/Sopranos/SPRNOS-TV.png" alt="Sopranos (TV)" />
-  <img src="/images/media/TV/Seinfeld/SNFLD-TV.png" alt="Seinfeld (TV)" />
-  <img src="/images/media/TV/Mad Men/MADMEN-TV.png" alt="Mad Men (TV)" />
-  <img src="/images/media/TV/Girls/GRLS-TV.png" alt="Girls (TV)" /> -->
+  {% for item in site.featured %}
+    <img src="{{ item.link }}" alt="{{ item.name }}" />
+  {% endfor %}
 </div>
+<script>
+  window.featuredNames = [{% for item in site.featured %}{{ item.name | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}];
+</script>
