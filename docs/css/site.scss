@@ -185,6 +185,12 @@ p {
   }
 }
 
+.profile-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .profile-icon {
   display: inline-block;
   width: 1.4rem;
@@ -195,6 +201,7 @@ p {
   background-position: center;
   background-size: 100%;
   transition: filter .15s ease-in-out;
+  margin: auto;
 }
 
 .profile-log-in {
