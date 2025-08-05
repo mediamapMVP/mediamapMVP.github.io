@@ -136,8 +136,8 @@ async function init() {
 	}).addTo(map);
 
 	let customPopupOptions = {
-    	'minWidth': '500',
-		'maxWidth': '500',
+    	'minWidth': '460',
+		'maxWidth': '460',
 		'className': 'popupCustom'
 	};
 
@@ -148,24 +148,31 @@ async function init() {
   imageFiles.push("{{ image.path }}");
   // {% endfor %}
 
+	let sampleImg = "{{ site.images.sample }}";
+
 
 	movies.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
-    let customPopupContent = '<div class="row align-items-stretch" style="min-height: 90px;">';
+    let customPopupContent = '<div class="row align-items-stretch" style="min-height: 120px;">';
 
-    let imgName = s.id.split("-F")[0] + "-F.png";
+    let imgName = s.id.split("-F")[0] + "-FILM.png";
     let imgUrl = `/images/media/FILM/${s.name}/${imgName}`;
 
     if (imageFiles.includes(imgUrl)) {
-      customPopupContent += `<div class="col-5"><img src="${imgUrl}" title="${s.name}" alt="${s.name}" width=100%></div>`;
+      customPopupContent += `<div class="col-5 d-flex justify-content-center"><img src="${imgUrl}" title="${s.name}" alt="${s.name}" width=100% style="object-fit: contain;"></div>`;
     }
+		else
+		{
+			console.log(imgUrl);
+      customPopupContent += `<div class="col-5 d-flex justify-content-center"><img src="${sampleImg}" title="${s.name}" alt="${s.name}" width=100% style="object-fit: contain;"></div>`;
+		}
 
 		if (s.filming_location) {
-			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} (${s.year}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.filming_location}, ${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col-7 py-1" style="position: relative;"><h2>${s.name} (${s.year})</h2><p><i>${s.fictional_location}</i></p><p>${s.filming_location}, ${s.location_address}</p></div>`;
 		}
 		else {
-			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} (${s.year}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col-7 py-1" style="position: relative;"><h2>${s.name} (${s.year})</h2><p><i>${s.fictional_location}</i></p><p>${s.location_address}</p></div>`;
 		}
 
     customPopupContent += "</div>";
@@ -176,21 +183,26 @@ async function init() {
 	tv.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
-    let customPopupContent = '<div class="row align-items-stretch" style="min-height: 90px;">';
+    let customPopupContent = '<div class="row align-items-stretch" style="min-height: 120px;">';
 
     let imgName = s.id.split("-TV")[0] + "-TV.png";
     let imgUrl = `/images/media/TV/${s.name}/${imgName}`;
 
     if (imageFiles.includes(imgUrl)) {
-      customPopupContent += `<div class="col-5"><img src="${imgUrl}" title="${s.name}" alt="${s.name}" width=100%></div>`;
+      customPopupContent += `<div class="col-5 d-flex justify-content-center"><img src="${imgUrl}" title="${s.name}" alt="${s.name}" width=100% style="object-fit: contain;"></div>`;
     }
+		else
+		{
+			console.log(imgUrl);
+      customPopupContent += `<div class="col-5 d-flex justify-content-center"><img src="${sampleImg}" title="${s.name}" alt="${s.name}" width=100% style="object-fit: contain;"></div>`;
+		}
 
 		if (s.filming_location) {
-			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} (S${s.season} E${s.episode}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.filming_location}, ${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col-7 py-1" style="position: relative;"><h2>${s.name} (S${s.season} E${s.episode})</h2><p><i>${s.fictional_location}</i></p><p>${s.filming_location}, ${s.location_address}</p></div>`;
 
 		}
 		else {
-			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} (S${s.season} E${s.episode}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col-7 py-1" style="position: relative;"><h2>${s.name} (S${s.season} E${s.episode})</h2><p><i>${s.fictional_location}</i></p><p>${s.location_address}</p></div>`;
 		};
     customPopupContent += "</div>";
     s.marker.bindPopup(customPopupContent, customPopupOptions);
@@ -200,20 +212,25 @@ async function init() {
 	books.forEach(s => {
 		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
 
-    let customPopupContent = '<div class="row align-items-stretch" style="min-height: 90px;">';
+    let customPopupContent = '<div class="row align-items-stretch" style="min-height: 120px;">';
 
     let imgName = s.id.split("-LIT")[0] + "-LIT.png";
     let imgUrl = `/images/media/LIT/${s.name}/${imgName}`;
 
     if (imageFiles.includes(imgUrl)) {
-      customPopupContent += `<div class="col-5"><img src="${imgUrl}" title="${s.name}" alt="${s.name}" width=100%></div>`;
+      customPopupContent += `<div class="col-5 d-flex justify-content-center"><img src="${imgUrl}" title="${s.name}" alt="${s.name}" width=100% style="object-fit: contain;"></div>`;
     }
+		else
+		{
+			console.log(imgUrl);
+      customPopupContent += `<div class="col-5 d-flex justify-content-center"><img src="${sampleImg}" title="${s.name}" alt="${s.name}" width=100% style="object-fit: contain;"></div>`;
+		}
 
 		if (s.filming_location) {
-			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} by ${s.author} (${s.year}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.filming_location}, ${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col-7 py-1" style="position: relative;"><h2>${s.name} by ${s.author} (${s.year})</h2><p><i>${s.fictional_location}</i></p><p>${s.filming_location}, ${s.location_address}</p></div>`;
 		}
 		else {
-			customPopupContent += `<div class="col" style="position: relative;"><h2>${s.name} by ${s.author} (${s.year}), <i>${s.fictional_location}</i></h2><p style="position: absolute; bottom: 0;">${s.location_address}</p></div>`;
+			customPopupContent += `<div class="col-7 py-1" style="position: relative;"><h2>${s.name} by ${s.author} (${s.year})</h2><p><i>${s.fictional_location}</i></p><p>${s.location_address}</p></div>`;
 		};
     
     customPopupContent += "</div>";
