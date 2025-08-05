@@ -257,9 +257,15 @@ async function init() {
 	// Show/hide gradient backdrop with modal
 	popupModal.addEventListener('show.bs.modal', () => {
 		popupBackdrop.style.display = 'block';
+		setTimeout(function () {
+			popupBackdrop.style.opacity = '1';
+		}, 100); 
 	});
 	popupModal.addEventListener('hidden.bs.modal', () => {
-		popupBackdrop.style.display = 'none';
+		popupBackdrop.style.opacity = '0';
+		setTimeout(function () {
+			popupBackdrop.style.display = 'none';
+		}, 1000); 
 	});
 		
 	// Change aria visibility
@@ -739,7 +745,7 @@ async function init() {
 			// Do nothing, keep Featured state
 			return;
 		}
-		if (zoom < ORIGINAL_ZOOM) {
+		if (zoom <= ORIGINAL_ZOOM) {
 			if (filmImageBar) filmImageBar.classList.remove('film-image-bar-hidden');
 			if (filmImageBarGradient) filmImageBarGradient.classList.remove('film-image-bar-gradient-hidden');
 			if (filterBarContainer) filterBarContainer.classList.remove('filter-bar-container-hidden');
