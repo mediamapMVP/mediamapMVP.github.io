@@ -637,11 +637,6 @@ input[type="search"]::-webkit-search-cancel-button {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 
-  
-  &:hover {
-    display: block !important;
-  }
-
   @media (max-width: $mobile_width) {
     position: relative;
     left: -1.3rem;

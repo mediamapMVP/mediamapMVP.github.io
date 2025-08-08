@@ -1,6 +1,10 @@
 ---
 ---
 
+//todo
+//go through logic
+//add comments
+//replace let w const where appropriate
 document.addEventListener('DOMContentLoaded', init, false);
 
 async function init() {
@@ -257,13 +261,13 @@ async function init() {
 	// Show/hide gradient backdrop with modal
 	popupModal.addEventListener('show.bs.modal', () => {
 		popupBackdrop.style.display = 'block';
-		setTimeout(function () {
+		setTimeout(() => {
 			popupBackdrop.style.opacity = '1';
 		}, 100); 
 	});
 	popupModal.addEventListener('hidden.bs.modal', () => {
 		popupBackdrop.style.opacity = '0';
-		setTimeout(function () {
+		setTimeout(() => {
 			popupBackdrop.style.display = 'none';
 		}, 1000); 
 	});
@@ -299,6 +303,8 @@ async function init() {
 	let $filterMovies = document.querySelector('#filterMovies');
 	let $filterTV = document.querySelector('#filterTV');
 	let $filterBooks = document.querySelector('#filterBooks');
+	let $filterFeatured = document.querySelector('#filterFeatured');
+
 	let $filterTitle = document.querySelector('#filterTitle');
 	let $suggestionsBox = document.querySelector("#suggestions");
 
@@ -307,21 +313,24 @@ async function init() {
 	let $followBtn = document.querySelector('#followBtn');
 
 	// Create listeners for saving search data and focusing/bluring when using add btn
-	let filterTitleValue = "";
-
 	function savefilterTitle() {
+		$filterTitle.style = '';
+		$suggestionsBox.style = "display: none;";
 		if ($filterTitle.value != "") {
-			filterTitleValue = $filterTitle.value;
-			$filterTitle.value = "";
+			$filterTitle.blur();
+			$filterTitle.style.width = "0px";
+			filterTitle(false);
 		}
 	}
 
 	$addBtn.addEventListener("mouseover", function () {
-		savefilterTitle()
+		savefilterTitle();
 		$addBtn.focus();
 	});
 
-	$followBtn.addEventListener("mouseover", savefilterTitle());
+	$followBtn.addEventListener("mouseover", function () {
+		savefilterTitle();
+	});
 
 	let $titleField = document.querySelector('#title');
 	let $descField = document.querySelector('#description');
@@ -335,10 +344,9 @@ async function init() {
 		$descField.blur();
 		$emailField.blur();
 
-		if (filterTitleValue != "") {
-			$filterTitle.value = filterTitleValue;
-			filterTitleValue = "";
-		}
+		$filterTitle.style = "";
+		filterTitle();
+
 	});
 
 	let $addForm = document.querySelector('#addForm');
@@ -347,7 +355,7 @@ async function init() {
 	});
 
 	// Listener for add form sizing
-	$descField.addEventListener('input', function() {
+	$descField.addEventListener('input', function () {
 	if (this.scrollHeight < 6 * parseFloat(getComputedStyle(document.documentElement).fontSize)) {
 		this.style.height = 'auto';
 		this.style.height = `${this.scrollHeight}px`;
@@ -359,6 +367,7 @@ async function init() {
 	let moviesOn = false;
 	let tvOn = false;
 	let booksOn = false;
+	let featuredOn = false;
 
 	const changeButtonStyle = (elem, turnOn) => {
 		if (!elem) return;
@@ -375,7 +384,6 @@ async function init() {
 	}
 
 	const showAll = () => {
-		$filterTitle.value = "";
 		movies.forEach(s => { map.addLayer(s.marker); });
 		tv.forEach(s => { map.addLayer(s.marker); });
 		books.forEach(s => { map.addLayer(s.marker); });
@@ -388,6 +396,7 @@ async function init() {
 		moviesOn = false;
 		tvOn = false;
 		booksOn = false;
+		featuredOn = false;
 	};
 
 	$showAll.addEventListener('click', showAll);
@@ -406,7 +415,6 @@ async function init() {
 				books.forEach(s => { map.removeLayer(s.marker); });
 				changeButtonStyle($showAll, false);
 				changeButtonStyle($filterMovies, true);
-				changeButtonStyle($filterFeatured, false);
 				allOn = false;
 				moviesOn = true;
 			}
@@ -419,16 +427,18 @@ async function init() {
 					changeButtonStyle($filterMovies, false);
 					changeButtonStyle($filterTV, false);
 					changeButtonStyle($filterBooks, false);
-					changeButtonStyle($filterFeatured, false);
 					allOn = true;
 					moviesOn = false;
 					tvOn = false;
 					booksOn = false;
 				}
 				else {
-					moviesOn = true;
 					changeButtonStyle($filterMovies, true);
-					changeButtonStyle($filterFeatured, false);
+					moviesOn = true;
+					if (featuredOn) {
+						changeButtonStyle($filterFeatured, false);
+						featuredOn = false;
+					}
 				}
 			}
 		}
@@ -450,7 +460,6 @@ async function init() {
 				books.forEach(s => { map.removeLayer(s.marker); });
 				changeButtonStyle($showAll, false);
 				changeButtonStyle($filterTV, true);
-				changeButtonStyle($filterFeatured, false);
 				allOn = false;
 				tvOn = true;
 			}
@@ -463,16 +472,18 @@ async function init() {
 					changeButtonStyle($filterMovies, false);
 					changeButtonStyle($filterTV, false);
 					changeButtonStyle($filterBooks, false);
-					changeButtonStyle($filterFeatured, false);
 					allOn = true;
 					moviesOn = false;
 					tvOn = false;
 					booksOn = false;
 				}
 				else {
-					tvOn = true;
 					changeButtonStyle($filterTV, true);
-					changeButtonStyle($filterFeatured, false);
+					tvOn = true;
+					if (featuredOn) {
+						changeButtonStyle($filterFeatured, false);
+						featuredOn = false;
+					}
 				}
 			}
 		}
@@ -494,7 +505,6 @@ async function init() {
 				tv.forEach(s => { map.removeLayer(s.marker); });
 				changeButtonStyle($showAll, false);
 				changeButtonStyle($filterBooks, true);
-				changeButtonStyle($filterFeatured, false);
 				allOn = false;
 				booksOn = true;
 			}
@@ -507,16 +517,18 @@ async function init() {
 					changeButtonStyle($filterMovies, false);
 					changeButtonStyle($filterTV, false);
 					changeButtonStyle($filterBooks, false);
-					changeButtonStyle($filterFeatured, false);
 					allOn = true;
 					moviesOn = false;
 					tvOn = false;
 					booksOn = false;
 				}
 				else {
-					booksOn = true;
 					changeButtonStyle($filterBooks, true);
-					changeButtonStyle($filterFeatured, false);
+					booksOn = true;
+					if (featuredOn) {
+						changeButtonStyle($filterFeatured, false);
+						featuredOn = false;
+					}
 				}
 			}
 		}
@@ -524,66 +536,52 @@ async function init() {
 
 	$filterBooks.addEventListener('click', filterBooks);
 
-	const filterTitle = () => {
+	const filterTitle = (filter = true) => {
 
 		let term = $filterTitle.value.toLowerCase().trim();
 
-		movies.forEach(s => {
-			if (
-				(term !== '' && s.name.toLowerCase().indexOf(term) === -1)
-			) map.removeLayer(s.marker);
-			else if (!map.hasLayer(s.marker)) map.addLayer(s.marker);
-		});
+		if (term === '' || !filter) {
+			showAll();
+		}
+		else {
+			movies.forEach(s => {
+				if (!s.name.toLowerCase().startsWith(term))
+					map.removeLayer(s.marker);
+				else if (!map.hasLayer(s.marker)) 
+					map.addLayer(s.marker);
+			});
 
-		tv.forEach(s => {
-			if (
-				(term !== '' && s.name.toLowerCase().indexOf(term) === -1)
-			) map.removeLayer(s.marker);
-			else if (!map.hasLayer(s.marker)) map.addLayer(s.marker);
-		});
+			tv.forEach(s => {
+				if (!s.name.toLowerCase().startsWith(term))
+					map.removeLayer(s.marker);
+				else if (!map.hasLayer(s.marker))
+					map.addLayer(s.marker);
+			});
 
-		books.forEach(s => {
-			if (
-				(term !== '' && s.name.toLowerCase().indexOf(term) === -1)
-			) map.removeLayer(s.marker);
-			else if (!map.hasLayer(s.marker)) map.addLayer(s.marker);
-		});
+			books.forEach(s => {
+				if (!s.name.toLowerCase().startsWith(term))
+					map.removeLayer(s.marker);
+				else if (!map.hasLayer(s.marker))
+					map.addLayer(s.marker);
+			});
 
-		changeButtonStyle($showAll, false);
-		changeButtonStyle($filterMovies, false);
-		changeButtonStyle($filterTV, false);
-		changeButtonStyle($filterBooks, false);
-		changeButtonStyle($filterFeatured, false);
-		allOn = false;
-		moviesOn = false;
-		tvOn = false;
-		booksOn = false;
-
-		if (term === '') {
-			changeButtonStyle($showAll, true);
+			changeButtonStyle($showAll, false);
 			changeButtonStyle($filterMovies, false);
 			changeButtonStyle($filterTV, false);
 			changeButtonStyle($filterBooks, false);
 			changeButtonStyle($filterFeatured, false);
-
-			allOn = true;
+			allOn = false;
 			moviesOn = false;
 			tvOn = false;
 			booksOn = false;
+			featuredOn = false;
 		}
-
 	};
 
 	$filterTitle.addEventListener('input', filterTitle);
 
-
-	// TODO
-	// Add suggestions to search
-	let mediaNamesSet = new Set();
-	movies.forEach(m => mediaNamesSet.add(m.name));
-	tv.forEach(t => mediaNamesSet.add(t.name));
-	books.forEach(b => mediaNamesSet.add(b.name));
-	let mediaNames = Array.from(mediaNamesSet);
+	const mediaNamesSet = new Set([...movies, ...tv, ...books].map(item => item.name));
+	const mediaNames = Array.from(mediaNamesSet).sort((a, b) => a.localeCompare(b));
 
 	function showSuggestions(list) {
 		let listData;
@@ -604,10 +602,18 @@ async function init() {
 		filterTitle();
 	}
 
+	$suggestionsBox.addEventListener('click', (event) => {
+		if (event.target.tagName === 'LI') {
+			useSuggestion(event.target);
+		}
+	});
+
 	$filterTitle.onkeyup = (e) => {
 		let userData = e.target.value;
 		let suggestions = [];
 		if (userData) {
+			$suggestionsBox.style = "display: block;";
+
 			suggestions = mediaNames.filter((data) => {
 				return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
 			});
@@ -619,11 +625,6 @@ async function init() {
 				return data = '<li>' + data + '</li>';
 			});
 			showSuggestions(suggestions);
-			let suggestionsElems = $suggestionsBox.querySelectorAll("li");
-			for (let i = 0; i < suggestionsElems.length; i++) {
-				suggestionsElems[i].addEventListener("click", function () { useSuggestion(suggestionsElems[i]) });
-			}
-
 			$filterTitle.style = "border-bottom-left-radius: 0; border-bottom-right-radius: 0;"
 		}
 		else {
@@ -639,8 +640,11 @@ async function init() {
 	});
 
 	$filterTitle.addEventListener('focusout', function () {
-		$suggestionsBox.style = "display: none;";
 		$filterTitle.style = '';
+		// Delay hiding suggestions box to allow click event to register
+		setTimeout(() => {
+			$suggestionsBox.style = "display: none;";
+		}, 100);
 	});
 
 	$filterTitle.addEventListener('input', function (event) {
@@ -651,6 +655,7 @@ async function init() {
 		}
 	});
 
+	//todo fix this
 	const imageBar = document.getElementById('film-image-bar');
 	const imageBarGradient = document.getElementById('film-image-bar-gradient');
 
@@ -670,6 +675,8 @@ async function init() {
 		moviesOn = false;
 		tvOn = false;
 		booksOn = false;
+	 featuredOn = false;
+
 	}
 
 	function showAllPins() {
@@ -685,6 +692,7 @@ async function init() {
 		moviesOn = false;
 		tvOn = false;
 		booksOn = false;
+	 featuredOn = false;
 	}
 
 	if (imageBar) {
@@ -723,7 +731,7 @@ async function init() {
 	const filmImageBarGradient = document.getElementById('film-image-bar-gradient');
 	const filterBarContainer = document.getElementById('filter-bar-container');
 
-	const ORIGINAL_CENTER = [40.76, -73.98];
+	// const ORIGINAL_CENTER = [40.76, -73.98];
 	const ORIGINAL_ZOOM = 12;
 
 	function hideBottomBar() {
@@ -767,9 +775,6 @@ async function init() {
 		});
 	}
 
-	// Add a reference for the new Featured button
-	let $filterFeatured = document.querySelector('#filterFeatured');
-
 	// Helper: get all pins with title cards
 	function getFeaturedPins() {
 		if (!window.featuredNames) return [];
@@ -799,6 +804,7 @@ async function init() {
 		moviesOn = false;
 		tvOn = false;
 		booksOn = false;
+	 featuredOn = true;
 		// Show the image bar and gradient if hidden
 		if (filmImageBar) filmImageBar.classList.remove('film-image-bar-hidden');
 		if (filmImageBarGradient) filmImageBarGradient.classList.remove('film-image-bar-gradient-hidden');
