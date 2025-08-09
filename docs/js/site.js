@@ -124,10 +124,16 @@ async function init() {
 	});
 
 	let blackIcon = new ColorIcon({ iconUrl: '/images/map-marker.svg' });
+	let featuredIcon = new ColorIcon({ iconUrl: '/images/featured-map-marker.svg' });
 
 	let movies = await getMovies();
 	let tv = await getTV();
 	let books = await getBooks();
+
+	const featuredNames = new Set();
+	// {% for item in site.featured %}
+	featuredNames.add("{{ item.name }}");
+	// {% endfor %}
 
 
 	// Create and fill map
@@ -156,7 +162,12 @@ async function init() {
 
 
 	movies.forEach(s => {
-		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
+		if (featuredNames.has(s.name)) {
+			s.marker = L.marker([s.location.lat, s.location.lng], { icon: featuredIcon }).addTo(map);
+		}
+		else {
+			s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
+		}
 
     let customPopupContent = '<div class="row align-items-stretch" style="min-height: 120px;">';
 
@@ -185,7 +196,12 @@ async function init() {
 
 
 	tv.forEach(s => {
-		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
+		if (featuredNames.has(s.name)) {
+			s.marker = L.marker([s.location.lat, s.location.lng], { icon: featuredIcon }).addTo(map);
+		}
+		else {
+			s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
+		}
 
     let customPopupContent = '<div class="row align-items-stretch" style="min-height: 120px;">';
 
@@ -214,7 +230,12 @@ async function init() {
 
 
 	books.forEach(s => {
-		s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
+		if (featuredNames.has(s.name)) {
+			s.marker = L.marker([s.location.lat, s.location.lng], { icon: featuredIcon }).addTo(map);
+		}
+		else {
+			s.marker = L.marker([s.location.lat, s.location.lng], { icon: blackIcon }).addTo(map);
+		}
 
     let customPopupContent = '<div class="row align-items-stretch" style="min-height: 120px;">';
 
@@ -249,54 +270,54 @@ async function init() {
 
 	// todo Hide until properly implemented
 	// Popup Modal Functionality
-	const popupModal = document.getElementById('popupModal');
-	const popupForm = document.querySelector('#popupModal form');
-	const popupBackdrop = document.getElementById('popupBackdrop');
+	// const popupModal = document.getElementById('popupModal');
+	// const popupForm = document.querySelector('#popupModal form');
+	// const popupBackdrop = document.getElementById('popupBackdrop');
 
-	// Show popup modal after 10 seconds
-	setTimeout(() => {
-		const modal = bootstrap.Modal.getOrCreateInstance(popupModal);
-		modal.show();
-	}, 10000);
+	// // Show popup modal after 10 seconds
+	// setTimeout(() => {
+	// 	const modal = bootstrap.Modal.getOrCreateInstance(popupModal);
+	// 	modal.show();
+	// }, 10000);
 
-	// Show/hide gradient backdrop with modal
-	popupModal.addEventListener('show.bs.modal', () => {
-		popupBackdrop.style.display = 'block';
-		setTimeout(() => {
-			popupBackdrop.style.opacity = '1';
-		}, 100); 
-	});
-	popupModal.addEventListener('hidden.bs.modal', () => {
-		popupBackdrop.style.opacity = '0';
-		setTimeout(() => {
-			popupBackdrop.style.display = 'none';
-		}, 1000); 
-	});
+	// // Show/hide gradient backdrop with modal
+	// popupModal.addEventListener('show.bs.modal', () => {
+	// 	popupBackdrop.style.display = 'block';
+	// 	setTimeout(() => {
+	// 		popupBackdrop.style.opacity = '1';
+	// 	}, 100); 
+	// });
+	// popupModal.addEventListener('hidden.bs.modal', () => {
+	// 	popupBackdrop.style.opacity = '0';
+	// 	setTimeout(() => {
+	// 		popupBackdrop.style.display = 'none';
+	// 	}, 1000); 
+	// });
 		
-	// Change aria visibility
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				popupModal.setAttribute('aria-hidden', 'false');
-			} else {
-				popupModal.setAttribute('aria-hidden', 'true');
-			}
-		});
-	}, {
-		threshold: 0.1
-	});
+	// // Change aria visibility
+	// const observer = new IntersectionObserver((entries) => {
+	// 	entries.forEach(entry => {
+	// 		if (entry.isIntersecting) {
+	// 			popupModal.setAttribute('aria-hidden', 'false');
+	// 		} else {
+	// 			popupModal.setAttribute('aria-hidden', 'true');
+	// 		}
+	// 	});
+	// }, {
+	// 	threshold: 0.1
+	// });
 
-	observer.observe(popupModal);
+	// observer.observe(popupModal);
 
-	popupForm.addEventListener('submit', (e) => {
-		e.preventDefault();
-		const email = document.getElementById('loginEmail').value;
-		// Here you would typically handle the email signup logic
-		console.log('Form submitted:', { email });
-		// Clear form and close modal
-		popupForm.reset();
-		bootstrap.Modal.getInstance(popupModal).hide();
-	});
+	// popupForm.addEventListener('submit', (e) => {
+	// 	e.preventDefault();
+	// 	const email = document.getElementById('loginEmail').value;
+	// 	// Here you would typically handle the email signup logic
+	// 	console.log('Form submitted:', { email });
+	// 	// Clear form and close modal
+	// 	popupForm.reset();
+	// 	bootstrap.Modal.getInstance(popupModal).hide();
+	// });
 
 
 	// Create event listeners for filtering/element states
@@ -675,15 +696,10 @@ async function init() {
 
 	$filterBooks.addEventListener('click', filterBooks);
 
-	const featuredNames = [];
-	// {% for item in site.featured %}
-	featuredNames.push("{{ item.name }}");
-	// {% endfor %}
-
 	const featuredPins = [];
-	featuredPins.push(...movies.filter(s => featuredNames.includes(s.name)));
-	featuredPins.push(...tv.filter(s => featuredNames.includes(s.name)));
-	featuredPins.push(...books.filter(s => featuredNames.includes(s.name)));
+	featuredPins.push(...movies.filter(s => featuredNames.has(s.name)));
+	featuredPins.push(...tv.filter(s => featuredNames.has(s.name)));
+	featuredPins.push(...books.filter(s => featuredNames.has(s.name)));
 
 
 	const filterFeatured = () => {
