@@ -6,7 +6,7 @@ layout: default
 
 <div id="map"></div>
 
-<div id="film-image-bar-gradient" class="film-image-bar-gradient"></div>
+<div id="featured-bar-gradient" class="featured-bar-gradient"></div>
 <div id="filter-bar-container" class="filter-bar-container">
   <button id="showAll" class="btn toggle-btn overlay-item" style="background-color: #000000; color: #E7E08B !important;" type="button">ALL</button>
   <button id="filterFeatured" class="btn toggle-btn overlay-item" type="button">FEATURED</button>
@@ -14,11 +14,8 @@ layout: default
   <button id="filterTV" class="btn toggle-btn overlay-item" type="button">TV</button>
   <button id="filterBooks" class="btn toggle-btn overlay-item" style="margin-right: 0 !important;" type="button">LITERATURE</button>
 </div>
-<div id="film-image-bar" class="film-image-bar">
+<div id="featured-bar" class="featured-bar">
   {% for item in site.featured %}
-    <img src="{{ item.link }}" alt="{{ item.name }}" />
+    <img id="{{ item.name }}" src="{{ item.link }}" alt="{{ item.name }}" />
   {% endfor %}
 </div>
-<script>
-  window.featuredNames = [{% for item in site.featured %}{{ item.name | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}];
-</script>
