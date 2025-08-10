@@ -5,7 +5,7 @@
 //go through logic
 //add comments
 //replace let w const where appropriate
-document.addEventListener('DOMContentLoaded', init, false);
+document.addEventListener('DOMContentLoaded', init);
 
 async function init() {
 
@@ -261,12 +261,6 @@ async function init() {
     customPopupContent += "</div>";
     s.marker.bindPopup(customPopupContent, customPopupOptions);
 	});
-
-
-	// Shorten "LITERATURE" to "BOOKS" for mobile
-	if (window.innerWidth < 450) {
-		$filterBooks.innerHTML = "BOOKS";
-	}
 
 	// todo Hide until properly implemented
 	// Popup Modal Functionality
@@ -839,12 +833,9 @@ async function init() {
 		setTimeout(() => {
 			if (map.getZoom() > ORIGINAL_ZOOM)
 				hideBottomBar();
+			else
+				showBottomBar();
 		}, 20);
-	});
-
-	map.on('zoomend', () => {
-		if (map.getZoom() <= ORIGINAL_ZOOM)
-			showBottomBar();
 	});
 
 	// Show bar when a marker is clicked
