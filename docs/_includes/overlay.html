@@ -74,13 +74,12 @@
 
 	<div class="bottom-bar">
 		<div id="filter-bar-container" class="filter-bar-container">
-			<button id="showAll" class="btn toggle-btn overlay-item"
-				style="background-color: #000000; color: #E7E08B !important;" type="button">ALL</button>
-			<button id="filterFeatured" class="btn toggle-btn overlay-item" type="button">FEATURED</button>
+			<button id="filterFeatured" class="btn toggle-btn overlay-item" 
+				style="background-color: #000000; color: #E7E08B !important;" type="button">FEATURED</button>
+			<button id="showAll" class="btn toggle-btn overlay-item" type="button">ALL</button>
 			<button id="filterMovies" class="btn toggle-btn overlay-item" type="button">FILM</button>
 			<button id="filterTV" class="btn toggle-btn overlay-item" type="button">TV</button>
-			<button id="filterBooks" class="btn toggle-btn overlay-item" style="margin-right: 0 !important;"
-				type="button">LITERATURE</button>
+			<button id="filterBooks" class="btn toggle-btn overlay-item" type="button">LITERATURE</button>
 		</div>
 		<div id="featured-bar" class="featured-bar">
 			{% for item in site.featured %}
@@ -94,11 +93,11 @@
 
 <!-- Popup/Signup Modal -->
 <div id="popupBackdrop" class="popup-backdrop" style="display: none;"></div>
-<div class="modal fade popup-modal-z" id="popupModal" data-bs-backdrop="false" tabindex="-1" aria-labelledby="popupModalLabel">
+<div class="modal fade popup-modal-z" id="popupModal" data-bs-backdrop="false" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
 
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			<button id="popupClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			<div class="modal-body text-center">
 				<h1 class="modal-title mb-3">MORE MEDIA MAP<br>COMING SOON!</h1>
 				<p class="mb-2">Be the first to know about new map additions,<br>personalized content, and more.</p>
