@@ -1,6 +1,5 @@
 // Module for filtering with search bar, button, and featured images
 
-// TODO Finish refactoring
 
 const CREATE_MAP_MODULE = await import("./create-map.js");
 
@@ -17,6 +16,7 @@ const BOTTOM_BAR_MODULE = await import("./bottom-bar.js");
 // Get map
 const MAP = CREATE_MAP_MODULE.getOrCreateMap();
 
+// Create variables
 const MOVIES = await PIN_DATA_MODULE.getOrAddMovies();
 const TV = await PIN_DATA_MODULE.getOrAddTV();
 const BOOKS = await PIN_DATA_MODULE.getOrAddBooks();
@@ -27,46 +27,45 @@ const FILTER_MOVIES_BTN = document.getElementById("filterMovies");
 const FILTER_TV_BTN = document.getElementById("filterTV");
 const FILTER_BOOKS_BTN = document.getElementById("filterBooks");
 
-const SEARCH_BAR = document.getElementById("filterTitle");
-const SUGGESTIONS_BOX = document.getElementById("suggestions");
-
-const FEATURED_BAR = document.getElementById("featured-bar");
-
-// Add functionality to map filter buttons
-function changeButtonStyle(elem, turnOn) {
-  if (turnOn) {
-    elem.style.backgroundColor = "#000000";
-    elem.style.color = "#E7E08B";
-    elem.classList.add('active');
-  }
-  else {
-    elem.style.backgroundColor = "#E7E08B";
-    elem.style.color = "#000000";
-    elem.classList.remove('active');
-  }
-}
-
+// Create booleans for filter button status
 let allOn = false;
 let moviesOn = false;
 let tvOn = false;
 let booksOn = false;
 let featuredOn = false;
 
+const FEATURED_BAR = document.getElementById("featured-bar");
 const FEATURED_PINS = [];
 FEATURED_PINS.push(...MOVIES.filter(pin => FEATURED_NAMES.has(pin.name)));
 FEATURED_PINS.push(...TV.filter(pin => FEATURED_NAMES.has(pin.name)));
 FEATURED_PINS.push(...BOOKS.filter(pin => FEATURED_NAMES.has(pin.name)));
 
-function filterFeatured() {
-  if (featuredOn) {
-    MOVIES.forEach(pin => { MAP.removeLayer(pin.marker); });
-    TV.forEach(pin => { MAP.removeLayer(pin.marker); });
-    BOOKS.forEach(pin => { MAP.removeLayer(pin.marker); });
+const SEARCH_BAR = document.getElementById("filterTitle");
+const SUGGESTIONS_BOX = document.getElementById("suggestions");
 
-    changeButtonStyle(FILTER_FEATURED_BTN, false);
-    featuredOn = false;
+const MOVIE_NAMES_SET = new Set(MOVIES.map(item => item.name));
+const TV_NAMES_SET = new Set(TV.map(item => item.name));
+const BOOK_NAMES_SET = new Set(BOOKS.map(item => item.name));
+const MEDIA_NAMES = [...MOVIE_NAMES_SET, ...TV_NAMES_SET, ...BOOK_NAMES_SET].sort((a, b) => a.localeCompare(b));
+
+
+// Toggle style with state of filter buttons
+function changeButtonStyle(elem, turnOn) {
+  if (turnOn) {
+    elem.style.backgroundColor = "#000000";
+    elem.style.color = "#E7E08B";
+    elem.classList.add("active");
   }
   else {
+    elem.style.backgroundColor = "#E7E08B";
+    elem.style.color = "#000000";
+    elem.classList.remove("active");
+  }
+}
+
+
+function filterFeatured() {
+  if (!featuredOn) {
     saveSearchBarText();
 
     MOVIES.forEach(pin => {
@@ -127,72 +126,6 @@ function showAll() {
   }
 };
 
-
-function filterTitle() {
-  let term = SEARCH_BAR.value.toLowerCase().trim();
-
-  if (term === '')
-    showAll();
-  else {
-    MOVIES.forEach(pin => {
-      if (!pin.name.toLowerCase().startsWith(term))
-        MAP.removeLayer(pin.marker);
-      else if (!MAP.hasLayer(pin.marker))
-        MAP.addLayer(pin.marker);
-    });
-
-    TV.forEach(pin => {
-      if (!pin.name.toLowerCase().startsWith(term))
-        MAP.removeLayer(pin.marker);
-      else if (!MAP.hasLayer(pin.marker))
-        MAP.addLayer(pin.marker);
-    });
-
-    BOOKS.forEach(pin => {
-      if (!pin.name.toLowerCase().startsWith(term))
-        MAP.removeLayer(pin.marker);
-      else if (!MAP.hasLayer(pin.marker))
-        MAP.addLayer(pin.marker);
-    });
-
-    changeButtonStyle(SHOW_ALL_BTN, false);
-    changeButtonStyle(FILTER_MOVIES_BTN, false);
-    changeButtonStyle(FILTER_TV_BTN, false);
-    changeButtonStyle(FILTER_BOOKS_BTN, false);
-    changeButtonStyle(FILTER_FEATURED_BTN, false);
-    allOn = false;
-    moviesOn = false;
-    tvOn = false;
-    booksOn = false;
-    featuredOn = false;
-  }
-};
-
-const MOVIE_NAMES_SET = new Set(MOVIES.map(item => item.name));
-const TV_NAMES_SET = new Set(TV.map(item => item.name));
-const BOOK_NAMES_SET = new Set(BOOKS.map(item => item.name));
-const MEDIA_NAMES = [...MOVIE_NAMES_SET, ...TV_NAMES_SET, ...BOOK_NAMES_SET].sort((a, b) => a.localeCompare(b));
-
-function showSuggestions(list) {
-  let listData;
-  if (!list.length) {
-    userValue = SEARCH_BAR.value;
-    listData = '<li>' + userValue + '</li>';
-  }
-  else {
-    listData = list.join('');
-  }
-  SUGGESTIONS_BOX.innerHTML = listData;
-}
-
-function useSuggestion(elem) {
-  SEARCH_BAR.value = elem.innerHTML;
-  SUGGESTIONS_BOX.innerHTML = '<li>' + elem.innerHTML + '</li>';
-  SUGGESTIONS_BOX.style = "display: none;";
-  filterTitle();
-}
-
-
 function filterMovies() {
   saveSearchBarText();
 
@@ -203,6 +136,7 @@ function filterMovies() {
   }
   else {
     MOVIES.forEach(pin => { MAP.addLayer(pin.marker); });
+
     if (allOn) {
       TV.forEach(pin => { MAP.removeLayer(pin.marker); });
       BOOKS.forEach(pin => { MAP.removeLayer(pin.marker); });
@@ -213,8 +147,6 @@ function filterMovies() {
     }
     else {
       if (tvOn && booksOn) {
-        TV.forEach(pin => { MAP.addLayer(pin.marker); });
-        BOOKS.forEach(pin => { MAP.addLayer(pin.marker); });
         SHOW_ALL_BTN.focus();
         changeButtonStyle(SHOW_ALL_BTN, true);
         changeButtonStyle(FILTER_MOVIES_BTN, false);
@@ -251,6 +183,7 @@ function filterTV() {
   }
   else {
     TV.forEach(pin => { MAP.addLayer(pin.marker); });
+
     if (allOn) {
       MOVIES.forEach(pin => { MAP.removeLayer(pin.marker); });
       BOOKS.forEach(pin => { MAP.removeLayer(pin.marker); });
@@ -261,8 +194,6 @@ function filterTV() {
     }
     else {
       if (moviesOn && booksOn) {
-        MOVIES.forEach(pin => { MAP.addLayer(pin.marker); });
-        BOOKS.forEach(pin => { MAP.addLayer(pin.marker); });
         SHOW_ALL_BTN.focus();
         changeButtonStyle(SHOW_ALL_BTN, true);
         changeButtonStyle(FILTER_MOVIES_BTN, false);
@@ -299,6 +230,7 @@ function filterBooks() {
   }
   else {
     BOOKS.forEach(pin => { MAP.addLayer(pin.marker); });
+
     if (allOn) {
       MOVIES.forEach(pin => { MAP.removeLayer(pin.marker); });
       TV.forEach(pin => { MAP.removeLayer(pin.marker); });
@@ -309,8 +241,6 @@ function filterBooks() {
     }
     else {
       if (moviesOn && tvOn) {
-        MOVIES.forEach(pin => { MAP.addLayer(pin.marker); });
-        TV.forEach(pin => { MAP.addLayer(pin.marker); });
         SHOW_ALL_BTN.focus();
         changeButtonStyle(SHOW_ALL_BTN, true);
         changeButtonStyle(FILTER_MOVIES_BTN, false);
@@ -336,7 +266,6 @@ function filterBooks() {
     }
   }
 };
-
 
 function showSingleFeatured(name) {
   saveSearchBarText();
@@ -392,19 +321,82 @@ function showSingleFeatured(name) {
   featuredOn = false;
 }
 
+function filterTitle() {
+  let term = SEARCH_BAR.value.toLowerCase().trim();
+
+  if (term === "")
+    showAll();
+  else {
+    MOVIES.forEach(pin => {
+      if (!pin.name.toLowerCase().startsWith(term))
+        MAP.removeLayer(pin.marker);
+      else if (!MAP.hasLayer(pin.marker))
+        MAP.addLayer(pin.marker);
+    });
+
+    TV.forEach(pin => {
+      if (!pin.name.toLowerCase().startsWith(term))
+        MAP.removeLayer(pin.marker);
+      else if (!MAP.hasLayer(pin.marker))
+        MAP.addLayer(pin.marker);
+    });
+
+    BOOKS.forEach(pin => {
+      if (!pin.name.toLowerCase().startsWith(term))
+        MAP.removeLayer(pin.marker);
+      else if (!MAP.hasLayer(pin.marker))
+        MAP.addLayer(pin.marker);
+    });
+
+    changeButtonStyle(SHOW_ALL_BTN, false);
+    changeButtonStyle(FILTER_MOVIES_BTN, false);
+    changeButtonStyle(FILTER_TV_BTN, false);
+    changeButtonStyle(FILTER_BOOKS_BTN, false);
+    changeButtonStyle(FILTER_FEATURED_BTN, false);
+    allOn = false;
+    moviesOn = false;
+    tvOn = false;
+    booksOn = false;
+    featuredOn = false;
+  }
+};
+
+function showSuggestions(list) {
+  let listData;
+  if (!list.length) {
+    userValue = SEARCH_BAR.value;
+    listData = "<li>" + userValue + "</li>";
+  }
+  else {
+    listData = list.join("");
+  }
+  SUGGESTIONS_BOX.innerHTML = listData;
+}
+
+function useSuggestion(elem) {
+  SEARCH_BAR.value = elem.innerHTML;
+  SUGGESTIONS_BOX.innerHTML = "<li>" + elem.innerHTML + "</li>";
+  SUGGESTIONS_BOX.style = "display: none;";
+  filterTitle();
+}
+
+
 export function createFilterListeners() {
   // Start with featured pins on
   filterFeatured();
 
-  // Add event listener for the featured button
-  FILTER_FEATURED_BTN.addEventListener('click', filterFeatured);
-
-  SHOW_ALL_BTN.addEventListener('click', showAll);
-  SUGGESTIONS_BOX.addEventListener('click', (event) => {
-    if (event.target.tagName === 'LI')
-      useSuggestion(event.target);
+  // Add event listeners for bottom bar
+  FILTER_FEATURED_BTN.addEventListener("click", filterFeatured);
+  SHOW_ALL_BTN.addEventListener("click", showAll);
+  FILTER_MOVIES_BTN.addEventListener("click", filterMovies);
+  FILTER_TV_BTN.addEventListener("click", filterTV);
+  FILTER_BOOKS_BTN.addEventListener("click", filterBooks);
+  FEATURED_BAR.addEventListener("click", (event) => {
+    if (event.target.tagName === "IMG")
+      showSingleFeatured(event.target.id);
   });
 
+  // Add event listeners for search and suggestion functionality
   SEARCH_BAR.addEventListener("input", (event) => {
     filterTitle();
 
@@ -421,45 +413,34 @@ export function createFilterListeners() {
         suggestions = suggestions.slice(0, 5);
 
       suggestions = suggestions.map((data) => {
-        return data = '<li>' + data + '</li>';
+        return data = "<li>" + data + "</li>";
       });
       showSuggestions(suggestions);
       SEARCH_BAR.style = "border-bottom-left-radius: 0; border-bottom-right-radius: 0;"
     }
     else {
-      SUGGESTIONS_BOX.innerHTML = '';
-      SEARCH_BAR.style = '';
+      SUGGESTIONS_BOX.innerHTML = "";
+      SUGGESTIONS_BOX.style = "display: none;";
+      SEARCH_BAR.style = "";
     }
   });
 
-  SEARCH_BAR.addEventListener('focusin', () => {
+  SEARCH_BAR.addEventListener("focusin", () => {
     SUGGESTIONS_BOX.style = "display: block;";
-    if (SUGGESTIONS_BOX.innerHTML != '')
+    if (SUGGESTIONS_BOX.innerHTML != "")
       SEARCH_BAR.style = "border-bottom-left-radius: 0; border-bottom-right-radius: 0;"
   });
 
-  SEARCH_BAR.addEventListener('focusout', () => {
-    SEARCH_BAR.style = '';
-    // Delay hiding suggestions box to allow click event to register
+  SEARCH_BAR.addEventListener("focusout", () => {
+    SEARCH_BAR.style = "";
+    // Delay hiding suggestions box to allow suggestions box click event to register
     setTimeout(() => {
       SUGGESTIONS_BOX.style = "display: none;";
     }, 100);
   });
 
-  SEARCH_BAR.addEventListener('input', (event) => {
-    if (!event.target.value) {
-      SUGGESTIONS_BOX.innerHTML = '';
-      SUGGESTIONS_BOX.style = "display: none;";
-      SEARCH_BAR.style = '';
-    }
-  });
-
-  FILTER_MOVIES_BTN.addEventListener('click', filterMovies);
-  FILTER_TV_BTN.addEventListener('click', filterTV);
-  FILTER_BOOKS_BTN.addEventListener('click', filterBooks);
-
-  FEATURED_BAR.addEventListener('click', (event) => {
-    if (event.target.tagName === 'IMG')
-      showSingleFeatured(event.target.id);
+  SUGGESTIONS_BOX.addEventListener("click", (event) => {
+    if (event.target.tagName === "LI")
+      useSuggestion(event.target);
   });
 }
