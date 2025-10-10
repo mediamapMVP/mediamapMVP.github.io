@@ -52,7 +52,7 @@ function createPinMarker(pin) {
   return pin;
 }
 
-const SAMPLE_IMG_URL = "{{ site.images.sample }}";
+const SAMPLE_IMG_URL = JEKYLL_VARIABLES.SAMPLE_IMG_URL;
 
 function pinHTMLTemplate(pin, idSuffix, mediaType, pinHeader) {
   let imgName = pin.id.split(idSuffix)[0] + `-${mediaType}.png`;
@@ -134,22 +134,26 @@ export async function getOrAddTV() {
     // Check required values and create pin entries
     let tv = [];
     tvArray.forEach(row => {
-      if (row[0] != "" && row[3] != "" && row[4] != "" && row[5] != "" && row[6] != "" && row[8] != "" && row[9] != "" && row[10] != "" && row[13] != "") {
+      if (row[0] != "" && row[3] != "" && row[7] != "" && row[10] != "" && row[11] != "") {
         let pin = {
           id: row[0],
           name: row[3],
           season: row[4],
           episode: row[5],
-          fictional_location: row[6],
-          filming_location: row[7],
-          location_address: row[8],
-          location: { lat: parseFloat(row[9]), lng: parseFloat(row[10]) },
-          episode_title: row[13]
+          episode_title: row[6],
+          fictional_location: row[7],
+          filming_location: row[8],
+          location_address: row[9],
+          location: { lat: parseFloat(row[10]), lng: parseFloat(row[11]) }
         };
 
         // Create marker and popup design
         pin = createPinMarker(pin);
-        let customPopupContent = pinHTMLTemplate(pin, "-TV", "TV", `${pin.name} (S${pin.season} E${pin.episode})`);
+        let episodeInfo = "";
+        if (row[4] != "" && row[5] != "")
+          episodeInfo = `(S${pin.season} E${pin.episode})`;
+
+        let customPopupContent = pinHTMLTemplate(pin, "-TV", "TV", `${pin.name} ${episodeInfo}`);
         pin.marker.bindPopup(customPopupContent, CUSTOM_POPUP_OPTIONS);
 
         // Show bar when a marker is clicked

@@ -9,6 +9,8 @@ export const IMAGE_FILES = [];
 IMAGE_FILES.push("{{ image.path }}");
 // {% endfor %}
 
+export const SAMPLE_IMG_URL = "{{ site.images.sample }}";
+
 export const FEATURED_NAMES = new Set();
 // {% for item in site.featured %}
 FEATURED_NAMES.add("{{ item.name }}");
