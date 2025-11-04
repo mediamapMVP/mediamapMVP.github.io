@@ -27,6 +27,8 @@ const FILTER_MOVIES_BTN = document.getElementById("filterMovies");
 const FILTER_TV_BTN = document.getElementById("filterTV");
 const FILTER_BOOKS_BTN = document.getElementById("filterBooks");
 
+let selectedFeatureImage;
+
 // Create booleans for filter button status
 let allOn = false;
 let moviesOn = false;
@@ -61,6 +63,14 @@ function changeButtonStyle(elem, turnOn) {
     elem.style.color = "#000000";
     elem.classList.remove("active");
   }
+}
+
+function highlightFeaturedImage(elem) {
+  if (selectedFeatureImage)
+    selectedFeatureImage.style = "";
+
+  elem.style = "border: 3px solid #739DE9; border-radius: 0.5rem; margin-bottom: 0.5rem;";
+  selectedFeatureImage = elem;
 }
 
 
@@ -392,8 +402,10 @@ export function createFilterListeners() {
   FILTER_TV_BTN.addEventListener("click", filterTV);
   FILTER_BOOKS_BTN.addEventListener("click", filterBooks);
   FEATURED_BAR.addEventListener("click", (event) => {
-    if (event.target.tagName === "IMG")
+    if (event.target.tagName === "IMG") {
       showSingleFeatured(event.target.id);
+      highlightFeaturedImage(event.target);
+    }
   });
 
   // Add event listeners for search and suggestion functionality

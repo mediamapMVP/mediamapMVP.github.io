@@ -717,6 +717,7 @@ input[type="search"]::-webkit-search-cancel-button {
   width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
   overflow-x: auto;
   padding-bottom: 0.7rem;
   z-index: 21;
@@ -740,6 +741,10 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   background: #fff;
+
+  &:hover {
+    margin-bottom: 0.5rem;
+  }
 
   @media (max-width: $mobile_width) {
     max-height: 90px;
