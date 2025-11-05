@@ -723,6 +723,7 @@ input[type="search"]::-webkit-search-cancel-button {
   z-index: 21;
   box-sizing: border-box;
   max-height: 160px;
+  min-height: 158px;
   opacity: 1;
   transition: max-height 0.85s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -734,21 +735,41 @@ input[type="search"]::-webkit-search-cancel-button {
   overflow: hidden !important;
 }
 
+.featured-bar div {
+  margin: 0 0.75rem;
+
+  &:hover {
+    margin-bottom: 0.3rem;
+  }
+}
+
 .featured-bar img {
   cursor: pointer;
   max-height: 120px;
-  margin: 0 0.75rem;
   border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  // box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   background: #fff;
-
-  &:hover {
-    margin-bottom: 0.5rem;
-  }
 
   @media (max-width: $mobile_width) {
     max-height: 90px;
   }
+}
+
+.featured-bar .active {
+  border: 3px solid #739DE9;
+  border-radius: 0.5rem;
+  margin-bottom: 0.3rem;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #FFFFFF;
+    position: relative;
+    top: 10px;
+    left: 0;
+    }
 }
 
 .featured-bar-gradient {

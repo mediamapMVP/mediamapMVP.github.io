@@ -67,9 +67,9 @@ function changeButtonStyle(elem, turnOn) {
 
 function highlightFeaturedImage(elem) {
   if (selectedFeatureImage)
-    selectedFeatureImage.style = "";
+    selectedFeatureImage.classList.toggle("active");
 
-  elem.style = "border: 3px solid #739DE9; border-radius: 0.5rem; margin-bottom: 0.5rem;";
+  elem.classList.toggle("active");
   selectedFeatureImage = elem;
 }
 
@@ -403,8 +403,9 @@ export function createFilterListeners() {
   FILTER_BOOKS_BTN.addEventListener("click", filterBooks);
   FEATURED_BAR.addEventListener("click", (event) => {
     if (event.target.tagName === "IMG") {
-      showSingleFeatured(event.target.id);
-      highlightFeaturedImage(event.target);
+      let parentDiv = event.target.parentElement;
+      showSingleFeatured(parentDiv.id);
+      highlightFeaturedImage(parentDiv);
     }
   });
 

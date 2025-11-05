@@ -83,7 +83,9 @@
 		</div>
 		<div id="featured-bar" class="featured-bar">
 			{% for item in site.featured %}
-			<img id="{{ item.name }}" src="{{ item.link }}" alt="{{ item.name }}" />
+			<div id="{{ item.name }}">
+				<img src="{{ item.link }}" alt="{{ item.name }}"/>
+			</div>
 			{% endfor %}
 		</div>
 	</div>
