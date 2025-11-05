@@ -66,7 +66,7 @@ function pinHTMLTemplate(pin, idSuffix, mediaType, pinHeader) {
     pinAddress = pin.filming_location + ", " + pinAddress;
 
   return `
-			<div class="row align-items-stretch" style="min-height: 120px;">
+			<div class="row align-items-stretch" style="min-height: 7.5rem;">
 				<div class="col-5 d-flex justify-content-center">
 					<img src="${imgUrl}" title="${pin.name}" alt="${pin.name}" width=100% style="object-fit: contain;">
 				</div>
