@@ -95,10 +95,12 @@ function clearSelectedFeatureImage() {
 }
 
 function highlightFeaturedImage(elem) {
-  clearSelectedFeatureImage();
+  if (elem !== selectedFeatureImage) {
+    clearSelectedFeatureImage();
 
-  elem.classList.add("active");
-  selectedFeatureImage = elem;
+    elem.classList.add("active");
+    selectedFeatureImage = elem;
+  }
 }
 
 
