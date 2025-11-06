@@ -81,12 +81,16 @@
 			<button id="filterTV" class="btn toggle-btn overlay-item" type="button">TV</button>
 			<button id="filterBooks" class="btn toggle-btn overlay-item" type="button">LITERATURE</button>
 		</div>
-		<div id="featured-bar" class="featured-bar">
-			{% for item in site.featured %}
-			<div id="{{ item.name }}">
-				<img src="{{ item.link }}" alt="{{ item.name }}"/>
+		<div id="featured-wrapper" class="featured-wrapper">
+			<button id="featuredBack" class="btn scroll-btn overlay-item" type="button" style="opacity: 0.5;"><i class="bi bi-caret-left-fill"></i></button>
+			<div id="featured-bar" class="featured-bar">
+				{% for item in site.featured %}
+				<div id="{{ item.name }}">
+					<img src="{{ item.link }}" alt="{{ item.name }}"/>
+				</div>
+				{% endfor %}
 			</div>
-			{% endfor %}
+			<button id="featuredForward" class="btn scroll-btn overlay-item" type="button"><i class="bi bi-caret-right-fill"></i></button>
 		</div>
 	</div>
 	<div id="featured-bar-gradient" class="featured-bar-gradient"></div>

@@ -43,7 +43,7 @@ async function init() {
 	// Also runs featured filter so map starts with only featured pins
 	FILTERS_MODULE.createFilterListeners();
 
-	// Create listeners for add form, follow, and search inteactions
+	// Create listeners for add form, follow, search, and featured scroll inteactions
 	INTERACTIONS.createEventListeners();
 
 	// TODO Hide until properly implemented (only run on first visit)

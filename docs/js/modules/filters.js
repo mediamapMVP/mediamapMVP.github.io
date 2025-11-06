@@ -65,11 +65,39 @@ function changeButtonStyle(elem, turnOn) {
   }
 }
 
-function highlightFeaturedImage(elem) {
-  if (selectedFeatureImage)
-    selectedFeatureImage.classList.toggle("active");
+function clearSelectedFeatureImage() {
+  if (selectedFeatureImage) {
+    let name = selectedFeatureImage.id;
+    if (MOVIE_NAMES_SET.has(name)) {
+      MOVIES.forEach(pin => {
+        if (pin.name === name)
+          MAP.removeLayer(pin.marker);
+      });
+    }
 
-  elem.classList.toggle("active");
+    else if (TV_NAMES_SET.has(name)) {
+      TV.forEach(pin => {
+        if (pin.name === name)
+          MAP.removeLayer(pin.marker)
+      });
+    }
+
+    else if (BOOK_NAMES_SET.has(name)) {
+      BOOKS.forEach(pin => {
+        if (pin.name === name)
+          MAP.removeLayer(pin.marker)
+      });
+    }
+
+    selectedFeatureImage.classList.remove("active");
+    selectedFeatureImage = null;
+  }
+}
+
+function highlightFeaturedImage(elem) {
+  clearSelectedFeatureImage();
+
+  elem.classList.add("active");
   selectedFeatureImage = elem;
 }
 
@@ -77,6 +105,7 @@ function highlightFeaturedImage(elem) {
 function filterFeatured() {
   if (!featuredOn) {
     saveSearchBarText();
+    clearSelectedFeatureImage();
 
     MOVIES.forEach(pin => {
       if (FEATURED_PINS.includes(pin))
@@ -117,6 +146,7 @@ function filterFeatured() {
 function showAll() {
   if (!allOn) {
     saveSearchBarText();
+    clearSelectedFeatureImage();
 
     MOVIES.forEach(pin => { MAP.addLayer(pin.marker); });
     TV.forEach(pin => { MAP.addLayer(pin.marker); });
@@ -138,6 +168,7 @@ function showAll() {
 
 function filterMovies() {
   saveSearchBarText();
+  clearSelectedFeatureImage();
 
   if (moviesOn) {
     MOVIES.forEach(pin => { MAP.removeLayer(pin.marker); });
@@ -185,6 +216,7 @@ function filterMovies() {
 
 function filterTV() {
   saveSearchBarText();
+  clearSelectedFeatureImage();
 
   if (tvOn) {
     TV.forEach(pin => { MAP.removeLayer(pin.marker); });
@@ -232,6 +264,7 @@ function filterTV() {
 
 function filterBooks() {
   saveSearchBarText();
+  clearSelectedFeatureImage();
 
   if (booksOn) {
     BOOKS.forEach(pin => { MAP.removeLayer(pin.marker); });
@@ -277,7 +310,8 @@ function filterBooks() {
   }
 };
 
-function showSingleFeatured(name) {
+function showSingleFeatured(elem) {
+  let name = elem.id;
   saveSearchBarText();
 
   if (MOVIE_NAMES_SET.has(name)) {
@@ -329,6 +363,8 @@ function showSingleFeatured(name) {
   tvOn = false;
   booksOn = false;
   featuredOn = false;
+  
+  highlightFeaturedImage(elem);
 }
 
 function filterTitle() {
@@ -337,6 +373,7 @@ function filterTitle() {
   if (term === "")
     showAll();
   else {
+    clearSelectedFeatureImage();
     MOVIES.forEach(pin => {
       if (!pin.name.toLowerCase().startsWith(term))
         MAP.removeLayer(pin.marker);
@@ -367,7 +404,6 @@ function filterTitle() {
     moviesOn = false;
     tvOn = false;
     booksOn = false;
-    featuredOn = false;
   }
 };
 
@@ -404,8 +440,7 @@ export function createFilterListeners() {
   FEATURED_BAR.addEventListener("click", (event) => {
     if (event.target.tagName === "IMG") {
       let parentDiv = event.target.parentElement;
-      showSingleFeatured(parentDiv.id);
-      highlightFeaturedImage(parentDiv);
+      showSingleFeatured(parentDiv);
     }
   });
 

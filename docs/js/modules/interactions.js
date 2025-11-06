@@ -1,4 +1,4 @@
-// Module for add form, follow, and search inteactions
+// Module for add form, follow, search, and featured scroll inteactions
 
 const SAVE_SEARCH_MODULE = await import("./save-search.js");
 function saveSearchBarText() { SAVE_SEARCH_MODULE.saveSearchBarText(); }
@@ -15,6 +15,10 @@ export function createEventListeners () {
 
   const SEARCH_BAR_DIV = document.getElementById("filterTitleDiv");
   const SEARCH_BAR = document.getElementById("filterTitle");
+
+  const FEATURED_BAR = document.getElementById("featured-bar");
+  const FEATURED_BACK = document.getElementById("featuredBack");
+  const FEATURED_FORWARD = document.getElementById("featuredForward");
 
   // Hide elements so theres no overlap with accordions
   ADD_BTN.addEventListener("mouseover", () => {
@@ -52,5 +56,30 @@ export function createEventListeners () {
       this.style.height = "auto";
       this.style.height = `${this.scrollHeight}px`;
     }
+  });
+
+  // Featured scroll buttons
+  FEATURED_BACK.addEventListener("click", () => {
+    FEATURED_FORWARD.style = "";
+    FEATURED_BAR.scrollBy({
+      left: -(window.innerWidth/2),
+      behavior: "smooth"
+    });
+  });
+
+  FEATURED_FORWARD.addEventListener("click", () => {
+    FEATURED_BACK.style = "";
+    FEATURED_BAR.scrollBy({
+      left: (window.innerWidth / 2),
+      behavior: "smooth"
+    });
+  });
+
+  FEATURED_BAR.addEventListener("scrollend", () => {
+    if (FEATURED_BAR.scrollLeft === 0)
+      FEATURED_BACK.style = "opacity: 0.5";
+
+    if (FEATURED_BAR.scrollLeft + FEATURED_BAR.offsetWidth >= FEATURED_BAR.scrollWidth)
+      FEATURED_FORWARD.style = "opacity: 0.5";
   });
 }
