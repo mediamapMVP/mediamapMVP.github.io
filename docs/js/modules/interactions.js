@@ -79,7 +79,8 @@ export function createEventListeners () {
     if (FEATURED_BAR.scrollLeft === 0)
       FEATURED_BACK.style = "opacity: 0.5";
 
-    if (FEATURED_BAR.scrollLeft + FEATURED_BAR.offsetWidth >= FEATURED_BAR.scrollWidth)
+    // Rounding up because scroll sometimes is off by a few decimal points
+    if (Math.ceil(FEATURED_BAR.scrollLeft + FEATURED_BAR.offsetWidth) >= FEATURED_BAR.scrollWidth)
       FEATURED_FORWARD.style = "opacity: 0.5";
   });
 }
