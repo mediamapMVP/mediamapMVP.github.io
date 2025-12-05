@@ -52,9 +52,9 @@ export function createEventListeners () {
 
   // Listener for add form sizing to adjust smoothly with description field expanding
   DESCRIPTION_FORM_FIELD.addEventListener("input", () => {
-    if (this.scrollHeight < 6 * parseFloat(getComputedStyle(document.documentElement).fontSize)) {
-      this.style.height = "auto";
-      this.style.height = `${this.scrollHeight}px`;
+    if (DESCRIPTION_FORM_FIELD.scrollHeight < 6 * parseFloat(getComputedStyle(document.documentElement).fontSize)) {
+      DESCRIPTION_FORM_FIELD.style.height = "auto";
+      DESCRIPTION_FORM_FIELD.style.height = `${DESCRIPTION_FORM_FIELD.scrollHeight}px`;
     }
   });
 
