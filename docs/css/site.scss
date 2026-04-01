@@ -75,6 +75,37 @@ p {
   margin-bottom: 0.5rem !important;
 }
 
+// Cluster marker styling
+.marker-cluster-small,
+.marker-cluster-medium,
+.marker-cluster-large {
+  background-color: rgba(0, 0, 0, 0.3);
+
+  div {
+    background-color: rgba(0, 0, 0, 0.85);
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+
+    span {
+      color: $light_yellow !important;
+    }
+  }
+}
+
+.marker-cluster-featured {
+  background-color: rgba(100, 0, 94, 0.3);
+
+  div {
+    background-color: rgba(100, 0, 94, 0.9);
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+
+    span {
+      color: $light_yellow !important;
+    }
+  }
+}
+
 .leaflet-popup-content-wrapper {
   padding: 1.5px;
 }
@@ -601,6 +632,26 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .bi-search {
   -webkit-text-stroke: 0.6px black;
+}
+
+.zoom-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.zoom-btn {
+  width: 2.3rem;
+  height: 2.3rem;
+  padding: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  line-height: 1;
 }
 
 .mobile-search-pad {

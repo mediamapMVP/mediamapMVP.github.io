@@ -3,8 +3,10 @@
 const SAVE_SEARCH_MODULE = await import("./save-search.js");
 function saveSearchBarText() { SAVE_SEARCH_MODULE.saveSearchBarText(); }
 
+const CREATE_MAP_MODULE = await import("./create-map.js");
 
 export function createEventListeners () {
+  const MAP = CREATE_MAP_MODULE.getOrCreateMap();
   const ADD_BTN = document.getElementById("addBtn");
   const FOLLOW_BTN = document.getElementById("followBtn");
 
@@ -19,6 +21,8 @@ export function createEventListeners () {
   const FEATURED_BAR = document.getElementById("featured-bar");
   const FEATURED_BACK = document.getElementById("featuredBack");
   const FEATURED_FORWARD = document.getElementById("featuredForward");
+  const ZOOM_IN_BTN = document.getElementById("zoomIn");
+  const ZOOM_OUT_BTN = document.getElementById("zoomOut");
 
   // Hide elements so theres no overlap with accordions
   ADD_BTN.addEventListener("mouseover", () => {
@@ -57,6 +61,10 @@ export function createEventListeners () {
       DESCRIPTION_FORM_FIELD.style.height = `${DESCRIPTION_FORM_FIELD.scrollHeight}px`;
     }
   });
+
+  // Zoom buttons
+  ZOOM_IN_BTN.addEventListener("click", () => MAP.zoomIn());
+  ZOOM_OUT_BTN.addEventListener("click", () => MAP.zoomOut());
 
   // Featured scroll buttons
   FEATURED_BACK.addEventListener("click", () => {

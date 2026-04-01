@@ -39,15 +39,19 @@ let blackIcon = new ColorIcon({ iconUrl: "/images/map-marker.svg" });
 let featuredIcon = new ColorIcon({ iconUrl: "/images/featured-map-marker.svg" });
 
 const MAP = CREATE_MAP_MODULE.getOrCreateMap();
+const CLUSTER_GROUP = CREATE_MAP_MODULE.getOrCreateClusterGroup();
+const FEATURED_CLUSTER_GROUP = CREATE_MAP_MODULE.getOrCreateFeaturedClusterGroup();
 
 function createPinMarker(pin) {
   let pinIcon;
   if (JEKYLL_VARIABLES.FEATURED_NAMES.has(pin.name)) {
     pinIcon = featuredIcon;
-    pin.marker = L.marker([pin.location.lat, pin.location.lng], { icon: pinIcon }).addTo(MAP);
+    pin.marker = L.marker([pin.location.lat, pin.location.lng], { icon: pinIcon });
+    FEATURED_CLUSTER_GROUP.addLayer(pin.marker);
   } else {
     pinIcon = blackIcon;
     pin.marker = L.marker([pin.location.lat, pin.location.lng], { icon: pinIcon });
+    CLUSTER_GROUP.addLayer(pin.marker);
   }
 
   return pin;

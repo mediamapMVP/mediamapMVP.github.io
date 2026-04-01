@@ -13,8 +13,10 @@ function saveSearchBarText() { SAVE_SEARCH_MODULE.saveSearchBarText(); }
 
 const BOTTOM_BAR_MODULE = await import("./bottom-bar.js");
 
-// Get map
+// Get map and cluster groups
 const MAP = CREATE_MAP_MODULE.getOrCreateMap();
+const CLUSTER_GROUP = CREATE_MAP_MODULE.getOrCreateClusterGroup();
+const FEATURED_CLUSTER_GROUP = CREATE_MAP_MODULE.getOrCreateFeaturedClusterGroup();
 
 // Create variables
 const MOVIES = await PIN_DATA_MODULE.getOrAddMovies();
@@ -28,6 +30,20 @@ const FILTER_TV_BTN = document.getElementById("filterTV");
 const FILTER_BOOKS_BTN = document.getElementById("filterBooks");
 
 let selectedFeatureImage;
+
+function addPin(pin) {
+  if (FEATURED_NAMES.has(pin.name))
+    FEATURED_CLUSTER_GROUP.addLayer(pin.marker);
+  else
+    CLUSTER_GROUP.addLayer(pin.marker);
+}
+
+function removePin(pin) {
+  if (FEATURED_NAMES.has(pin.name))
+    FEATURED_CLUSTER_GROUP.removeLayer(pin.marker);
+  else
+    CLUSTER_GROUP.removeLayer(pin.marker);
+}
 
 // Create booleans for filter button status
 let allOn = false;
@@ -71,21 +87,21 @@ function clearSelectedFeatureImage() {
     if (MOVIE_NAMES_SET.has(name)) {
       MOVIES.forEach(pin => {
         if (pin.name === name)
-          MAP.removeLayer(pin.marker);
+          removePin(pin);
       });
     }
 
     else if (TV_NAMES_SET.has(name)) {
       TV.forEach(pin => {
         if (pin.name === name)
-          MAP.removeLayer(pin.marker)
+          removePin(pin);
       });
     }
 
     else if (BOOK_NAMES_SET.has(name)) {
       BOOKS.forEach(pin => {
         if (pin.name === name)
-          MAP.removeLayer(pin.marker)
+          removePin(pin);
       });
     }
 
@@ -111,23 +127,23 @@ function filterFeatured() {
 
     MOVIES.forEach(pin => {
       if (FEATURED_PINS.includes(pin))
-        MAP.addLayer(pin.marker);
+        FEATURED_CLUSTER_GROUP.addLayer(pin.marker);
       else
-        MAP.removeLayer(pin.marker);
+        CLUSTER_GROUP.removeLayer(pin.marker);
     });
 
     TV.forEach(pin => {
       if (FEATURED_PINS.includes(pin))
-        MAP.addLayer(pin.marker);
+        FEATURED_CLUSTER_GROUP.addLayer(pin.marker);
       else
-        MAP.removeLayer(pin.marker);
+        CLUSTER_GROUP.removeLayer(pin.marker);
     });
 
     BOOKS.forEach(pin => {
       if (FEATURED_PINS.includes(pin))
-        MAP.addLayer(pin.marker);
+        FEATURED_CLUSTER_GROUP.addLayer(pin.marker);
       else
-        MAP.removeLayer(pin.marker);
+        CLUSTER_GROUP.removeLayer(pin.marker);
     });
 
     changeButtonStyle(SHOW_ALL_BTN, false);
@@ -150,9 +166,9 @@ function showAll() {
     saveSearchBarText();
     clearSelectedFeatureImage();
 
-    MOVIES.forEach(pin => { MAP.addLayer(pin.marker); });
-    TV.forEach(pin => { MAP.addLayer(pin.marker); });
-    BOOKS.forEach(pin => { MAP.addLayer(pin.marker); });
+    MOVIES.forEach(pin => { addPin(pin); });
+    TV.forEach(pin => { addPin(pin); });
+    BOOKS.forEach(pin => { addPin(pin); });
 
     changeButtonStyle(SHOW_ALL_BTN, true);
     changeButtonStyle(FILTER_MOVIES_BTN, false);
@@ -173,16 +189,16 @@ function filterMovies() {
   clearSelectedFeatureImage();
 
   if (moviesOn) {
-    MOVIES.forEach(pin => { MAP.removeLayer(pin.marker); });
+    MOVIES.forEach(pin => { removePin(pin); });
     changeButtonStyle(FILTER_MOVIES_BTN, false);
     moviesOn = false;
   }
   else {
-    MOVIES.forEach(pin => { MAP.addLayer(pin.marker); });
+    MOVIES.forEach(pin => { addPin(pin); });
 
     if (allOn) {
-      TV.forEach(pin => { MAP.removeLayer(pin.marker); });
-      BOOKS.forEach(pin => { MAP.removeLayer(pin.marker); });
+      TV.forEach(pin => { removePin(pin); });
+      BOOKS.forEach(pin => { removePin(pin); });
       changeButtonStyle(SHOW_ALL_BTN, false);
       changeButtonStyle(FILTER_MOVIES_BTN, true);
       allOn = false;
@@ -205,8 +221,8 @@ function filterMovies() {
         moviesOn = true;
 
         if (featuredOn) {
-          TV.forEach(pin => { MAP.removeLayer(pin.marker); });
-          BOOKS.forEach(pin => { MAP.removeLayer(pin.marker); });
+          TV.forEach(pin => { removePin(pin); });
+          BOOKS.forEach(pin => { removePin(pin); });
 
           changeButtonStyle(FILTER_FEATURED_BTN, false);
           featuredOn = false;
@@ -221,16 +237,16 @@ function filterTV() {
   clearSelectedFeatureImage();
 
   if (tvOn) {
-    TV.forEach(pin => { MAP.removeLayer(pin.marker); });
+    TV.forEach(pin => { removePin(pin); });
     changeButtonStyle(FILTER_TV_BTN, false);
     tvOn = false;
   }
   else {
-    TV.forEach(pin => { MAP.addLayer(pin.marker); });
+    TV.forEach(pin => { addPin(pin); });
 
     if (allOn) {
-      MOVIES.forEach(pin => { MAP.removeLayer(pin.marker); });
-      BOOKS.forEach(pin => { MAP.removeLayer(pin.marker); });
+      MOVIES.forEach(pin => { removePin(pin); });
+      BOOKS.forEach(pin => { removePin(pin); });
       changeButtonStyle(SHOW_ALL_BTN, false);
       changeButtonStyle(FILTER_TV_BTN, true);
       allOn = false;
@@ -253,8 +269,8 @@ function filterTV() {
         tvOn = true;
 
         if (featuredOn) {
-          MOVIES.forEach(pin => { MAP.removeLayer(pin.marker); });
-          BOOKS.forEach(pin => { MAP.removeLayer(pin.marker); });
+          MOVIES.forEach(pin => { removePin(pin); });
+          BOOKS.forEach(pin => { removePin(pin); });
 
           changeButtonStyle(FILTER_FEATURED_BTN, false);
           featuredOn = false;
@@ -269,16 +285,16 @@ function filterBooks() {
   clearSelectedFeatureImage();
 
   if (booksOn) {
-    BOOKS.forEach(pin => { MAP.removeLayer(pin.marker); });
+    BOOKS.forEach(pin => { removePin(pin); });
     changeButtonStyle(FILTER_BOOKS_BTN, false);
     booksOn = false;
   }
   else {
-    BOOKS.forEach(pin => { MAP.addLayer(pin.marker); });
+    BOOKS.forEach(pin => { addPin(pin); });
 
     if (allOn) {
-      MOVIES.forEach(pin => { MAP.removeLayer(pin.marker); });
-      TV.forEach(pin => { MAP.removeLayer(pin.marker); });
+      MOVIES.forEach(pin => { removePin(pin); });
+      TV.forEach(pin => { removePin(pin); });
       changeButtonStyle(SHOW_ALL_BTN, false);
       changeButtonStyle(FILTER_BOOKS_BTN, true);
       allOn = false;
@@ -301,8 +317,8 @@ function filterBooks() {
         booksOn = true;
 
         if (featuredOn) {
-          MOVIES.forEach(pin => { MAP.removeLayer(pin.marker); });
-          TV.forEach(pin => { MAP.removeLayer(pin.marker); });
+          MOVIES.forEach(pin => { removePin(pin); });
+          TV.forEach(pin => { removePin(pin); });
 
           changeButtonStyle(FILTER_FEATURED_BTN, false);
           featuredOn = false;
@@ -319,40 +335,40 @@ function showSingleFeatured(elem) {
   if (MOVIE_NAMES_SET.has(name)) {
     MOVIES.forEach(pin => {
       if (pin.name === name)
-        MAP.addLayer(pin.marker);
+        addPin(pin);
       else
-        MAP.removeLayer(pin.marker)
+        removePin(pin);
     });
-    TV.forEach(pin => MAP.removeLayer(pin.marker));
-    BOOKS.forEach(pin => MAP.removeLayer(pin.marker));
+    TV.forEach(pin => removePin(pin));
+    BOOKS.forEach(pin => removePin(pin));
   }
 
   else if (TV_NAMES_SET.has(name)) {
     TV.forEach(pin => {
       if (pin.name === name)
-        MAP.addLayer(pin.marker);
+        addPin(pin);
       else
-        MAP.removeLayer(pin.marker)
+        removePin(pin);
     });
-    MOVIES.forEach(pin => MAP.removeLayer(pin.marker));
-    BOOKS.forEach(pin => MAP.removeLayer(pin.marker));
+    MOVIES.forEach(pin => removePin(pin));
+    BOOKS.forEach(pin => removePin(pin));
   }
 
   else if (BOOK_NAMES_SET.has(name)) {
     BOOKS.forEach(pin => {
       if (pin.name === name)
-        MAP.addLayer(pin.marker);
+        addPin(pin);
       else
-        MAP.removeLayer(pin.marker)
+        removePin(pin);
     });
-    MOVIES.forEach(pin => MAP.removeLayer(pin.marker));
-    TV.forEach(pin => MAP.removeLayer(pin.marker));
+    MOVIES.forEach(pin => removePin(pin));
+    TV.forEach(pin => removePin(pin));
   }
 
   else {
-    MOVIES.forEach(pin => MAP.removeLayer(pin.marker));
-    BOOKS.forEach(pin => MAP.removeLayer(pin.marker));
-    TV.forEach(pin => MAP.removeLayer(pin.marker));
+    MOVIES.forEach(pin => removePin(pin));
+    BOOKS.forEach(pin => removePin(pin));
+    TV.forEach(pin => removePin(pin));
   }
 
   changeButtonStyle(SHOW_ALL_BTN, false);
@@ -378,23 +394,23 @@ function filterTitle() {
     clearSelectedFeatureImage();
     MOVIES.forEach(pin => {
       if (!pin.name.toLowerCase().startsWith(term))
-        MAP.removeLayer(pin.marker);
-      else if (!MAP.hasLayer(pin.marker))
-        MAP.addLayer(pin.marker);
+        removePin(pin);
+      else if (!FEATURED_CLUSTER_GROUP.hasLayer(pin.marker) && !CLUSTER_GROUP.hasLayer(pin.marker))
+        addPin(pin);
     });
 
     TV.forEach(pin => {
       if (!pin.name.toLowerCase().startsWith(term))
-        MAP.removeLayer(pin.marker);
-      else if (!MAP.hasLayer(pin.marker))
-        MAP.addLayer(pin.marker);
+        removePin(pin);
+      else if (!FEATURED_CLUSTER_GROUP.hasLayer(pin.marker) && !CLUSTER_GROUP.hasLayer(pin.marker))
+        addPin(pin);
     });
 
     BOOKS.forEach(pin => {
       if (!pin.name.toLowerCase().startsWith(term))
-        MAP.removeLayer(pin.marker);
-      else if (!MAP.hasLayer(pin.marker))
-        MAP.addLayer(pin.marker);
+        removePin(pin);
+      else if (!FEATURED_CLUSTER_GROUP.hasLayer(pin.marker) && !CLUSTER_GROUP.hasLayer(pin.marker))
+        addPin(pin);
     });
 
     changeButtonStyle(SHOW_ALL_BTN, false);
@@ -489,7 +505,7 @@ export function createFilterListeners() {
     }, 100);
   });
 
-  SUGGESTIONS_BOX.addEventListener("click", (event) => {
+  SUGGESTIONS_BOX.addEventListener("mousedown", (event) => {
     if (event.target.tagName === "LI")
       useSuggestion(event.target);
   });
