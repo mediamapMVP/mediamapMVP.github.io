@@ -42,12 +42,13 @@ const MAP = CREATE_MAP_MODULE.getOrCreateMap();
 
 function createPinMarker(pin) {
   let pinIcon;
-  if (JEKYLL_VARIABLES.FEATURED_NAMES.has(pin.name))
+  if (JEKYLL_VARIABLES.FEATURED_NAMES.has(pin.name)) {
     pinIcon = featuredIcon;
-  else
+    pin.marker = L.marker([pin.location.lat, pin.location.lng], { icon: pinIcon }).addTo(MAP);
+  } else {
     pinIcon = blackIcon;
-
-  pin.marker = L.marker([pin.location.lat, pin.location.lng], { icon: pinIcon }).addTo(MAP);
+    pin.marker = L.marker([pin.location.lat, pin.location.lng], { icon: pinIcon });
+  }
 
   return pin;
 }
@@ -176,21 +177,20 @@ export async function getOrAddBooks() {
     // Check required values and create pin entries
     let books = [];
     booksArray.forEach(row => {
-      if (row[0] != "" && row[3] != "" && row[4] != "" && row[5] != "" && row[6] != "" && row[8] != "" && row[9] != "" && row[10] != "") {
+      if (row[0] != "" && row[3] != "" && row[4] != "" && row[5] != "" && row[7] != "" && row[8] != "" && row[9] != "") {
         let pin = {
           id: row[0],
           name: row[3],
-          year: row[4],
-          author: row[5],
-          fictional_location: row[6],
-          filming_location: row[7],
-          location_address: row[8],
-          location: { lat: parseFloat(row[9]), lng: parseFloat(row[10]) },
+          author: row[4],
+          fictional_location: row[5],
+          filming_location: row[6],
+          location_address: row[7],
+          location: { lat: parseFloat(row[8]), lng: parseFloat(row[9]) },
         };
 
         // Create marker and popup design
         pin = createPinMarker(pin);
-        let customPopupContent = pinHTMLTemplate(pin, "-LIT", "LIT", `${pin.name} by ${pin.author} (${pin.year})`);
+        let customPopupContent = pinHTMLTemplate(pin, "-LIT", "LIT", `${pin.name} by ${pin.author}`);
         pin.marker.bindPopup(customPopupContent, CUSTOM_POPUP_OPTIONS);
 
         // Show bar when a marker is clicked
